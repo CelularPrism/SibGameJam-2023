@@ -12,4 +12,6 @@ public class MenuEvents : MonoBehaviour
     public void QuitGame() => Application.Quit();
 
     public void StartGame() => SceneManager.LoadScene(_gameplayScene);
+
+    public void ClickBtn() => Debug.Log("Click");
 }

@@ -10,9 +10,16 @@ public class SettingsVolume : MonoBehaviour
     [SerializeField] private Slider music;
     [SerializeField] private Slider vfx;
 
-    [SerializeField] private Bus soundBus;
-    [SerializeField] private Bus musicBus;
-    [SerializeField] private Bus vfxBus;
+    private Bus soundBus;
+    private Bus musicBus;
+    private Bus vfxBus;
+
+    private void Start()
+    {
+        soundBus = FMODUnity.RuntimeManager.GetBus("bus:/SFX");
+        musicBus = FMODUnity.RuntimeManager.GetBus("bus:/Music");
+        vfxBus   = FMODUnity.RuntimeManager.GetBus("bus:/UI");
+    }
 
     public void ChangeSound() =>
         soundBus.setVolume(sound.value);
