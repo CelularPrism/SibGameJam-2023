@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c9372110-eb17-4994-b095-0a28c3a3a79e}">
+		<property name="assetPath">
+			<value>ui_hi_7.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.7098125</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3c497a81-5b56-488b-8792-838a9f337bc5}</destination>
+		</relationship>
+	</object>
+</objects>

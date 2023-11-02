@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{d2bbc33e-d56d-4a64-bc55-fdd8d469e843}">
+		<property name="assetPath">
+			<value>back2.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>100.83265306122449</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3c497a81-5b56-488b-8792-838a9f337bc5}</destination>
+		</relationship>
+	</object>
+</objects>
