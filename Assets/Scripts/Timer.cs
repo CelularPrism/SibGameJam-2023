@@ -14,11 +14,11 @@ public class Timer : MonoBehaviour
         _start = DateTime.Now;
     }
 
-    void FixedUpdate()
-    {
-        var time = GetTime();
-        Debug.Log(time.Minutes + ":" + time.Seconds);
-    }
+    //void FixedUpdate()
+    //{
+    //    var time = GetTime();
+    //    Debug.Log(time.Minutes + ":" + time.Seconds);
+    //}
 
     public TimeSpan GetTime() => _start.Subtract(DateTime.Now.AddMinutes(-range));
 }
