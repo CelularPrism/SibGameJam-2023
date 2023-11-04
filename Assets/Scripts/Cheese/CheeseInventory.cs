@@ -20,6 +20,7 @@ public class CheeseInventory : MonoBehaviour
     }
 
     public int GetCount() => _count;
+    public int GetMaxCount() => max;
 
     public bool MaxCount() => _count >= max;
 }
