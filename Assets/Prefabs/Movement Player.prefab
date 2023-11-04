@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 3203072565256417507}
   - component: {fileID: 3422413805127511175}
   - component: {fileID: 3867644042725623521}
+  - component: {fileID: 2351410182633021310}
+  - component: {fileID: 7054948929726623253}
   m_Layer: 0
   m_Name: Movement Player
   m_TagString: Untagged
@@ -210,3 +212,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+--- !u!114 &2351410182633021310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5568506638843802295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce7fcd7806b82524f86ba5ca107bd399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max: 5
+--- !u!114 &7054948929726623253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5568506638843802295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056f981dcecbc864ebee4ba4b29aa109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 5
+  _maxHealth: 10
