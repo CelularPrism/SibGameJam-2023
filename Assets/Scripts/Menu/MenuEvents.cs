@@ -8,9 +8,15 @@ public class MenuEvents : MonoBehaviour
     [SerializeField] private EventReference clickEvent;
     [SerializeField] private Camera _camera;
 
-    public void OpenPanel(GameObject panel) => panel.SetActive(true);
+    public void OpenPanel(GameObject panel)
+    {
+        panel.SetActive(true);
+    }
 
-    public void ClosePanel(GameObject panel) => panel.SetActive(false);
+    public void ClosePanel(GameObject panel)
+    {
+        panel.SetActive(false);
+    }
 
     public void QuitGame() => Application.Quit();
 
