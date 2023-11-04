@@ -16,7 +16,7 @@ public class SettingsVolume : MonoBehaviour
     private Bus musicBus;
     private Bus vfxBus;
 
-    private void Start()
+    private void Awake()
     {
         soundBus = FMODUnity.RuntimeManager.GetBus("bus:/SFX");
         musicBus = FMODUnity.RuntimeManager.GetBus("bus:/Music");
