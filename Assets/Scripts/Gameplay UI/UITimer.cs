@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Scripts.Gameplay_UI
@@ -12,6 +13,6 @@ namespace Assets.Scripts.Gameplay_UI
             _time = GetComponentInChildren<TMP_Text>();
         }
 
-        public void Set(string formatedTime) => _time.text = formatedTime;
+        public void Set(DateTime time) => _time.text = $"{time.Minute} : {time.Second}";
     }
 }
