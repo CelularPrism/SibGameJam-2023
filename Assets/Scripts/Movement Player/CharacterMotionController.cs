@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 
 public class CharacterMotionController : MonoBehaviour
 {
+    public float MoveSpeed;
     [SerializeField] private InputAction _moveInputAction;
-    [SerializeField] float _moveSpeed;
     [SerializeField] float _rotationSmooth;
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
     [SerializeField] private int _cameraRotationSpeed = 300;
@@ -48,7 +48,7 @@ public class CharacterMotionController : MonoBehaviour
             if (input == Vector2.zero)
                 direction = Vector3.zero;
 
-            _characterController.Move(_moveSpeed * Time.deltaTime * direction.normalized);
+            _characterController.Move(MoveSpeed * Time.deltaTime * direction.normalized);
             _animator.SetBool(_runAnimationHash, direction != Vector3.zero);
             _animator.SetBool(_cryAnimationHash, Input.GetMouseButton(0) && direction == Vector3.zero);
         }
