@@ -5,10 +5,18 @@ using UnityEngine;
 public class Door : MonoBehaviour, IItem
 {
     [SerializeField] private GameObject ceiling;
+
+    private void Start()
+    {
+        if (ceiling != null)
+        {
+            ceiling.SetActive(true);
+        }
+    }
+
     public void Use()
     {
-        Debug.Log("Door destroyed");
-        Destroy(ceiling);
+        ceiling.GetComponent<WallDestroyer>().Destroy();
         Destroy(transform.gameObject);
     }
 
