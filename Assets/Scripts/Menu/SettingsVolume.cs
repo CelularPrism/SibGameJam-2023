@@ -32,7 +32,7 @@ public class SettingsVolume : MonoBehaviour
         soundBus.setVolume(sound.value);
         soundBus.getVolume(out float volume);
 
-        Debug.Log(volume);
+        Debug.Log("Sound " + volume);
     }
 
     public void ChangeMusic()
@@ -40,7 +40,7 @@ public class SettingsVolume : MonoBehaviour
         musicBus.setVolume(music.value);
         musicBus.getVolume(out float volume);
 
-        Debug.Log(volume);
+        Debug.Log("Music " + volume);
     }
 
     public void ChangeVFX()
@@ -48,6 +48,6 @@ public class SettingsVolume : MonoBehaviour
         vfxBus.setVolume(vfx.value);
         vfxBus.getVolume(out float volume);
 
-        Debug.Log(volume);
+        Debug.Log("VFX " + volume);
     }
 }
