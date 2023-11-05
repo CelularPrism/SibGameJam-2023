@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class CheeseInventory : MonoBehaviour
 {
-    [SerializeField] private int max = 5;
+    [SerializeField, Range(0, 8)] private int max = 5;
     [SerializeField] private float _speedDecrease;
+    [SerializeField] private Transform _view;
     private int _count = 0;
     private CharacterMotionController _motionController;
     private float _defaultSpeed;
@@ -18,6 +20,15 @@ public class CheeseInventory : MonoBehaviour
     {
         _count++;
         _motionController.MoveSpeed -= _speedDecrease;
+        DrawView();
+    }
+
+    private void DrawView()
+    {
+        for (int i = 0; i < _view.childCount; i++)
+        {
+            _view.GetChild(i).gameObject.SetActive(i < _count);
+        }
     }
 
     public int RemoveCheese()
@@ -25,6 +36,7 @@ public class CheeseInventory : MonoBehaviour
         var count = _count;
         _count = 0;
         _motionController.MoveSpeed = _defaultSpeed;
+        DrawView();
         return count;
     }
 
