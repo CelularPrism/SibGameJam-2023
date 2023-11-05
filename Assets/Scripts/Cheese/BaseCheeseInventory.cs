@@ -6,9 +6,15 @@ using UnityEngine.Events;
 public class BaseCheeseInventory : MonoBehaviour, IItem
 {
     [SerializeField] private int maxCheese;
-    [SerializeField] private GameEvents events;
     [SerializeField] private CheeseInventory inventory;
+    [SerializeField] private EndGameEvent eventor;
+
     private int _cheese = 0;
+
+    private void OnEnable()
+    {
+        GameEvents.Instance.Subscribe(GameEventType.Won, eventor.Win);
+    }
 
     public void Use()
     {
@@ -17,10 +23,14 @@ public class BaseCheeseInventory : MonoBehaviour, IItem
             _cheese += inventory.RemoveCheese();
             if (_cheese >= maxCheese)
             {
-                //var actions = new UnityAction[0];
-                //events.Subscribe(GameEventType.Won, actions);
+                GameEvents.Instance.Dispatch(GameEventType.Won);
                 Debug.Log("Won");
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.Instance.UnSubscribe(GameEventType.Won);
     }
 }

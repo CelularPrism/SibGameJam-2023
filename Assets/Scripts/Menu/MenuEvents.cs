@@ -23,4 +23,10 @@ public class MenuEvents : MonoBehaviour
     public void StartGame() => SceneManager.LoadScene(_gameplayScene);
 
     public void ClickBtn() => RuntimeManager.PlayOneShot(_clickEvent, _camera.GetComponent<Transform>().position);
+
+    public void RestartGame()
+    {
+        var scene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(scene);
+    }
 }

@@ -8,6 +8,7 @@ public class CharacterMotionController : MonoBehaviour
     [SerializeField] private InputAction _moveInputAction;
     [SerializeField, Range(0, 100)] float _moveSpeed;
     Rigidbody _rigidbody;
+    private bool _stopped = false;
 
     private void Awake()
     {
@@ -21,13 +22,21 @@ public class CharacterMotionController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 input = _moveInputAction.ReadValue<Vector2>();
-        _rigidbody.velocity = new Vector3(input.x, 0, input.y) * _moveSpeed;
+        if (!_stopped)
+        {
+            Vector2 input = _moveInputAction.ReadValue<Vector2>();
+            _rigidbody.velocity = new Vector3(input.x, 0, input.y) * _moveSpeed;
+        }
     }
 
     private void OnDisable()
     {
         _rigidbody.velocity = Vector3.zero;
         _moveInputAction.Disable();
+    }
+
+    public void Stop()
+    {
+        _stopped = true;
     }
 }

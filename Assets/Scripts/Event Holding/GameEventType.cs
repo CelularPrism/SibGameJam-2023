@@ -5,6 +5,7 @@
     Restarted,
     Overtime,
     Won,
+    Lose,
     SoundEnabled,
     SoundDisabled,
 }
