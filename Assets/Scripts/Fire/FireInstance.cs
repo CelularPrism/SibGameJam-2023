@@ -80,7 +80,7 @@ namespace Assets.Scripts.Fire
                 return;
             }
 
-            if (Mathf.Approximately(_sparkTime, _randomMoment))
+            if (_sparkTime >= _randomMoment)
             {
                 CreateSpark();
                 return;
