@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Seed : MonoBehaviour
+public class Seed : MonoBehaviour, IItem
 {
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] private HealthSystem healthSystem;
+
+    public void Use()
     {
-        var healthSystem = other.GetComponent<HealthSystem>();
         if (healthSystem != null)
         {
             healthSystem.Heal(1);

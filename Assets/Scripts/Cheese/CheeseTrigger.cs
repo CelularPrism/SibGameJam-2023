@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheeseTrigger : MonoBehaviour
+public class CheeseTrigger : MonoBehaviour, IItem
 {
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] private CheeseInventory inventory;
+
+    public void Use()
     {
-        if (other.GetComponent<CheeseInventory>() != null)
+        if (inventory != null && !inventory.MaxCount())
         {
-            var inventory = other.GetComponent<CheeseInventory>();
-            if (!inventory.MaxCount())
-            {
-                inventory.AddCheese();
-                Destroy(transform.gameObject);
-            }
+            inventory.AddCheese();
+            Debug.Log("Cheese added");
+            Destroy(transform.gameObject);
         }
     }
 }
