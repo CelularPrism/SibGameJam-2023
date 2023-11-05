@@ -11,11 +11,6 @@ public class BaseCheeseInventory : MonoBehaviour, IItem
 
     private int _cheese = 0;
 
-    private void OnEnable()
-    {
-        GameEvents.Instance.Subscribe(GameEventType.Won, eventor.Win);
-    }
-
     public void Use()
     {
         if (inventory != null)
@@ -23,6 +18,7 @@ public class BaseCheeseInventory : MonoBehaviour, IItem
             _cheese += inventory.RemoveCheese();
             if (_cheese >= maxCheese)
             {
+                GameEvents.Instance.Subscribe(GameEventType.Won, eventor.Win);
                 GameEvents.Instance.Dispatch(GameEventType.Won);
                 Debug.Log("Won");
             }
