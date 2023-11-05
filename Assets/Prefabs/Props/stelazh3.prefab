@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6975107971301201429}
   - component: {fileID: 5310981201364731708}
   - component: {fileID: 624479166112505984}
+  - component: {fileID: 6721271181390841382}
   m_Layer: 0
   m_Name: stelazh3
   m_TagString: Untagged
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6721271181390841382
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272813028205274380}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.034243178, y: 0.035024278, z: 0.07936285}
+  m_Center: {x: -0.0022202316, y: 0.00000343565, z: -0.018966433}
