@@ -14,14 +14,17 @@ public class CharacterMotionController : MonoBehaviour
     private bool _stopped = false;
     private float _rotationVelocity = 0.1f;
     private Animator _animator;
+    private float _defaultSpeed;
     private int _runAnimationHash = Animator.StringToHash("IsRun");
     private int _cryAnimationHash = Animator.StringToHash("IsCry");
+    private int _animationSpeedMultiplierHash = Animator.StringToHash("SpeedMultiplier");
 
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
         _orbitalTransposer = _virtualCamera.GetCinemachineComponent<CinemachineOrbitalTransposer>();
         _animator = GetComponent<Animator>();
+        _defaultSpeed = MoveSpeed;
     }
 
     private void OnEnable()
@@ -51,6 +54,7 @@ public class CharacterMotionController : MonoBehaviour
             _characterController.Move(MoveSpeed * Time.deltaTime * direction.normalized);
             _animator.SetBool(_runAnimationHash, direction != Vector3.zero);
             _animator.SetBool(_cryAnimationHash, Input.GetMouseButton(0) && direction == Vector3.zero);
+            _animator.SetFloat(_animationSpeedMultiplierHash, MoveSpeed / _defaultSpeed);
         }
     }
 

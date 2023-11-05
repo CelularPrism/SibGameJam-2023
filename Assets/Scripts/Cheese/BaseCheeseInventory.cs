@@ -13,6 +13,10 @@ public class BaseCheeseInventory : MonoBehaviour, IItem
     private void Awake()
     {
         _ui = FindAnyObjectByType<CheeseCounter>();
+    }
+
+    private void Start()
+    {
         _ui.Set(_cheese, maxCheese);
     }
 
