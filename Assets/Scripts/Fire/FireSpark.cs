@@ -20,7 +20,7 @@ namespace Assets.Scripts.Fire
             _particleSystem.GetParticles(_particles);
         }
 
-        private void OnParticleCollision(GameObject other) => Fire();
+        //private void OnParticleCollision(GameObject other) => Fire();
 
         private void OnDisable() => Fire();
 
@@ -29,9 +29,8 @@ namespace Assets.Scripts.Fire
             Vector3 position = transform.TransformPoint(_particles[0].position);
             position.y = Mathf.Abs(position.y);
 
-            if (Physics.SphereCast(position, radius: 0.2f, Vector3.down, out _hitInfo))
+            if (Physics.SphereCast(position, radius: 0.2f, Vector3.down, out _hitInfo, maxDistance: 100, LayerMask.GetMask("Ground")))
             {
-                //GameObject.CreatePrimitive(PrimitiveType.Sphere).transform.position = _hitInfo.point;
                 Instantiate(transform.root, _hitInfo.point, Quaternion.identity);
             }
         }
