@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6814090682152314193}
   - component: {fileID: 225871666286827871}
   - component: {fileID: 3137573253989222413}
+  - component: {fileID: 6387440793836275207}
   m_Layer: 0
   m_Name: Darkness
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6387440793836275207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4627012560229279432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334d7ae7e178aa649b27ace423480c38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedSmooth: 1
