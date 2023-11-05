@@ -439,9 +439,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1922489829}
+      - m_Target: {fileID: 1448736782}
         m_TargetAssemblyTypeName: SettingsVolume, Assembly-CSharp
-        m_MethodName: ChangeSound
+        m_MethodName: ChangeVFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -548,9 +548,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 287187972}
-        m_TargetAssemblyTypeName: MenuEvents, Assembly-CSharp
-        m_MethodName: ClickBtn
+      - m_Target: {fileID: 138666551}
+        m_TargetAssemblyTypeName: DragButton, Assembly-CSharp
+        m_MethodName: Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -646,6 +646,13 @@ MonoBehaviour:
       Data3: -139072606
       Data4: 2120649975
     Path: event:/ui/hi_click
+  _clickEvent:
+    Guid:
+      Data1: 1051295906
+      Data2: 1305223979
+      Data3: -24985426
+      Data4: 91441618
+    Path: event:/ui/press_start
   _camera: {fileID: 60339141}
 --- !u!1 &165759661
 GameObject:
@@ -1067,6 +1074,13 @@ MonoBehaviour:
       Data3: -139072606
       Data4: 2120649975
     Path: event:/ui/hi_click
+  _clickEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _camera: {fileID: 60339141}
 --- !u!1 &285436321
 GameObject:
@@ -1295,11 +1309,11 @@ MonoBehaviour:
   _gameplayScene: 0
   _clickEvent:
     Guid:
-      Data1: 1051295906
-      Data2: 1305223979
-      Data3: -24985426
-      Data4: 91441618
-    Path: event:/ui/press_start
+      Data1: -1094732251
+      Data2: 1086812704
+      Data3: 1922946711
+      Data4: -1355321407
+    Path: event:/ui/accept
   _camera: {fileID: 60339141}
 --- !u!1 &341961883
 GameObject:
@@ -1975,13 +1989,13 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.4
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1922489829}
+      - m_Target: {fileID: 1448736782}
         m_TargetAssemblyTypeName: SettingsVolume, Assembly-CSharp
-        m_MethodName: ChangeSound
+        m_MethodName: ChangeMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2824,6 +2838,13 @@ MonoBehaviour:
       Data3: -139072606
       Data4: 2120649975
     Path: event:/ui/hi_click
+  _clickEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _camera: {fileID: 60339141}
 --- !u!1 &1063423803
 GameObject:
@@ -3515,6 +3536,13 @@ MonoBehaviour:
       Data3: -139072606
       Data4: 2120649975
     Path: event:/ui/hi_click
+  _clickEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _camera: {fileID: 60339141}
 --- !u!1 &1415814519
 GameObject:
@@ -3683,6 +3711,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1448736781}
+  - component: {fileID: 1448736782}
   m_Layer: 5
   m_Name: RightPanel
   m_TagString: Untagged
@@ -3710,6 +3739,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 900}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &1448736782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448736780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b90e66b92608924e8f7749b38b2ae4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 1638443121}
+  music: {fileID: 728088647}
+  vfx: {fileID: 79638851}
 --- !u!1 &1495232867
 GameObject:
   m_ObjectHideFlags: 0
@@ -4056,7 +4100,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1922489829}
+      - m_Target: {fileID: 1448736782}
         m_TargetAssemblyTypeName: SettingsVolume, Assembly-CSharp
         m_MethodName: ChangeSound
         m_Mode: 1
@@ -4723,12 +4767,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1922489825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b90e66b92608924e8f7749b38b2ae4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 1638443121}
-  music: {fileID: 728088647}
-  vfx: {fileID: 79638851}
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2046353948
+      Data2: 1243536752
+      Data3: 419953321
+      Data4: -1695741836
+    Path: event:/ui/back
+  Event: 
+  PlayEvent: 12
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1948866640
 GameObject:
   m_ObjectHideFlags: 0
