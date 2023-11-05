@@ -13,6 +13,6 @@ namespace Assets.Scripts.Gameplay_UI
             _time = GetComponentInChildren<TMP_Text>();
         }
 
-        public void Set(DateTime time) => _time.text = $"{time.Minute} : {time.Second}";
+        public void Set(TimeSpan time) => _time.text = $"{time.Minutes} : {time.Seconds}";
     }
 }

@@ -1,9 +1,6 @@
+using Assets.Scripts.Gameplay_UI;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Timer : MonoBehaviour
 {
@@ -12,6 +9,12 @@ public class Timer : MonoBehaviour
     
     private DateTime _start;
     private bool _timeStopped = false;
+    private UITimer _ui;
+
+    private void Awake()
+    {
+        _ui = FindAnyObjectByType<UITimer>();
+    }
 
     void Start()
     {
@@ -21,6 +24,11 @@ public class Timer : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.Instance.Subscribe(GameEventType.Lose, eventor.Lose);
+    }
+
+    private void Update()
+    {
+        _ui.Set(GetTime());
     }
 
     void FixedUpdate()
