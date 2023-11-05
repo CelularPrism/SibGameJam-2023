@@ -1,14 +1,14 @@
 ﻿namespace Assets.Scripts.Fire
 {
-    public struct Burning
+    public class Burning
     {
-        //public Health Health;
-        //public float Time;
+        public HealthSystem Health;
+        public float Time;
 
-        //public Burning(Health health, float time) : this()
-        //{
-        //    Health = health;
-        //    Time = time;
-        //}
+        public Burning(HealthSystem health, float time = 1)
+        {
+            Health = health;
+            Time = time;
+        }
     }
 }

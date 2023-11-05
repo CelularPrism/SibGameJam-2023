@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Fire
 {
     public class FireInstance : MonoBehaviour
     {
-        [SerializeField] private float _sparkTimerSpeed = 0.25f;
+        [SerializeField] private float _sparkTimerSpeed = 0.05f;
+        [SerializeField] private float _hurtSpeed = 0.5f;
         private FireSpark _spark;
         private float _sparkTime;
         private float _randomMoment;
@@ -20,29 +22,28 @@ namespace Assets.Scripts.Fire
             _randomMoment = Random.value;
         }
 
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.TryGetComponent(out Health health))
-        //    {
-        //        _burning.Add(new(health, 0));
-        //    }
-        //}
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out HealthSystem health))
+            {
+                _burning.Add(new(health));
+            }
+        }
 
-        //private void OnTriggerStay(Collider other)
-        //{
+        private void OnTriggerStay(Collider other)
+        {
+            for (int i = 0; i < _burning.Count; i++)
+            {
+                if (_burning[i].Time >= 1)
+                {
+                    _burning[i].Health.Damage();
+                    _burning[i].Time = 0;
+                    continue;
+                }
 
-        //    for (int i = 0; i < _burning.Count; i++)
-        //    {
-        //        if (_burning[i].Time >= 1)
-        //        {
-        //            _burning[i].Health.TakeDamage();
-        //            _burning[i].Time = 0;
-        //            continue;
-        //        }
-
-        //        _burning[i].Time += Time.deltaTime;
-        //    }
-        //}
+                _burning[i].Time += _hurtSpeed * Time.deltaTime;
+            }
+        }
 
         private void Update()
         {
@@ -69,14 +70,14 @@ namespace Assets.Scripts.Fire
             return;
         }
 
-        //private void OnTriggerExit(Collider other)
-        //{
-        //    if (other.TryGetComponent(out Health health))
-        //    {
-        //        _burning
-        //            .Remove(_burning
-        //            .SingleOrDefault(burning => burning.Health == health));
-        //    }
-        //}
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.TryGetComponent(out HealthSystem health))
+            {
+                _burning
+                    .Remove(_burning
+                    .SingleOrDefault(burning => burning.Health == health));
+            }
+        }
     }
 }

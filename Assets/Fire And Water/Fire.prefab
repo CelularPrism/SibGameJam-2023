@@ -19338,6 +19338,7 @@ GameObject:
   - component: {fileID: 3525356418381119009}
   - component: {fileID: 3931085885221825315}
   - component: {fileID: 1707313711733934959}
+  - component: {fileID: 6807800936912852289}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -24173,6 +24174,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sparkTimerSpeed: 0.05
+  _hurtSpeed: 0.5
+--- !u!136 &6807800936912852289
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8075683612195678175}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8273943211635452746
 GameObject:
   m_ObjectHideFlags: 0
