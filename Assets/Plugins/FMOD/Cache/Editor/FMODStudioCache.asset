@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638348161395520112
+  lastModified: 638348086717932914
   FileSizes:
   - Name: Desktop
     Value: 1862
@@ -62,7 +62,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/VO.bank
   Name: VO
   StudioPath: bank:/VO
-  lastModified: 638348161411964625
+  lastModified: 638346809297967090
   FileSizes:
   - Name: Desktop
     Value: 494
@@ -82,7 +82,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638348182795962613
+  lastModified: 638348086717922937
   FileSizes:
   - Name: Desktop
     Value: 2241312
@@ -129,7 +129,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638348161411712890
+  lastModified: 638346809297947139
   FileSizes:
   - Name: Desktop
     Value: 494
@@ -341,7 +341,7 @@ MonoBehaviour:
   - {fileID: -8464670929181781682}
   StringsBanks:
   - {fileID: -8706531106570730871}
-  cacheTime: 638348182795962613
+  cacheTime: 638348086717962849
   cacheVersion: 131607
 --- !u!114 &771791843177369261
 MonoBehaviour:
@@ -412,7 +412,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 638348161411844205
+  lastModified: 638346809297957104
   FileSizes:
   - Name: Desktop
     Value: 494
@@ -486,7 +486,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638348161411588214
+  lastModified: 638348086717962849
   FileSizes:
   - Name: Desktop
     Value: 937344
@@ -641,7 +641,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/Ambient.bank
   Name: Ambient
   StudioPath: bank:/Ambient
-  lastModified: 638348161374105917
+  lastModified: 638346809297847507
   FileSizes:
   - Name: Desktop
     Value: 494
