@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414738, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -463,6 +463,8 @@ GameObject:
   - component: {fileID: 138666549}
   - component: {fileID: 138666548}
   - component: {fileID: 138666547}
+  - component: {fileID: 138666551}
+  - component: {fileID: 138666550}
   m_Layer: 5
   m_Name: StartBtn
   m_TagString: Untagged
@@ -596,6 +598,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138666545}
   m_CullTransparentMesh: 1
+--- !u!114 &138666550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138666545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 138666551}
+          m_TargetAssemblyTypeName: DragButton, Assembly-CSharp
+          m_MethodName: Drag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &138666551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138666545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca4f6be076b0d04f8d3be86b64f8132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dragEvent:
+    Guid:
+      Data1: -1633294307
+      Data2: 1273383048
+      Data3: -139072606
+      Data4: 2120649975
+    Path: event:/ui/hi_click
+  _camera: {fileID: 60339141}
 --- !u!1 &165759661
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,6 +884,8 @@ GameObject:
   - component: {fileID: 202283620}
   - component: {fileID: 202283619}
   - component: {fileID: 202283618}
+  - component: {fileID: 202283622}
+  - component: {fileID: 202283621}
   m_Layer: 5
   m_Name: ExitBtn
   m_TagString: Untagged
@@ -966,6 +1019,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202283616}
   m_CullTransparentMesh: 1
+--- !u!114 &202283621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202283616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 202283622}
+          m_TargetAssemblyTypeName: DragButton, Assembly-CSharp
+          m_MethodName: Drag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &202283622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202283616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca4f6be076b0d04f8d3be86b64f8132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dragEvent:
+    Guid:
+      Data1: -1633294307
+      Data2: 1273383048
+      Data3: -139072606
+      Data4: 2120649975
+    Path: event:/ui/hi_click
+  _camera: {fileID: 60339141}
 --- !u!1 &285436321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,13 +1293,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameplayScene: 0
-  clickEvent:
+  _clickEvent:
     Guid:
-      Data1: -1633294307
-      Data2: 1273383048
-      Data3: -139072606
-      Data4: 2120649975
-    Path: event:/ui/ui
+      Data1: 1051295906
+      Data2: 1305223979
+      Data3: -24985426
+      Data4: 91441618
+    Path: event:/ui/press_start
   _camera: {fileID: 60339141}
 --- !u!1 &341961883
 GameObject:
@@ -2540,6 +2642,8 @@ GameObject:
   - component: {fileID: 992951589}
   - component: {fileID: 992951588}
   - component: {fileID: 992951587}
+  - component: {fileID: 992951591}
+  - component: {fileID: 992951590}
   m_Layer: 5
   m_Name: CloseBtn
   m_TagString: Untagged
@@ -2672,6 +2776,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992951585}
   m_CullTransparentMesh: 1
+--- !u!114 &992951590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992951585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 992951591}
+          m_TargetAssemblyTypeName: DragButton, Assembly-CSharp
+          m_MethodName: Drag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &992951591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992951585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca4f6be076b0d04f8d3be86b64f8132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dragEvent:
+    Guid:
+      Data1: -1633294307
+      Data2: 1273383048
+      Data3: -139072606
+      Data4: 2120649975
+    Path: event:/ui/hi_click
+  _camera: {fileID: 60339141}
 --- !u!1 &1063423803
 GameObject:
   m_ObjectHideFlags: 0
@@ -3179,6 +3332,8 @@ GameObject:
   - component: {fileID: 1370701643}
   - component: {fileID: 1370701642}
   - component: {fileID: 1370701641}
+  - component: {fileID: 1370701645}
+  - component: {fileID: 1370701644}
   m_Layer: 5
   m_Name: SettingsBtn
   m_TagString: Untagged
@@ -3312,6 +3467,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370701639}
   m_CullTransparentMesh: 1
+--- !u!114 &1370701644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370701639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1370701645}
+          m_TargetAssemblyTypeName: DragButton, Assembly-CSharp
+          m_MethodName: Drag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1370701645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370701639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca4f6be076b0d04f8d3be86b64f8132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dragEvent:
+    Guid:
+      Data1: -1633294307
+      Data2: 1273383048
+      Data3: -139072606
+      Data4: 2120649975
+    Path: event:/ui/hi_click
+  _camera: {fileID: 60339141}
 --- !u!1 &1415814519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4154,7 +4358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100.00003, y: 0}
+  m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 100.00001, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1703834656

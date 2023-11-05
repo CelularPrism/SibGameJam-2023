@@ -56,7 +56,8 @@ public class UseEnvironments : MonoBehaviour
         if (_canUse)
         {
             var item = _collider.GetComponent<IItem>();
-            item.Use();
+            if (item != null)
+                item.Use();
         }
     }
 }
