@@ -127,6 +127,13 @@ MonoBehaviour:
   maxCheese: 6
   inventory: {fileID: 0}
   eventor: {fileID: 0}
+  _useEvent:
+    Guid:
+      Data1: 1044177095
+      Data2: 1316578318
+      Data3: -586145397
+      Data4: 1933767020
+    Path: event:/player/put_cheese
 --- !u!1 &1570163632568003529
 GameObject:
   m_ObjectHideFlags: 0

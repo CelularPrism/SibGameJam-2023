@@ -5,7 +5,7 @@
 			<value>water</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{fabacdda-b4e5-4b48-a316-9da7eb132771}</destination>
@@ -93,6 +93,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{8ed8de10-429d-46fd-bde2-4c472a1ebbed}">
+		<property name="volume">
+			<value>-7.5</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{94499186-55fc-494a-a3a5-8baf72d3f257}</destination>
 		</relationship>
@@ -244,7 +247,6 @@
 	<object class="MixerBusEffectChain" id="{971cc967-3630-4188-a30b-792a00d45e52}">
 		<relationship name="effects">
 			<destination>{8b50d7b3-9f40-443e-b8b9-ff4a034b0586}</destination>
-			<destination>{13168045-f890-45fd-850b-960c15667e6b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a7001836-7d78-4fa1-a13f-3ab9e29b1591}" />
@@ -319,7 +321,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{8b50d7b3-9f40-443e-b8b9-ff4a034b0586}" />
-	<object class="SpatialiserEffect" id="{13168045-f890-45fd-850b-960c15667e6b}" />
 	<object class="AutomationPoint" id="{543b3a52-f4d8-4f96-b3d8-497fb5d91b36}">
 		<property name="position">
 			<value>0</value>
