@@ -28,6 +28,12 @@ namespace Assets.Scripts.Tears
 
         private void StartTearing()
         {
+            Debug.Log("start shoot");
+            var muted = false;
+            RuntimeManager.GetBus("bus:/SFX").getMute(out muted);
+            if (muted)
+                RuntimeManager.GetBus("bus:/SFX").setMute(false);
+
             instance = RuntimeManager.CreateInstance(_event);
             instance.set3DAttributes(RuntimeUtils.To3DAttributes(_camera.position));
             instance.start();
