@@ -13554,9 +13554,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 578261344127007221, guid: fdadbdacb54659f4ca408680d8db8fce, type: 3}
       insertIndex: -1
       addedObject: {fileID: 93334997}
-    - targetCorrespondingSourceObject: {fileID: 1880657580745024422, guid: fdadbdacb54659f4ca408680d8db8fce, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 860436530}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdadbdacb54659f4ca408680d8db8fce, type: 3}
 --- !u!4 &857449957 stripped
@@ -13696,59 +13693,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6814090682152314193, guid: cc88693de589a4c43bce3932fea5aba6, type: 3}
   m_PrefabInstance: {fileID: 859421905}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &860436529
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 860436530}
-  - component: {fileID: 860436531}
-  m_Layer: 0
-  m_Name: Collider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &860436530
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860436529}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.4036, y: 10.945865, z: 12.631914}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1051344171}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &860436531
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860436529}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.01, y: 0.01, z: 0.01}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &860798205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16625,11 +16569,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 965859471079311394, guid: 012a7adb3228de943809113dd9966b58, type: 3}
   m_PrefabInstance: {fileID: 1050649548}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1051344171 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1880657580745024422, guid: fdadbdacb54659f4ca408680d8db8fce, type: 3}
-  m_PrefabInstance: {fileID: 857449956}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1064691531
 PrefabInstance:
