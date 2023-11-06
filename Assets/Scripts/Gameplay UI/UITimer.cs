@@ -13,6 +13,6 @@ namespace Assets.Scripts.Gameplay_UI
             _time = GetComponentInChildren<TMP_Text>();
         }
 
-        public void Set(TimeSpan time) => _time.text = $"{time.Minutes} : {time.Seconds}";
+        public void Set(TimeSpan time) => _time.text = string.Concat(time.Minutes, " : ", time.Seconds < 10 ? string.Concat("0", time.Seconds) : time.Seconds);
     }
 }
