@@ -30,7 +30,6 @@ namespace Assets.Scripts.Fire
             _hurtBox.OnEnter += OnEnter;
             _hurtBox.OnStay += OnStay;
             _hurtBox.OnExit += OnExit;
-            _spark.gameObject.SetActive(false);
             _health = 1;
             _sparkTime = 0;
             _randomMoment = Random.value;
