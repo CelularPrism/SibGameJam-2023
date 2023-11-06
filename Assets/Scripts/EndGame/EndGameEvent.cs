@@ -1,3 +1,4 @@
+using Assets.Scripts.Fire;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,12 +17,28 @@ public class EndGameEvent : MonoBehaviour
 
     public void Lose()
     {
+        var fires = FindObjectsOfType<FireInstance>();
+        if (fires != null)
+        {
+            foreach (var fire in fires)
+            {
+                Destroy(fire.gameObject);
+            }
+        }
         character.Stop();
         losePanel.SetActive(true);
     }
 
     public void Win()
     {
+        var fires = FindObjectsOfType<FireInstance>();
+        if (fires != null)
+        {
+            foreach (var fire in fires)
+            {
+                Destroy(fire.gameObject);
+            }
+        }
         character.Stop();
         winPanel.SetActive(true);
     }
