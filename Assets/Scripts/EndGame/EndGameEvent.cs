@@ -11,6 +11,7 @@ public class EndGameEvent : MonoBehaviour
     [SerializeField] private GameObject losePanel;
     [SerializeField] private CharacterMotionController character;
     [SerializeField] private GameObject BGMusic;
+    [SerializeField] private Timer timer;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class EndGameEvent : MonoBehaviour
     public void Lose()
     {
         MuteAll();
+        timer.StopTimer();
         character.Stop();
         losePanel.SetActive(true);
     }
@@ -28,6 +30,7 @@ public class EndGameEvent : MonoBehaviour
     public void Win()
     {
         MuteAll();
+        timer.StopTimer();
         character.Stop();
         winPanel.SetActive(true);
     }
