@@ -1,10 +1,12 @@
 using Assets.Scripts.Gameplay_UI;
+using FMODUnity;
 using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private int _health;
     [SerializeField] private int _maxHealth;
+    [SerializeField] private EventReference _dmgEvent;
     private HealthBar _healthBar;
 
     private ICharacter _character;
@@ -21,7 +23,7 @@ public class HealthSystem : MonoBehaviour
         _health -= value;
         _health = Mathf.Clamp(_health, 0, _maxHealth);
         _healthBar.Set(_health);
-
+        RuntimeManager.PlayOneShot(_dmgEvent, transform.position);
         if (_health <= 0)
         {
             if (_character.IsDead == false)
