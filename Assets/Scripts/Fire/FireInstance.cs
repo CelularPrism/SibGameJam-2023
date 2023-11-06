@@ -60,7 +60,7 @@ namespace Assets.Scripts.Fire
 
         private void OnParticleCollision(GameObject other)
         {
-            if (_health > 0.3f)
+            if (_health > 0.4f)
             {
                 _health -= _fightingSpeed * Time.deltaTime;
                 transform.localScale = _defaultScale * _health;
