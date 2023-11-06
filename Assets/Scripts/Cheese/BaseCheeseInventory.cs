@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseCheeseInventory : MonoBehaviour, IItem
 {
-    [SerializeField] private int maxCheese;
+    public int maxCheese;
     [SerializeField] private CheeseInventory inventory;
     [SerializeField] private EndGameEvent eventor;
     [SerializeField] private EventReference _useEvent;
