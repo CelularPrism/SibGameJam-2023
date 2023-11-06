@@ -19393,7 +19393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7555eeba581fb47b30a7ff8c7a0012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 1933749209811017396}
+  _firePrefab: {fileID: 1707313711733934959}
+  _checkRadius: 1
 --- !u!1 &8075683612195678175
 GameObject:
   m_ObjectHideFlags: 0
