@@ -2,6 +2,7 @@ using Assets.Scripts.Gameplay_UI;
 using FMODUnity;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -11,6 +12,16 @@ public class HealthSystem : MonoBehaviour
     private HealthBar _healthBar;
 
     private ICharacter _character;
+    private Vignette _vignette;
+    private float _defaultVignetteIntens;
+    private float _vignetteShift;
+
+    private void Awake()
+    {
+        _vignette = FindAnyObjectByType<PostProcessVolume>().profile.GetSetting<Vignette>();
+        _defaultVignetteIntens = _vignette.intensity;
+        _vignetteShift = _defaultVignetteIntens / _maxHealth;
+    }
 
     private void Start()
     {
@@ -21,6 +32,7 @@ public class HealthSystem : MonoBehaviour
 
     public void Damage(int value = 1)
     {
+        _vignette.intensity.value += _vignetteShift;
         _health -= value;
         _health = Mathf.Clamp(_health, 0, _maxHealth);
         _healthBar.Set(_health);
@@ -29,6 +41,7 @@ public class HealthSystem : MonoBehaviour
         {
             if (_character.IsDead == false)
             {
+                _vignette.intensity.value = _defaultVignetteIntens;
                 _character.Dead();
             }
         }
