@@ -15,12 +15,10 @@ namespace Assets.Scripts.Tears
 
         private void Start()
         {
-            instance = RuntimeManager.CreateInstance(_event);
         }
 
         private void Update()
         {
-            instance.set3DAttributes(RuntimeUtils.To3DAttributes(_camera.position));
             if (Input.GetMouseButtonDown(0))
                 StartTearing();
 
@@ -30,6 +28,8 @@ namespace Assets.Scripts.Tears
 
         private void StartTearing()
         {
+            instance = RuntimeManager.CreateInstance(_event);
+            instance.set3DAttributes(RuntimeUtils.To3DAttributes(_camera.position));
             instance.start();
             instance.release();
 
