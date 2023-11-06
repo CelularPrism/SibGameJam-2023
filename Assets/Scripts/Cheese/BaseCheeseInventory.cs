@@ -20,6 +20,13 @@ public class BaseCheeseInventory : MonoBehaviour, IItem
         _ui.Set(_cheese, maxCheese);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        var localInventory = other.GetComponent<CheeseInventory>();
+        if (inventory == null && localInventory != null)
+            inventory = localInventory;
+    }
+
     public void Use()
     {
         if (inventory != null)

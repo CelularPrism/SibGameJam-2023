@@ -45,8 +45,8 @@ public class CharacterMotionController : MonoBehaviour
             float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _rotationVelocity, _rotationSmooth);
             direction = Quaternion.Euler(Vector3.up * targetAngle) * Vector3.forward;
 
-            if (input != Vector2.zero || Input.GetMouseButton(0))
-                transform.rotation = Quaternion.Euler(Vector3.up * smoothAngle);
+            //if (input != Vector2.zero || Input.GetMouseButton(0))
+            //    transform.rotation = Quaternion.Euler(Vector3.up * smoothAngle);
 
             if (input == Vector2.zero)
                 direction = Vector3.zero;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17381185, g: 0.21731919, b: 0.29946572, a: 1}
+  m_IndirectSpecularColor: {r: 0.17381203, g: 0.21731958, b: 0.29946575, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3825,6 +3825,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1555020565788660948, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3570066947918890824, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
       propertyPath: character
       value: 
@@ -7143,6 +7147,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3401761318307306370, guid: 9398b53b10dbf364780be128acc16993, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1928771678}
+    - targetCorrespondingSourceObject: {fileID: 3401761318307306370, guid: 9398b53b10dbf364780be128acc16993, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1928771684}
   m_SourcePrefab: {fileID: 100100000, guid: 9398b53b10dbf364780be128acc16993, type: 3}
 --- !u!114 &942368427 stripped
 MonoBehaviour:
@@ -11467,6 +11474,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _raduis: 8
+--- !u!114 &1928771684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827403874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32013bdb1f0187742bde31ea80af7b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 1966240608}
 --- !u!1001 &1938303191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12905,8 +12925,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee00e5aa2c4e1a545acc6d580966f8e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeSeconds: 4
-  speedSmooth: 0.5
+  rangeSeconds: 2
+  speedSmooth: 2
 --- !u!1 &2263785602750450376
 GameObject:
   m_ObjectHideFlags: 0
@@ -13473,6 +13493,10 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 942368427}
+    - target: {fileID: 4198189710341165890, guid: 8132b047f3bbffd4c859557652587231, type: 3}
+      propertyPath: maxCheese
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

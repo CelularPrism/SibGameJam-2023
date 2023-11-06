@@ -16,7 +16,8 @@ public class Door : MonoBehaviour, IItem
 
     public void Use()
     {
-        ceiling.GetComponent<WallDestroyer>().Destroy();
+        if (ceiling != null)
+            ceiling.GetComponent<WallDestroyer>().Destroy();
         Destroy(transform.gameObject);
     }
 

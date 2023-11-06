@@ -6,6 +6,13 @@ public class CheeseTrigger : MonoBehaviour, IItem
 {
     [SerializeField] private CheeseInventory inventory;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        var localInventory = other.GetComponent<CheeseInventory>();
+        if (inventory == null && localInventory != null)
+            inventory = localInventory;
+    }
+
     public void Use()
     {
         if (inventory != null && !inventory.MaxCount())

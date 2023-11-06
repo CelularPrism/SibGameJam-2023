@@ -21,7 +21,7 @@ public class Rotation : MonoBehaviour
         if (Mathf.Abs(dir.x) > 10f && Mathf.Abs(dir.y) > 10f)
         {
             float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle - 90f, Vector3.up);
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
         }
     }
 }

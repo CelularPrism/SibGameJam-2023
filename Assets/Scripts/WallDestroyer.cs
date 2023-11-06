@@ -21,7 +21,7 @@ public class WallDestroyer : MonoBehaviour
         {
             _alphaColor = transform.GetComponent<MeshRenderer>().material.color;
             transform.GetComponent<MeshRenderer>().material.color = new Color(_alphaColor.r, _alphaColor.g, _alphaColor.b, _alphaColor.a - speedSmooth / 255);
-            Debug.Log(_alphaColor);
+            //Debug.Log(_alphaColor);
             if (_alphaColor.a < 0.1)
             {
                 Destroy(transform.gameObject);

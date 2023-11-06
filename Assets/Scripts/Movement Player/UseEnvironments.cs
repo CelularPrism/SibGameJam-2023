@@ -30,7 +30,8 @@ public class UseEnvironments : MonoBehaviour
     {
         if (Physics.OverlapSphereNonAlloc(transform.position, _raduis, _usables, LayerMask.GetMask("Usable Item")) > 0)
         {
-            _canUse = true;
+            if (_usables[0].GetComponent<IItem>() != null)
+                _canUse = true;
         } else
         {
             _canUse = false;
