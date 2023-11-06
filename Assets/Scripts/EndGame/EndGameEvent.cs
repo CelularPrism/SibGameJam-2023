@@ -35,7 +35,7 @@ public class EndGameEvent : MonoBehaviour
     public void Win()
     {
         BGMusic.SetActive(false);
-        var fires = FindObjectsOfType<FireInstance>();
+        var fires = FindObjectsOfType<StudioEventEmitter>();
         if (fires != null)
         {
             foreach (var fire in fires)
