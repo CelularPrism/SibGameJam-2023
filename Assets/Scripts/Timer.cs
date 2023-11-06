@@ -53,5 +53,10 @@ public class Timer : MonoBehaviour
         _timeStopped = true;
     }
 
+    public void StartTimer()
+    {
+        _timeStopped = false;
+    }
+
     public TimeSpan GetTime() => _start.Subtract(DateTime.Now.AddMinutes(-range));
 }
