@@ -1,6 +1,5 @@
 using Assets.Scripts.Gameplay_UI;
 using FMODUnity;
-using System.IO;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
@@ -8,7 +7,9 @@ public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private int _health;
     [SerializeField] private int _maxHealth;
+    [SerializeField] private int _maxAditionalHealth;
     [SerializeField] private EventReference _dmgEvent;
+    private int _aditionalHealth;
     private HealthBar _healthBar;
 
     private ICharacter _character;
@@ -18,6 +19,7 @@ public class HealthSystem : MonoBehaviour
 
     private void Awake()
     {
+        _aditionalHealth = _maxAditionalHealth;
         _vignette = FindAnyObjectByType<PostProcessVolume>().profile.GetSetting<Vignette>();
         _defaultVignetteIntens = _vignette.intensity;
         _vignetteShift = _defaultVignetteIntens / _maxHealth;
@@ -32,17 +34,25 @@ public class HealthSystem : MonoBehaviour
 
     public void Damage(int value = 1)
     {
-        _vignette.intensity.value += _vignetteShift;
-        _health -= value;
-        _health = Mathf.Clamp(_health, 0, _maxHealth);
-        _healthBar.Set(_health);
+        _aditionalHealth -= value;
+        _aditionalHealth = Mathf.Clamp(_aditionalHealth, 0, _maxAditionalHealth);
         RuntimeManager.PlayOneShot(_dmgEvent, transform.position);
-        if (_health <= 0)
+
+        if (_aditionalHealth <= 0)
         {
-            if (_character.IsDead == false)
+            _vignette.intensity.value += _vignetteShift;
+            _aditionalHealth = _maxAditionalHealth;
+            _health--;
+            _health = Mathf.Clamp(_health, 0, _maxHealth);
+            _healthBar.Set(_health);
+
+            if (_health <= 0)
             {
-                _vignette.intensity.value = _defaultVignetteIntens;
-                _character.Dead();
+                if (_character.IsDead == false)
+                {
+                    _vignette.intensity.value = _defaultVignetteIntens;
+                    _character.Dead();
+                }
             }
         }
     }

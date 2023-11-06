@@ -39,7 +39,7 @@ namespace Assets.Scripts.Fire
         {
             if (other.TryGetComponent(out HealthSystem health))
             {
-                _burning.Add(new(health));
+                _burning.Add(new(health, 1));
             }
         }
 
