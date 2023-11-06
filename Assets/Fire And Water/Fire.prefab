@@ -24245,7 +24245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60d9d6f62df3944998cf8e8633060f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sparkTimerSpeed: 1
+  _sparkTimerSpeed: 0.01
   _hurtSpeed: 0.5
   _fightingSpeed: 0.65
 --- !u!136 &1864263995471095600

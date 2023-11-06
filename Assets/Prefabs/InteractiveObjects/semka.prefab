@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b5d7c620090da64c8f7a0f6b089b601, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -79.21
+      value: -3.3099976
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b5d7c620090da64c8f7a0f6b089b601, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b5d7c620090da64c8f7a0f6b089b601, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 44.51
+      value: -3.45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b5d7c620090da64c8f7a0f6b089b601, type: 3}
       propertyPath: m_LocalRotation.w
@@ -67,6 +67,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8b5d7c620090da64c8f7a0f6b089b601, type: 3}
       propertyPath: m_Name
       value: semka
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8b5d7c620090da64c8f7a0f6b089b601, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
