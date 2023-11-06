@@ -62,6 +62,8 @@ public class CharacterMotionController : MonoBehaviour
             _animator.SetBool(_cryAnimationHash, Input.GetMouseButton(0) && direction == Vector3.zero);
             _animator.SetFloat(_animationSpeedMultiplierHash, MoveSpeed / _defaultSpeed);
         }
+
+        _characterController.Move(Physics.gravity * Time.deltaTime);
     }
 
     private void OnAnimatorIK(int layerIndex)
