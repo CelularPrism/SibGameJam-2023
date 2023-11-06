@@ -9,12 +9,16 @@ public class CharacterMotionController : MonoBehaviour
     [SerializeField] float _rotationSmooth;
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
     [SerializeField] private int _cameraRotationSpeed = 300;
+    [SerializeField] private bool _canLookToCursor = true;
+    [SerializeField] private float _lookIKWeight = 1;
     private CharacterController _characterController;
     private CinemachineOrbitalTransposer _orbitalTransposer;
     private bool _stopped = false;
     private float _rotationVelocity = 0.1f;
     private Animator _animator;
     private float _defaultSpeed;
+    private Camera _camera;
+    private Vector3 _look;
     private readonly int _runAnimationHash = Animator.StringToHash("IsRun");
     private readonly int _cryAnimationHash = Animator.StringToHash("IsCry");
     private readonly int _animationSpeedMultiplierHash = Animator.StringToHash("SpeedMultiplier");
@@ -25,6 +29,7 @@ public class CharacterMotionController : MonoBehaviour
         _orbitalTransposer = _virtualCamera.GetCinemachineComponent<CinemachineOrbitalTransposer>();
         _animator = GetComponent<Animator>();
         _defaultSpeed = MoveSpeed;
+        _camera = Camera.main;
     }
 
     private void OnEnable()
@@ -58,10 +63,46 @@ public class CharacterMotionController : MonoBehaviour
         }
     }
 
+    private void OnAnimatorIK(int layerIndex)
+    {
+        if (_animator)
+        {
+            if (_canLookToCursor)
+            {
+                _animator.SetLookAtWeight(_lookIKWeight);
+                _animator.SetLookAtPosition(_look);
+            }
+            else
+            {
+                _animator.SetLookAtWeight(0);
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit lookRayHitInfo, LayerMask.GetMask("Ground")))
+        {
+            _look = lookRayHitInfo.point;
+        }
+        else
+        {
+            _look = transform.position + transform.forward * 2;
+        }
+    }
+
     private void OnDisable()
     {
         _moveInputAction.Disable();
     }
 
     public void Stop() => _stopped = true;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(_look, 0.5f);
+    }
 }
