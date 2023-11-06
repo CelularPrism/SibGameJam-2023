@@ -31,6 +31,7 @@ namespace Assets.Scripts.Fire
 
             if (Physics.SphereCast(position, radius: 0.2f, Vector3.down, out _hitInfo, maxDistance: 100, LayerMask.GetMask("Ground")))
             {
+                Debug.Log(transform.root);
                 Instantiate(transform.root, _hitInfo.point, Quaternion.identity);
             }
         }
