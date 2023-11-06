@@ -15,9 +15,9 @@ public class CharacterMotionController : MonoBehaviour
     private float _rotationVelocity = 0.1f;
     private Animator _animator;
     private float _defaultSpeed;
-    private int _runAnimationHash = Animator.StringToHash("IsRun");
-    private int _cryAnimationHash = Animator.StringToHash("IsCry");
-    private int _animationSpeedMultiplierHash = Animator.StringToHash("SpeedMultiplier");
+    private readonly int _runAnimationHash = Animator.StringToHash("IsRun");
+    private readonly int _cryAnimationHash = Animator.StringToHash("IsCry");
+    private readonly int _animationSpeedMultiplierHash = Animator.StringToHash("SpeedMultiplier");
 
     private void Awake()
     {
@@ -45,8 +45,8 @@ public class CharacterMotionController : MonoBehaviour
             float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _rotationVelocity, _rotationSmooth);
             direction = Quaternion.Euler(Vector3.up * targetAngle) * Vector3.forward;
 
-            //if (input != Vector2.zero || Input.GetMouseButton(0))
-            //    transform.rotation = Quaternion.Euler(Vector3.up * smoothAngle);
+            if (input != Vector2.zero || Input.GetMouseButton(0))
+                transform.rotation = Quaternion.Euler(Vector3.up * smoothAngle);
 
             if (input == Vector2.zero)
                 direction = Vector3.zero;
