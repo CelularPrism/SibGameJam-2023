@@ -1,4 +1,5 @@
 using Assets.Scripts.Fire;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +40,12 @@ public class EndGameEvent : MonoBehaviour
         {
             foreach (var fire in fires)
             {
+                var events = fire.GetComponents<StudioEventEmitter>();
+                foreach (var ev in events)
+                {
+                    ev.Stop();
+                }
+                
                 Destroy(fire.gameObject);
             }
         }
