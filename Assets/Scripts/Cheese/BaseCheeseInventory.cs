@@ -1,4 +1,5 @@
 using Assets.Scripts.Gameplay_UI;
+using FMODUnity;
 using UnityEngine;
 
 public class BaseCheeseInventory : MonoBehaviour, IItem
@@ -6,6 +7,7 @@ public class BaseCheeseInventory : MonoBehaviour, IItem
     [SerializeField] private int maxCheese;
     [SerializeField] private CheeseInventory inventory;
     [SerializeField] private EndGameEvent eventor;
+    [SerializeField] private EventReference _useEvent;
 
     private int _cheese = 0;
     private CheeseCounter _ui;
@@ -33,6 +35,7 @@ public class BaseCheeseInventory : MonoBehaviour, IItem
         {
             _cheese += inventory.RemoveCheese();
             _ui.Set(_cheese, maxCheese);
+            RuntimeManager.PlayOneShot(_useEvent, transform.position);
 
             if (_cheese >= maxCheese)
             {

@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638348161395520112
+  lastModified: 638348684603845259
   FileSizes:
   - Name: Desktop
     Value: 1862
@@ -62,7 +62,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/VO.bank
   Name: VO
   StudioPath: bank:/VO
-  lastModified: 638348161411964625
+  lastModified: 638343671945027064
   FileSizes:
   - Name: Desktop
     Value: 494
@@ -82,10 +82,10 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638348182795962613
+  lastModified: 638348684603830145
   FileSizes:
   - Name: Desktop
-    Value: 2241312
+    Value: 2241760
   Exists: 1
 --- !u!114 &-8345309182913268312
 MonoBehaviour:
@@ -129,7 +129,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638348161411712890
+  lastModified: 638343671944943260
   FileSizes:
   - Name: Desktop
     Value: 494
@@ -155,7 +155,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -8464670929181781682}
   IsStream: 1
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
@@ -241,7 +241,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 397
+  Length: 1709
 --- !u!114 &-3627349183386303311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
   - {fileID: -8464670929181781682}
   StringsBanks:
   - {fileID: -8706531106570730871}
-  cacheTime: 638348182795962613
+  cacheTime: 638348692197238225
   cacheVersion: 131607
 --- !u!114 &771791843177369261
 MonoBehaviour:
@@ -412,7 +412,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 638348161411844205
+  lastModified: 638343671944984949
   FileSizes:
   - Name: Desktop
     Value: 494
@@ -443,7 +443,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1392
+  Length: 1260
 --- !u!114 &3310190635415399833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,7 +486,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638348161411588214
+  lastModified: 638348692197238225
   FileSizes:
   - Name: Desktop
     Value: 937344
@@ -641,7 +641,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/FMOD Project/Build/Desktop/Ambient.bank
   Name: Ambient
   StudioPath: bank:/Ambient
-  lastModified: 638348161374105917
+  lastModified: 638343671944762287
   FileSizes:
   - Name: Desktop
     Value: 494
