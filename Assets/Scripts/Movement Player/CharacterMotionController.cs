@@ -11,6 +11,7 @@ public class CharacterMotionController : MonoBehaviour
     [SerializeField] private int _cameraRotationSpeed = 300;
     [SerializeField] private bool _canLookToCursor = true;
     [SerializeField] private float _lookIKWeight = 1;
+    [SerializeField] private float _lookdeadZone;
     private CharacterController _characterController;
     private CinemachineOrbitalTransposer _orbitalTransposer;
     private bool _stopped = false;
@@ -83,9 +84,11 @@ public class CharacterMotionController : MonoBehaviour
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit lookRayHitInfo, LayerMask.GetMask("Ground")))
+        if (Physics.Raycast(ray, out RaycastHit lookRayHitInfo, maxDistance: 200, LayerMask.GetMask("Ground")))
         {
-            _look = lookRayHitInfo.point;
+            _look = Vector3.Distance(lookRayHitInfo.point, transform.position) < _lookdeadZone 
+                ? transform.position + transform.forward * 2 
+                : lookRayHitInfo.point;
         }
         else
         {
