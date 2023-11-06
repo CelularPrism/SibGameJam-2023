@@ -371,6 +371,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5375667797179812756, guid: 21394a9a48a64c2429afbd9d993b01ad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8457757554280897275}
+    - targetCorrespondingSourceObject: {fileID: 5375667797179812756, guid: 21394a9a48a64c2429afbd9d993b01ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5991255764595604632}
   m_SourcePrefab: {fileID: 100100000, guid: 21394a9a48a64c2429afbd9d993b01ad, type: 3}
 --- !u!1 &793274257647879858 stripped
 GameObject:
@@ -411,6 +414,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.05, y: 0.08, z: 0.12}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5991255764595604632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793274257647879858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -4978537
+      Data2: 1170294959
+      Data3: 194643869
+      Data4: 1732462570
+    Path: event:/sfx/door_open
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &2782896339473419533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7423804262174736427, guid: 21394a9a48a64c2429afbd9d993b01ad, type: 3}
