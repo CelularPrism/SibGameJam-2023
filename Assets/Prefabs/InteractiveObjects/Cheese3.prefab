@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 233378999620998624}
   - component: {fileID: 5171744166216310187}
   - component: {fileID: 2745280211415284938}
+  - component: {fileID: 7850806619594480054}
   m_Layer: 3
   m_Name: Cheese3
   m_TagString: Untagged
@@ -151,3 +152,15 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!122 &7850806619594480054
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3274741773495126177}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278236237
+  m_Size: 7.44
