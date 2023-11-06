@@ -33,7 +33,7 @@ namespace Assets.Scripts.Fire
             {
                 Debug.Log("Added Root: " + transform.root);
                 Debug.Log("Added GameObject: " + transform.gameObject);
-                Instantiate(transform.root, _hitInfo.point, Quaternion.identity);
+                Instantiate(transform.parent, _hitInfo.point, Quaternion.identity);
             }
         }
 
