@@ -184,6 +184,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: doorFrame
       objectReference: {fileID: 0}
+    - target: {fileID: 7974825971950720454, guid: 600d272b9d94a374089426df465fee54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
