@@ -686,8 +686,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1948866641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.4, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 30, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -837,7 +837,7 @@ RectTransform:
   m_Father: {fileID: 1430970649}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 38, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u042D\u0424\u0424\u0415\u041A\u0422\u042B"
+  m_text: "\u041A\u041D\u041E\u041F\u041A\u0418"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5f0b51447988ae64e9847c8e67255248, type: 2}
   m_sharedMaterial: {fileID: -4446389223028555064, guid: 5f0b51447988ae64e9847c8e67255248, type: 2}
@@ -1698,7 +1698,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u042D\u0424\u0424\u0415\u041A\u0422\u042B"
+  m_text: "\u041A\u041D\u041E\u041F\u041A\u0418"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5f0b51447988ae64e9847c8e67255248, type: 2}
   m_sharedMaterial: {fileID: -4446389223028555064, guid: 5f0b51447988ae64e9847c8e67255248, type: 2}
@@ -2433,7 +2433,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0417\u0412\u0423\u041A"
+  m_text: "\u042D\u0424\u0424\u0415\u041A\u0422\u042B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5f0b51447988ae64e9847c8e67255248, type: 2}
   m_sharedMaterial: {fileID: -4446389223028555064, guid: 5f0b51447988ae64e9847c8e67255248, type: 2}
@@ -2567,7 +2567,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0417\u0412\u0423\u041A"
+  m_text: "\u042D\u0424\u0424\u0415\u041A\u0422\u042B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5f0b51447988ae64e9847c8e67255248, type: 2}
   m_sharedMaterial: {fileID: -4446389223028555064, guid: 5f0b51447988ae64e9847c8e67255248, type: 2}
