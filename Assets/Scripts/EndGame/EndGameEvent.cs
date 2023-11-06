@@ -3,6 +3,7 @@ using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndGameEvent : MonoBehaviour
 {
@@ -19,23 +20,22 @@ public class EndGameEvent : MonoBehaviour
 
     public void Lose()
     {
-        BGMusic.SetActive(false);
-        var fires = FindObjectsOfType<FireInstance>();
-        if (fires != null)
-        {
-            foreach (var fire in fires)
-            {
-                Destroy(fire.gameObject);
-            }
-        }
+        MuteAll();
         character.Stop();
         losePanel.SetActive(true);
     }
 
     public void Win()
     {
+        MuteAll();
+        character.Stop();
+        winPanel.SetActive(true);
+    }
+
+    private void MuteAll()
+    {
         BGMusic.SetActive(false);
-        var fires = FindObjectsOfType<StudioEventEmitter>();
+        var fires = FindObjectsOfType<FireInstance>();
         if (fires != null)
         {
             foreach (var fire in fires)
@@ -45,11 +45,10 @@ public class EndGameEvent : MonoBehaviour
                 {
                     ev.Stop();
                 }
-                
+
                 Destroy(fire.gameObject);
             }
         }
-        character.Stop();
-        winPanel.SetActive(true);
+        RuntimeManager.GetBus("bus:/SFX").setMute(true);
     }
 }
