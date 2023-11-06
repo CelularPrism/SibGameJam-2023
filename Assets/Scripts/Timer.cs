@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private float range;
+    public float range;
     [SerializeField] private EndGameEvent eventor;
     
     private DateTime _start;
+    private DateTime _stopTime;
     private bool _timeStopped = false;
     private UITimer _ui;
 
@@ -51,11 +52,13 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         _timeStopped = true;
+        _stopTime = DateTime.Now;
     }
 
     public void StartTimer()
     {
         _timeStopped = false;
+        range += DateTime.Now.Subtract(_stopTime).Seconds / 60.0f;
     }
 
     public TimeSpan GetTime() => _start.Subtract(DateTime.Now.AddMinutes(-range));
