@@ -49,6 +49,7 @@ public class HealthSystem : MonoBehaviour
 
     public void Heal(int value = 1)
     {
+        _vignette.intensity.value -= _vignetteShift;
         _health += value;
         _healthBar.Set(_health);
 
