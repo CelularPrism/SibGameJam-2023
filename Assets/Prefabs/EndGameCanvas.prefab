@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 569763024184798189}
   - component: {fileID: 7225185000042618594}
   - component: {fileID: 5911180933681234578}
+  - component: {fileID: 6055249617176757474}
   m_Layer: 5
   m_Name: WinPanel
   m_TagString: Untagged
@@ -403,6 +404,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6055249617176757474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2381388901324155249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 131284272
+      Data2: 1173994988
+      Data3: -2139174231
+      Data4: -462054892
+    Path: event:/music/win
+  Event: 
+  PlayEvent: 11
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2936660180951308598
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +820,7 @@ GameObject:
   - component: {fileID: 5002207743207223275}
   - component: {fileID: 2148234243436103966}
   - component: {fileID: 29294621487503580}
+  - component: {fileID: 6499315534262460358}
   m_Layer: 5
   m_Name: LosePanel
   m_TagString: Untagged
@@ -855,6 +888,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6499315534262460358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5601156278882904269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 878535924
+      Data2: 1096450424
+      Data3: -1096455028
+      Data4: 1041980854
+    Path: event:/music/lose
+  Event: 
+  PlayEvent: 11
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &6786061873660694078
 GameObject:
   m_ObjectHideFlags: 0

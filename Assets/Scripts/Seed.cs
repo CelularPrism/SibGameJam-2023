@@ -15,7 +15,7 @@ public class Seed : MonoBehaviour, IItem
 
     public void Use()
     {
-        if (healthSystem != null)
+        if (healthSystem != null && !healthSystem.IsMax())
         {
             healthSystem.Heal(1);
             Debug.Log("Heal");
