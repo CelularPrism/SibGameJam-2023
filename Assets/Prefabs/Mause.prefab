@@ -594,6 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 3
   _maxHealth: 3
+  _maxAditionalHealth: 5
   _dmgEvent:
     Guid:
       Data1: -1508512272
