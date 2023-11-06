@@ -19438,7 +19438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7555eeba581fb47b30a7ff8c7a0012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firePrefab: {fileID: 7150642537810840690}
+  _firePrefab: {fileID: 7150642537810840690, guid: 968686200c5bc4d469d7067f94399672, type: 3}
   _checkRadius: 1
 --- !u!1 &5547192166427491669
 GameObject:
