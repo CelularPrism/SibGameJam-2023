@@ -41,12 +41,6 @@ public class UseEnvironments : MonoBehaviour
 
     private void Use(CallbackContext calbackContext)
     {
-        Debug.Log(_usables[0]);
-        var muted = false;
-        RuntimeManager.GetBus("bus:/SFX").getMute(out muted);
-        if (muted)
-            RuntimeManager.GetBus("bus:/SFX").setMute(false);
-
         if (_canUse)
         {
             Debug.Log(_usables[0].GetComponent<IItem>());

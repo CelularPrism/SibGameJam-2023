@@ -49,6 +49,5 @@ public class EndGameEvent : MonoBehaviour
                 Destroy(fire.gameObject);
             }
         }
-        RuntimeManager.GetBus("bus:/SFX").setMute(true);
     }
 }
