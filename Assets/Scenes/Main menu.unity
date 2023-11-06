@@ -1306,7 +1306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0e09b5363b86348bdc4dfb59b81957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameplayScene: 0
+  _gameplayScene: 1
   _clickEvent:
     Guid:
       Data1: -1094732251
