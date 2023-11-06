@@ -8,6 +8,7 @@ public class EndGameEvent : MonoBehaviour
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
     [SerializeField] private CharacterMotionController character;
+    [SerializeField] private GameObject BGMusic;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class EndGameEvent : MonoBehaviour
 
     public void Lose()
     {
+        BGMusic.SetActive(false);
         var fires = FindObjectsOfType<FireInstance>();
         if (fires != null)
         {
@@ -31,6 +33,7 @@ public class EndGameEvent : MonoBehaviour
 
     public void Win()
     {
+        BGMusic.SetActive(false);
         var fires = FindObjectsOfType<FireInstance>();
         if (fires != null)
         {
