@@ -17,6 +17,14 @@ public class EndGameEvent : MonoBehaviour
 
     public void Lose()
     {
+        var fires = FindObjectsOfType<FireInstance>();
+        if (fires != null)
+        {
+            foreach (var fire in fires)
+            {
+                Destroy(fire.gameObject);
+            }
+        }
         character.Stop();
         losePanel.SetActive(true);
     }
