@@ -32,7 +32,15 @@ public class UseEnvironments : MonoBehaviour
         if (Physics.OverlapSphereNonAlloc(transform.position, _raduis, _usables, LayerMask.GetMask("Usable Item")) > 0)
         {
             if (_usables[0].GetComponent<IItem>() != null)
+            {
+                var learns = FindObjectsOfType<LearnDestroyer>();
+                foreach (var learn in learns)
+                {
+                    if (learn.gameObject.activeInHierarchy && learn.gameObject != transform.gameObject)
+                        Destroy(learn.gameObject);
+                }
                 _canUse = true;
+            }
         } else
         {
             _canUse = false;

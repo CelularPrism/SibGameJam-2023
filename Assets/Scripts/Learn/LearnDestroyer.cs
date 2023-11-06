@@ -1,3 +1,4 @@
+using Assets.Scripts.Fire;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,17 @@ public class LearnDestroyer : MonoBehaviour
     {
         _image = transform.GetComponent<Image>();
         _now = DateTime.Now;
+    }
+
+    private void OnEnable()
+    {
+        var learns = FindObjectsOfType<LearnDestroyer>();
+        foreach (var learn in learns)
+        {
+            Debug.Log(learn);
+            if (learn.gameObject.activeInHierarchy && learn.gameObject != transform.gameObject) 
+                Destroy(learn.gameObject);
+        }
     }
 
     void FixedUpdate()
