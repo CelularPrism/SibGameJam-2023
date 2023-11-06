@@ -13495,7 +13495,7 @@ PrefabInstance:
       objectReference: {fileID: 942368427}
     - target: {fileID: 4198189710341165890, guid: 8132b047f3bbffd4c859557652587231, type: 3}
       propertyPath: maxCheese
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
