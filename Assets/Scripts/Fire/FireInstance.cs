@@ -31,7 +31,7 @@ namespace Assets.Scripts.Fire
             _hurtBox.OnStay += OnStay;
             _hurtBox.OnExit += OnExit;
             _health = 1;
-            _sparkTime = 0;
+            _sparkTime = 1;
             _randomMoment = Random.value;
         }
 
