@@ -5,7 +5,7 @@
 			<value>fire_off</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{ce8a6eae-5c32-4459-a5e7-c61fcd125dd0}</destination>
@@ -56,7 +56,11 @@
 			<destination>{11bf1f16-972b-4f17-9443-f9f6cc1fb7bf}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{670ac2bf-b9cc-449c-849a-ed20c6b097f6}" />
+	<object class="EventAutomatableProperties" id="{670ac2bf-b9cc-449c-849a-ed20c6b097f6}">
+		<property name="maxVoices">
+			<value>2</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{375950e1-0759-4cc7-bebe-76b0144b3b3c}" />
 	<object class="GroupTrack" id="{faee6ded-915a-4f9f-acde-5cae23863dee}">
 		<relationship name="modules">
@@ -125,7 +129,11 @@
 			<destination>{9ce835ca-09ac-4b19-908d-8311b825de09}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{e71ab1d2-7906-4139-b165-78e3466385a1}" />
+	<object class="MixerBusPanner" id="{e71ab1d2-7906-4139-b165-78e3466385a1}">
+		<property name="overridingOutputFormat">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{59d157aa-8dc0-4149-a7b7-487587f911e4}" />
 	<object class="RandomizerModulator" id="{f86114fa-2435-49c3-b8a0-88e47d9d0196}">
 		<property name="nameOfPropertyBeingModulated">
@@ -150,7 +158,17 @@
 	</object>
 	<object class="MixerBusPanner" id="{9e80fd7d-7ed8-4189-aeb0-55f60bd04c03}" />
 	<object class="MixerBusFader" id="{7ce9672d-d642-4ebb-bf27-e44430b75f7e}" />
-	<object class="SpatialiserEffect" id="{9ce835ca-09ac-4b19-908d-8311b825de09}" />
+	<object class="SpatialiserEffect" id="{9ce835ca-09ac-4b19-908d-8311b825de09}">
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>5</value>
+		</property>
+		<property name="minimumExtent">
+			<value>116</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{eae9dcbf-2da4-4095-976e-d1f50733b64b}">
 		<property name="position">
 			<value>1.0765185185185187</value>
