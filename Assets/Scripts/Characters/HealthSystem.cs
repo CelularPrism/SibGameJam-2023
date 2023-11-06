@@ -1,5 +1,6 @@
 using Assets.Scripts.Gameplay_UI;
 using FMODUnity;
+using System.IO;
 using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
@@ -47,4 +48,6 @@ public class HealthSystem : MonoBehaviour
     public float GetMaxHealth() => _maxHealth;
 
     public float GetHealth() => _health;
+
+    public bool IsMax() => _health == _maxHealth;
 }
