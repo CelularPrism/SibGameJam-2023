@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1445373509383665644}
   - component: {fileID: 3461518545788537642}
   - component: {fileID: 233378999620998624}
-  - component: {fileID: 5171744166216310187}
+  - component: {fileID: 447947429432481872}
   - component: {fileID: 2745280211415284938}
-  - component: {fileID: 7850806619594480054}
+  - component: {fileID: 67800240013211974}
   m_Layer: 3
   m_Name: Cheese3
   m_TagString: Untagged
@@ -100,27 +100,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
---- !u!65 &5171744166216310187
-BoxCollider:
+--- !u!114 &447947429432481872
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3274741773495126177}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.05, y: 0.05, z: 0.04}
-  m_Center: {x: -0.0030538333, y: 0.006172434, z: -0.00035152433}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae07822441860e409de19d170541d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 65
+  initialHight: 3
+  swingSpeed: 1
+  swingAmplitude: 1.5
 --- !u!114 &2745280211415284938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,15 +147,26 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!122 &7850806619594480054
-Halo:
+--- !u!136 &67800240013211974
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3274741773495126177}
-  m_Enabled: 1
-  m_Color:
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
     serializedVersion: 2
-    rgba: 4278246751
-  m_Size: 7.44
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.025
+  m_Height: 0.15
+  m_Direction: 1
+  m_Center: {x: -0.0030538337, y: 0.006172434, z: -0.00035152436}
