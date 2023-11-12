@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Fire
@@ -9,6 +8,7 @@ namespace Assets.Scripts.Fire
         [SerializeField] private float _sparkTimerSpeed = 0.05f;
         [SerializeField] private float _hurtSpeed = 0.5f;
         [SerializeField] private float _fightingSpeed = 1;
+        [SerializeField] private float _damage;
         private Vector3 _defaultScale;
         private CapsuleHurtBox _hurtBox;
         private FireSpark _spark;
@@ -28,7 +28,6 @@ namespace Assets.Scripts.Fire
         {
             transform.localScale = _defaultScale;
             _hurtBox.OnEnter += OnEnter;
-            _hurtBox.OnStay += OnStay;
             _hurtBox.OnExit += OnExit;
             _health = 1;
             _sparkTime = 0;
@@ -39,22 +38,7 @@ namespace Assets.Scripts.Fire
         {
             if (other.TryGetComponent(out HealthSystem health))
             {
-                _burning.Add(new(health, 1));
-            }
-        }
-
-        private void OnStay(Collider other)
-        {
-            for (int i = 0; i < _burning.Count; i++)
-            {
-                if (_burning[i].Time >= 1)
-                {
-                    _burning[i].Health.Damage();
-                    _burning[i].Time = 0;
-                    continue;
-                }
-
-                _burning[i].Time += _hurtSpeed * Time.deltaTime;
+                health.AddDamage<FireInstance>(_damage);
             }
         }
 
@@ -100,16 +84,13 @@ namespace Assets.Scripts.Fire
         {
             if (other.TryGetComponent(out HealthSystem health))
             {
-                _burning
-                    .Remove(_burning
-                    .SingleOrDefault(burning => burning.Health == health));
+                health.RemoveDamage<FireInstance>();
             }
         }
 
         private void OnDisable()
         {
             _hurtBox.OnEnter -= OnEnter;
-            _hurtBox.OnStay -= OnStay;
             _hurtBox.OnExit -= OnExit;
         }
     }

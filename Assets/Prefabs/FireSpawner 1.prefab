@@ -14512,6 +14512,7 @@ MonoBehaviour:
   _sparkTimerSpeed: 0.02
   _hurtSpeed: 0.5
   _fightingSpeed: 2
+  _damage: 1
 --- !u!136 &5296714905930526198
 CapsuleCollider:
   m_ObjectHideFlags: 0

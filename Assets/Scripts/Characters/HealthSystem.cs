@@ -1,77 +1,83 @@
 using Assets.Scripts.Gameplay_UI;
 using FMODUnity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 
 public class HealthSystem : MonoBehaviour
 {
-    [SerializeField] private int _health;
-    [SerializeField] private int _maxHealth;
-    [SerializeField] private int _maxAditionalHealth;
+    public event Action<float> OnChange;
+
+
+    [field: SerializeField] public float MaxHealth { get; private set; }
+    [SerializeField] private float _health;
     [SerializeField] private EventReference _dmgEvent;
-    private int _aditionalHealth;
     private HealthBar _healthBar;
-
     private ICharacter _character;
-    private Vignette _vignette;
-    private float _defaultVignetteIntens;
-    private float _vignetteShift;
+    private Dictionary<Type, float> _damegeEffects = new();
+    public float Health 
+    { 
+        get => _health;
 
-    private void Awake()
-    {
-        _aditionalHealth = _maxAditionalHealth;
-        _vignette = FindAnyObjectByType<PostProcessVolume>().profile.GetSetting<Vignette>();
-        _defaultVignetteIntens = _vignette.intensity;
-        _vignetteShift = _defaultVignetteIntens / _maxHealth;
+        private set
+        {
+            _health = Mathf.Clamp(value, 0, MaxHealth);
+            OnChange?.Invoke(_health);
+            _healthBar.Set(_health);
+
+            if (_health <= 0)
+            {
+                _character.Dead();
+            }
+        }
     }
 
     private void Start()
     {
         _character = transform.GetComponent<ICharacter>();
         _healthBar = FindAnyObjectByType<HealthBar>();
-        _healthBar.Set(_health);
+        _healthBar.Set(Health);
     }
 
-    public void Damage(int value = 1)
+    private void Update()
     {
-        _aditionalHealth -= value;
-        _aditionalHealth = Mathf.Clamp(_aditionalHealth, 0, _maxAditionalHealth);
+        for (int i = 0; i < _damegeEffects.Values.Count; i++)
+        {
+            Health -= _damegeEffects.Values.ElementAt(i) * Time.deltaTime;
+        }
+    }
+
+    public void Damage(float value = 1)
+    {
+        if (_character.IsDead)
+            return;
+
+        Health -= value;
         RuntimeManager.PlayOneShot(_dmgEvent, transform.position);
-
-        if (_aditionalHealth <= 0)
-        {
-            _vignette.intensity.value += _vignetteShift;
-            _aditionalHealth = _maxAditionalHealth;
-            _health--;
-            _health = Mathf.Clamp(_health, 0, _maxHealth);
-            _healthBar.Set(_health);
-
-            if (_health <= 0)
-            {
-                if (_character.IsDead == false)
-                {
-                    _vignette.intensity.value = _defaultVignetteIntens;
-                    _character.Dead();
-                }
-            }
-        }
     }
 
-    public void Heal(int value = 1)
+    public void AddDamage<T>(float value)
     {
-        _vignette.intensity.value -= _vignetteShift;
-        _health += value;
-        _healthBar.Set(_health);
-
-        if (_health > _maxHealth)
+        if (_damegeEffects.ContainsKey(typeof(T)))
         {
-            _health = _maxHealth;
+            float damage = _damegeEffects[typeof(T)];
+
+            if (damage < value)
+            {
+                _damegeEffects[typeof(T)] = value;
+                return;
+            }
+
+            return;
         }
+
+        _damegeEffects.Add(typeof(T), value);
     }
 
-    public float GetMaxHealth() => _maxHealth;
+    public void RemoveDamage<T>() => _damegeEffects.Remove(typeof(T));
 
-    public float GetHealth() => _health;
+    public void Heal(int value = 1) => Health += value;
 
-    public bool IsMax() => _health == _maxHealth;
+    public bool IsMax() => Health == MaxHealth;
 }

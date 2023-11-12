@@ -592,9 +592,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056f981dcecbc864ebee4ba4b29aa109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 3
-  _maxHealth: 3
-  _maxAditionalHealth: 5
+  _health: 5
+  <MaxHealth>k__BackingField: 5
   _dmgEvent:
     Guid:
       Data1: -1508512272

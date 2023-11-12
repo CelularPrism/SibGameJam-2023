@@ -12,8 +12,10 @@ namespace Assets.Scripts.Gameplay_UI
             _image = GetComponentInChildren<Image>();
         }
 
-        public void Set(int value)
+        public void Set(float value)
         {
+            value = Mathf.CeilToInt(value);
+
             for (int i = 0; i < value; i++)
             {
                 GameObject heart;
