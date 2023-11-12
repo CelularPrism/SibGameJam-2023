@@ -19394,7 +19394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7555eeba581fb47b30a7ff8c7a0012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firePrefab: {fileID: 1707313711733934959}
   _checkRadius: 1
 --- !u!1 &8075683612195678175
 GameObject:
@@ -24253,6 +24252,10 @@ MonoBehaviour:
   _hurtSpeed: 0.5
   _fightingSpeed: 2
   _damage: 1
+  _scale: 4
+  _canSpread: 1
+  _canRestore: 1
+  _restoreDelay: 10
 --- !u!136 &1864263995471095600
 CapsuleCollider:
   m_ObjectHideFlags: 0

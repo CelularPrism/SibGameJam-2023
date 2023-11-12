@@ -10,27 +10,32 @@ namespace Assets.Scripts.Fire
         [SerializeField] private float _fightingSpeed = 1;
         [SerializeField] private float _damage;
         [SerializeField] private float _scale;
+        [SerializeField] private bool _canSpread, _canRestore;
+        [SerializeField] private float _restoreDelay;
         private CapsuleHurtBox _hurtBox;
         private FireSpark _spark;
+        private ParticleSystem _particleSystem;
         private float _sparkTime;
         private float _randomMoment;
         private float _health = 1;
+        private float _restoreTime;
         private readonly List<Burning> _burning = new();
 
         private void Awake()
         {
             _hurtBox = GetComponentInChildren<CapsuleHurtBox>();
             _spark = GetComponentInChildren<FireSpark>(includeInactive: true);
+            _particleSystem = GetComponent<ParticleSystem>();
         }
 
         private void OnEnable()
         {
-            transform.localScale = Vector3.one * _scale;
             _hurtBox.OnEnter += OnEnter;
             _hurtBox.OnExit += OnExit;
             _health = 1;
             _sparkTime = 0;
             _randomMoment = Random.value;
+            transform.localScale = Vector3.one * _scale;
         }
 
         private void OnEnter(Collider other)
@@ -56,19 +61,22 @@ namespace Assets.Scripts.Fire
 
         private void Update()
         {
-            if (_sparkTime >= 1)
+            if (_canSpread)
             {
-                CreateSpark();
-                return;
-            }
+                if (_sparkTime >= 1)
+                {
+                    CreateSpark();
+                    return;
+                }
 
-            if (_sparkTime >= _randomMoment)
-            {
-                CreateSpark();
-                return;
-            }
+                if (_sparkTime >= _randomMoment)
+                {
+                    CreateSpark();
+                    return;
+                }
 
-            _sparkTime += _sparkTimerSpeed * Time.deltaTime;
+                _sparkTime += _sparkTimerSpeed * Time.deltaTime;
+            }
         }
 
         private void CreateSpark()
@@ -91,6 +99,11 @@ namespace Assets.Scripts.Fire
         {
             _hurtBox.OnEnter -= OnEnter;
             _hurtBox.OnExit -= OnExit;
+
+            if (_canRestore)
+                Invoke(nameof(Restore), _restoreDelay);
         }
+
+        private void Restore() => gameObject.SetActive(true);
     }
 }
