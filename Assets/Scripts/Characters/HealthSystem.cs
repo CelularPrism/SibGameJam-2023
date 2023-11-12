@@ -11,11 +11,13 @@ public class HealthSystem : MonoBehaviour
 
 
     [field: SerializeField] public float MaxHealth { get; private set; }
-    [SerializeField] private float _health;
+    [SerializeField] private float _health, _restoreDelay, _restoreSpeed;
     [SerializeField] private EventReference _dmgEvent;
     private HealthBar _healthBar;
     private ICharacter _character;
-    private Dictionary<Type, float> _damegeEffects = new();
+    private readonly Dictionary<Type, float> _damegeEffects = new();
+    private float _restoreTime;
+
     public float Health 
     { 
         get => _health;
@@ -42,9 +44,24 @@ public class HealthSystem : MonoBehaviour
 
     private void Update()
     {
+        if (_damegeEffects.Count == 0)
+        {
+            if (Health == MaxHealth)
+                return;
+
+            if (_restoreTime >= _restoreDelay)
+            {
+                Health += _restoreSpeed * Time.deltaTime;
+                return;
+            }
+
+            _restoreTime += Time.deltaTime;
+        }
+
         for (int i = 0; i < _damegeEffects.Values.Count; i++)
         {
             Health -= _damegeEffects.Values.ElementAt(i) * Time.deltaTime;
+            _restoreTime = 0;
         }
     }
 
@@ -54,6 +71,7 @@ public class HealthSystem : MonoBehaviour
             return;
 
         Health -= value;
+        _restoreTime = 0;
         RuntimeManager.PlayOneShot(_dmgEvent, transform.position);
     }
 
