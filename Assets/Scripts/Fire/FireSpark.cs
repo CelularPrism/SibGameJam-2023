@@ -30,12 +30,16 @@ namespace Assets.Scripts.Fire
             Vector3 position = transform.TransformPoint(_particles[0].position);
             position.y = Mathf.Abs(position.y) + 10;
 
-            if (Physics.SphereCast(position, _checkRadius, Vector3.down, out _hitInfo, maxDistance: 100, LayerMask.GetMask("Ground", "Fire", "Usable Item")))
+            if (Physics.SphereCast(position, _checkRadius, Vector3.down, out _hitInfo, maxDistance: 100, 
+                LayerMask.GetMask("Ground", "Fire", "Usable Item", "NoFire")))
             {
                 if ((LayerMask.GetMask("Fire") & (1 << _hitInfo.transform.gameObject.layer)) > 0)
                     return;
 
                 if ((LayerMask.GetMask("Usable Item") & (1 << _hitInfo.transform.gameObject.layer)) > 0)
+                    return;
+
+                if ((LayerMask.GetMask("NoFire") & (1 << _hitInfo.transform.gameObject.layer)) > 0)
                     return;
 
                 Instantiate(transform.root, _hitInfo.point, Quaternion.identity);

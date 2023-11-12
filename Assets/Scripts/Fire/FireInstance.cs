@@ -105,5 +105,9 @@ namespace Assets.Scripts.Fire
         }
 
         private void Restore() => gameObject.SetActive(true);
+
+        public void SetSpreed(bool can) => _canSpread = can;
+
+        public void SetRestore(bool can) => _canRestore = can;
     }
 }
