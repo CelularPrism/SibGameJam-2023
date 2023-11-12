@@ -9,14 +9,16 @@ public class HealthSystem : MonoBehaviour
 {
     public event Action<float> OnChange;
 
-
     [field: SerializeField] public float MaxHealth { get; private set; }
     [SerializeField] private float _health, _restoreDelay, _restoreSpeed;
+    [SerializeField] private Material _damageIndicationMaterial;
+    [SerializeField] private float _hurtSoundInterval;
     [SerializeField] private EventReference _dmgEvent;
+    private bool _isDamage;
     private HealthBar _healthBar;
     private ICharacter _character;
     private readonly Dictionary<Type, float> _damegeEffects = new();
-    private float _restoreTime;
+    private float _restoreTime, _hurtSoundTime;
 
     public float Health 
     { 
@@ -24,6 +26,7 @@ public class HealthSystem : MonoBehaviour
 
         private set
         {
+            _isDamage = value < _health;
             _health = Mathf.Clamp(value, 0, MaxHealth);
             OnChange?.Invoke(_health);
             _healthBar.Set(_health);
@@ -37,6 +40,7 @@ public class HealthSystem : MonoBehaviour
 
     private void Start()
     {
+        _hurtSoundTime = _hurtSoundInterval;
         _character = transform.GetComponent<ICharacter>();
         _healthBar = FindAnyObjectByType<HealthBar>();
         _healthBar.Set(Health);
@@ -44,8 +48,27 @@ public class HealthSystem : MonoBehaviour
 
     private void Update()
     {
+        if (_isDamage)
+        {
+            if (_hurtSoundTime >= _hurtSoundInterval)
+            {
+                _hurtSoundTime = 0;
+                RuntimeManager.PlayOneShot(_dmgEvent, transform.position);
+            }
+            else
+            {
+                _hurtSoundTime += Time.deltaTime;
+            }
+        }
+        else
+        {
+            _hurtSoundTime = _hurtSoundInterval;
+        }
+
         if (_damegeEffects.Count == 0)
         {
+            _isDamage = false;
+
             if (Health == MaxHealth)
             {
                 _restoreTime = 0;

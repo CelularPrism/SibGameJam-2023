@@ -596,6 +596,8 @@ MonoBehaviour:
   _health: 5
   _restoreDelay: 2
   _restoreSpeed: 0.5
+  _damageIndicationMaterial: {fileID: 0}
+  _hurtSoundInterval: 1
   _dmgEvent:
     Guid:
       Data1: -1508512272
