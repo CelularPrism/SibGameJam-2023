@@ -47,7 +47,10 @@ public class HealthSystem : MonoBehaviour
         if (_damegeEffects.Count == 0)
         {
             if (Health == MaxHealth)
+            {
+                _restoreTime = 0;
                 return;
+            }
 
             if (_restoreTime >= _restoreDelay)
             {
