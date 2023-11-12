@@ -9,7 +9,7 @@ namespace Assets.Scripts.Fire
         [SerializeField] private float _hurtSpeed = 0.5f;
         [SerializeField] private float _fightingSpeed = 1;
         [SerializeField] private float _damage;
-        private Vector3 _defaultScale;
+        [SerializeField] private float _scale;
         private CapsuleHurtBox _hurtBox;
         private FireSpark _spark;
         private float _sparkTime;
@@ -19,14 +19,13 @@ namespace Assets.Scripts.Fire
 
         private void Awake()
         {
-            _defaultScale = transform.localScale;
             _hurtBox = GetComponentInChildren<CapsuleHurtBox>();
             _spark = GetComponentInChildren<FireSpark>(includeInactive: true);
         }
 
         private void OnEnable()
         {
-            transform.localScale = _defaultScale;
+            transform.localScale = Vector3.one * _scale;
             _hurtBox.OnEnter += OnEnter;
             _hurtBox.OnExit += OnExit;
             _health = 1;
@@ -47,7 +46,7 @@ namespace Assets.Scripts.Fire
             if (_health > 0.4f)
             {
                 _health -= _fightingSpeed * Time.deltaTime;
-                transform.localScale = _defaultScale * _health;
+                transform.localScale = (Vector3.one * _scale) * _health;
             }
             else
             {

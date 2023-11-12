@@ -5,7 +5,6 @@ namespace Assets.Scripts.Fire
 {
     public class FireSpark : MonoBehaviour
     {
-        [SerializeField] private FireInstance _firePrefab;
         [SerializeField] private float _checkRadius = 1;
         private ParticleSystem _particleSystem;
         private Particle[] _particles;
@@ -39,7 +38,7 @@ namespace Assets.Scripts.Fire
                 if ((LayerMask.GetMask("Usable Item") & (1 << _hitInfo.transform.gameObject.layer)) > 0)
                     return;
 
-                Instantiate(_firePrefab, _hitInfo.point, Quaternion.identity);
+                Instantiate(transform.root, _hitInfo.point, Quaternion.identity);
             }
         }
 
