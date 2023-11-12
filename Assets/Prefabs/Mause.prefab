@@ -596,7 +596,9 @@ MonoBehaviour:
   _health: 5
   _restoreDelay: 2
   _restoreSpeed: 0.5
-  _damageIndicationMaterial: {fileID: 0}
+  _damageIndicationMaterial: {fileID: 2100000, guid: a97a574cfa2259b45aa7946e1e931998, type: 2}
+  _damageIndicationColor: {r: 1, g: 0.2971698, b: 0.2971698, a: 1}
+  _hurtIndicationSmooth: 0.7
   _hurtSoundInterval: 1
   _dmgEvent:
     Guid:
