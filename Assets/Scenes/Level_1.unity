@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 25006967}
   - component: {fileID: 25006966}
+  - component: {fileID: 25006968}
   m_Layer: 0
   m_Name: Global Volume
   m_TagString: Untagged
@@ -172,6 +173,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &25006968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25006965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b28c417b0441f54b8e2664e85a04cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _limit: 0.663
 --- !u!1 &28783970
 GameObject:
   m_ObjectHideFlags: 0
@@ -4405,7 +4419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6546014256840757666, guid: c9f15c60ec5fe5b45a98be71f87be3dc, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 292.76044
       objectReference: {fileID: 0}
     - target: {fileID: 6546014256840757666, guid: c9f15c60ec5fe5b45a98be71f87be3dc, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4465,7 +4479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7618178167566509811, guid: c9f15c60ec5fe5b45a98be71f87be3dc, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 288.60593
       objectReference: {fileID: 0}
     - target: {fileID: 7618178167566509811, guid: c9f15c60ec5fe5b45a98be71f87be3dc, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4509,7 +4523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8915309289990903997, guid: c9f15c60ec5fe5b45a98be71f87be3dc, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 300.36346
       objectReference: {fileID: 0}
     - target: {fileID: 8915309289990903997, guid: c9f15c60ec5fe5b45a98be71f87be3dc, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5617,8 +5631,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
