@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 namespace Assets.Scripts.Characters
 {
@@ -13,7 +14,7 @@ namespace Assets.Scripts.Characters
 
         private void Awake()
         {
-            _vignette = FindAnyObjectByType<PostProcessVolume>().profile.GetSetting<Vignette>();
+            FindAnyObjectByType<Volume>().profile.TryGet(out _vignette);
             _health = FindAnyObjectByType<HealthSystem>();
             _defaultVignetteIntens = _vignette.intensity.value;
 
