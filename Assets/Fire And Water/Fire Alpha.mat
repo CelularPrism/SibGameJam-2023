@@ -23,7 +23,6 @@ Material:
   m_Name: Fire Alpha
   m_Shader: {fileID: 4800000, guid: b7839dad95683814aa64166edc107ae2, type: 3}
   m_ValidKeywords:
-  - _ALPHAPREMULTIPLY_ON
   - _EMISSION
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords:
@@ -85,7 +84,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Blend: 1
+    - _Blend: 2
     - _BlendModePreserveSpecular: 1
     - _BlendOp: 0
     - _BumpScale: 1
@@ -100,7 +99,7 @@ Material:
     - _DistortionEnabled: 0
     - _DistortionStrength: 1
     - _DistortionStrengthScaled: 0
-    - _DstBlend: 10
+    - _DstBlend: 1
     - _DstBlendAlpha: 10
     - _EmissionEnabled: 0
     - _FlipbookBlending: 0
@@ -121,7 +120,7 @@ Material:
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _SrcBlendAlpha: 1
     - _Surface: 1
     - _UVSec: 0

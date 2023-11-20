@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CheeseRotation : MonoBehaviour
+public class ObjectRotation : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed = 20;
     [SerializeField] private float initialHight = 1f;
