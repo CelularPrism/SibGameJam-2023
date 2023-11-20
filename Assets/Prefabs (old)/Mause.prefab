@@ -564,6 +564,7 @@ MonoBehaviour:
   _canLookToCursor: 1
   _lookIKWeight: 0.9
   _lookdeadZone: 5
+  _defaultTargetDistance: 10
 --- !u!114 &6068399150574858802
 MonoBehaviour:
   m_ObjectHideFlags: 0
