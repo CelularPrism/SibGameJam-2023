@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 6814090682152314193}
   - component: {fileID: 225871666286827871}
   - component: {fileID: 3137573253989222413}
-  - component: {fileID: 6387440793836275207}
   m_Layer: 0
   m_Name: Darkness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 126
   m_IsActive: 1
 --- !u!4 &6814090682152314193
 Transform:
@@ -27,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4627012560229279432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -55.4, y: 15.466, z: 37.5}
-  m_LocalScale: {x: 1.4507, y: 0.06, z: 18.06}
+  m_LocalPosition: {x: -55.4, y: 15.375, z: 37.5}
+  m_LocalScale: {x: 68.81691, y: 0.049999997, z: 134.746}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,7 +54,7 @@ MeshRenderer:
   m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -84,16 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6387440793836275207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4627012560229279432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 334d7ae7e178aa649b27ace423480c38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedSmooth: 2
