@@ -42,7 +42,10 @@ namespace Assets.Scripts.Fire
                 if ((LayerMask.GetMask("NoFire") & (1 << _hitInfo.transform.gameObject.layer)) > 0)
                     return;
 
-                Instantiate(transform.root, _hitInfo.point, Quaternion.identity);
+                FireInstance fire = GetComponentInParent<FireInstance>();
+
+                if (fire)
+                    Instantiate(fire.gameObject, _hitInfo.point, Quaternion.identity);
             }
         }
 
