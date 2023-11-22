@@ -14466,8 +14466,8 @@ MonoBehaviour:
   _fightingSpeed: 2
   _damage: 1
   _scale: 3
-  _canSpread: 1
-  _canRestore: 1
+  _canSpread: 0
+  _canRestore: 0
   _restoreDelay: 5
 --- !u!136 &5296714905930526198
 CapsuleCollider:
