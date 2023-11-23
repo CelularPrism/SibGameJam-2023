@@ -576,8 +576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eadca545901e1d848b8e92bbacc7b1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _seconds: 3
-  _fadeSpeed: 1
+  _seconds: 0
+  _fadeSpeed: 5
   _closeButton: {fileID: 6414717694853384099}
   _cheese: {fileID: 2770971190466797718}
   _minutes: {fileID: 6906250514835314394}
