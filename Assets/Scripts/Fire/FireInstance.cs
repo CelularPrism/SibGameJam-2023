@@ -36,6 +36,7 @@ namespace Assets.Scripts.Fire
             _sparkTime = 0;
             _randomMoment = Random.value;
             transform.localScale = Vector3.one * _scale;
+            _particleSystem.Clear();
         }
 
         private void OnEnter(Collider other)
