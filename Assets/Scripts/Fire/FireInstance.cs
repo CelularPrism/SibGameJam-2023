@@ -19,6 +19,7 @@ namespace Assets.Scripts.Fire
         private float _randomMoment;
         private float _health = 1;
         private float _restoreTime;
+        private FireMediator _mediator;
         private readonly List<Burning> _burning = new();
 
         private void Awake()
@@ -26,6 +27,12 @@ namespace Assets.Scripts.Fire
             _hurtBox = GetComponentInChildren<CapsuleHurtBox>();
             _spark = GetComponentInChildren<FireSpark>(includeInactive: true);
             _particleSystem = GetComponent<ParticleSystem>();
+            _mediator = FindObjectOfType<FireMediator>();
+
+            if (_mediator == null)
+                _mediator = new GameObject("[FIRE MEDIATOR]").AddComponent<FireMediator>();
+
+            _mediator.Add(this);
         }
 
         private void OnEnable()
@@ -64,6 +71,9 @@ namespace Assets.Scripts.Fire
         {
             if (_canSpread)
             {
+                if (_mediator.IsLimitReached)
+                    return;
+
                 if (_sparkTime >= 1)
                 {
                     CreateSpark();
