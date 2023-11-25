@@ -10,6 +10,7 @@ public class LearnDestroyer : MonoBehaviour
 {
     [SerializeField] private float rangeSeconds;
     [SerializeField] private float speedSmooth;
+    [SerializeField] private bool _canDestroy;
     private Image _image;
     private DateTime _now;
 
@@ -32,7 +33,7 @@ public class LearnDestroyer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_now.AddSeconds(rangeSeconds) < DateTime.Now)
+        if (_now.AddSeconds(rangeSeconds) < DateTime.Now && _canDestroy)
         {
             var red = _image.color.r;
             var green = _image.color.g;
@@ -43,4 +44,8 @@ public class LearnDestroyer : MonoBehaviour
                 Destroy(_image.gameObject);
         }
     }
+
+    public void Destroy() => _canDestroy = true;
+
+    public void NonDestroy() => _canDestroy = false;
 }
