@@ -121,6 +121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Src_CheeseOrange_1
       objectReference: {fileID: 0}
+    - target: {fileID: 882242470986338708, guid: d9a33b86e4ee50e47bc130c63845b737, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 882242470986338709, guid: d9a33b86e4ee50e47bc130c63845b737, type: 3}
       propertyPath: m_RootOrder
       value: 0

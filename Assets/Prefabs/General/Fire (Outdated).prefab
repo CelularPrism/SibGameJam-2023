@@ -9640,7 +9640,7 @@ GameObject:
   - component: {fileID: 5639381711900356271}
   - component: {fileID: 1032187748208485288}
   m_Layer: 7
-  m_Name: Fire
+  m_Name: Fire (Outdated)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
