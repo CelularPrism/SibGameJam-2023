@@ -1,47 +1,71 @@
-using System;
+using Assets.Scripts.Cheese;
+using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CheeseInventory : MonoBehaviour
 {
-    [SerializeField, Range(0, 8)] private int max = 5;
-    [SerializeField] private float _speedDecrease;
     [SerializeField] private Transform _view;
-    private int _count = 0;
+    [SerializeField] private Material _cheeseMaterial;
+    [SerializeField] private float _viewSize = 15;
     private CharacterMotionController _motionController;
     private float _defaultSpeed;
+    private CheeseBar _bar;
+    private readonly List<CheeseInstance> _views = new();
+
+    public float Count { get; private set; } = 0;
+    public bool IsFull => Count >= 1;
 
     private void Awake()
     {
         _motionController = GetComponent<CharacterMotionController>();
         _defaultSpeed = _motionController.MoveSpeed;
+        _bar = FindObjectOfType<CheeseBar>();
     }
 
-    public void AddCheese()
+    public bool TryPut(Mesh mesh, float size, float weight)
     {
-        _count++;
-        _motionController.MoveSpeed -= _speedDecrease;
-        DrawView();
+        if (Count + size <= 1)
+        {
+            Count = Mathf.Clamp01(Count += size);
+            _motionController.MoveSpeed -= weight;
+
+            if (_bar)
+                _bar.Set(Count);
+
+            CheeseInstance view = _views.FirstOrDefault(view => view.Size == size && view.gameObject.activeInHierarchy == false);
+
+            if (view == null)
+            {
+                view = new GameObject($"Cheese [{size}]").AddComponent<CheeseInstance>();
+                view.Construct(mesh, size, weight);
+                view.transform.SetParent(_view);
+                view.gameObject.AddComponent<MeshFilter>().mesh = mesh;
+                view.gameObject.AddComponent<MeshRenderer>().material = _cheeseMaterial;
+                view.transform.localPosition = Vector3.zero;
+                view.transform.localScale = Vector3.one * _viewSize;
+                _views.Add(view);
+            }
+            else
+                view.gameObject.SetActive(true);
+
+            view.transform.localRotation = Quaternion.Euler(Vector3.forward * (45 * (Count * 8)));
+            return true;
+        }
+
+        return false;
     }
 
-    private void DrawView()
+    public float RemoveAll()
     {
+        float count = Count;
+        Count = 0;
+        _motionController.MoveSpeed = _defaultSpeed;
+
         for (int i = 0; i < _view.childCount; i++)
         {
-            _view.GetChild(i).gameObject.SetActive(i < _count);
+            _view.GetChild(i).gameObject.SetActive(false);
         }
-    }
-
-    public int RemoveCheese()
-    {
-        var count = _count;
-        _count = 0;
-        _motionController.MoveSpeed = _defaultSpeed;
-        DrawView();
         return count;
     }
-
-    public int GetCount() => _count;
-    public int GetMaxCount() => max;
-
-    public bool MaxCount() => _count >= max;
 }
