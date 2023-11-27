@@ -1,25 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent (typeof(CheeseInstance))]
 public class CheeseTrigger : MonoBehaviour, IItem
 {
-    [SerializeField] private CheeseInventory inventory;
+    private CheeseInventory _inventory;
+    private CheeseInstance _instance;
+
+    private void Awake()
+    {
+        _instance = GetComponent<CheeseInstance>();
+        _inventory = FindObjectOfType<CheeseInventory>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         var localInventory = other.GetComponent<CheeseInventory>();
-        if (inventory == null && localInventory != null)
-            inventory = localInventory;
+        if (_inventory == null && localInventory != null)
+            _inventory = localInventory;
     }
 
     public void Use()
     {
-        if (inventory != null && !inventory.MaxCount())
+        if (_inventory.TryPut(_instance.Mesh, _instance.Size, _instance.Weight))
         {
-            inventory.AddCheese();
-            Debug.Log("Cheese added");
-            Destroy(transform.gameObject);
+            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

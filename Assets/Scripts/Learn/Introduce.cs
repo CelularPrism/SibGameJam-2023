@@ -41,7 +41,7 @@ namespace Assets.Scripts.Learn
 
         private IEnumerator Routine()
         {
-            _cheese.text = _cheeseBox.maxCheese.ToString();
+            _cheese.text = _cheeseBox.Target.ToString();
             _minutes.text = _timer.range.ToString();
 
             while (_canvasGroup.alpha < 1)

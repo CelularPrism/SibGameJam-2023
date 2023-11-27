@@ -4,42 +4,49 @@ using UnityEngine;
 
 public class BaseCheeseInventory : MonoBehaviour, IItem
 {
-    public int maxCheese;
-    [SerializeField] private CheeseInventory inventory;
-    [SerializeField] private EndGameEvent eventor;
+    [SerializeField] private CheeseInventory _inventory;
+    [SerializeField] private EndGameEvent _eventor;
     [SerializeField] private EventReference _useEvent;
-
-    private int _cheese = 0;
     private CheeseCounter _ui;
+    private CheeseInstance[] _allCheeseOnLevel;
+
+    public int Current { get; private set; } = 0;
+    public int Target { get; private set; }
 
     private void Awake()
     {
         _ui = FindAnyObjectByType<CheeseCounter>();
+        _allCheeseOnLevel = FindObjectsOfType<CheeseInstance>();
+
+        foreach (CheeseInstance cheese in _allCheeseOnLevel)
+        {
+            Target += (int)(cheese.Size / 0.125f);
+        }
     }
 
     private void Start()
     {
-        _ui.Set(_cheese, maxCheese);
+        _ui.Set(Current, Target);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         var localInventory = other.GetComponent<CheeseInventory>();
-        if (inventory == null && localInventory != null)
-            inventory = localInventory;
+        if (_inventory == null && localInventory != null)
+            _inventory = localInventory;
     }
 
     public void Use()
     {
-        if (inventory != null)
+        if (_inventory != null)
         {
-            _cheese += inventory.RemoveCheese();
-            _ui.Set(_cheese, maxCheese);
+            Current += (int)(_inventory.RemoveAll() / 0.125f);
+            _ui.Set(Current, Target);
             RuntimeManager.PlayOneShot(_useEvent, transform.position);
 
-            if (_cheese >= maxCheese)
+            if (Current >= Target)
             {
-                GameEvents.Instance.Subscribe(GameEventType.Won, eventor.Win);
+                GameEvents.Instance.Subscribe(GameEventType.Won, _eventor.Win);
                 GameEvents.Instance.Dispatch(GameEventType.Won);
                 Debug.Log("Won");
             }
