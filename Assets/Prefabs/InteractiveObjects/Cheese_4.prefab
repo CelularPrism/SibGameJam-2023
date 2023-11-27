@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Size>k__BackingField: 1
-  <Weight>k__BackingField: 2
+  <Weight>k__BackingField: 0.9
   <Mesh>k__BackingField: {fileID: -7768234861666130773, guid: cea5b50c26dabc740931a44f7df5fdff, type: 3}
 --- !u!1001 &8363594200156069237
 PrefabInstance:

@@ -28,7 +28,7 @@ public class CheeseInventory : MonoBehaviour
         if (Count + size <= 1)
         {
             Count = Mathf.Clamp01(Count += size);
-            _motionController.MoveSpeed -= weight;
+            _motionController.MoveSpeed -= _motionController.MoveSpeed * weight;
 
             if (_bar)
                 _bar.Set(Count);

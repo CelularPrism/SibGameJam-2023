@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2460625636353472534}
   - component: {fileID: 2460625636353472533}
   - component: {fileID: 2460625636353472532}
+  - component: {fileID: 8459095376013245075}
   m_Layer: 3
   m_Name: CheeseOrange_2
   m_TagString: Untagged
@@ -48,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c577d51bfd8dbc7418c8a4864b665e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
 --- !u!114 &2460625636353472534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +110,21 @@ CapsuleCollider:
   m_Height: 20
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8459095376013245075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2460625636353472531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b0198b87163dd4db85ad42dabd4a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Size>k__BackingField: 0.25
+  <Weight>k__BackingField: 0.25
+  <Mesh>k__BackingField: {fileID: 0}
 --- !u!1001 &6369739749745110302
 PrefabInstance:
   m_ObjectHideFlags: 0
