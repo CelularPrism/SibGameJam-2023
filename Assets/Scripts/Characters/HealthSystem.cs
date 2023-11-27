@@ -31,7 +31,9 @@ public class HealthSystem : MonoBehaviour
         {
             _health = Mathf.Clamp(value, 0, MaxHealth);
             OnChange?.Invoke(_health);
-            _healthBar.Set(_health);
+
+            if (_healthBar)
+                _healthBar.Set(_health);
 
             if (_health <= 0)
             {
@@ -50,7 +52,9 @@ public class HealthSystem : MonoBehaviour
         _hurtSoundTime = _hurtSoundInterval;
         _character = transform.GetComponent<ICharacter>();
         _healthBar = FindAnyObjectByType<HealthBar>();
-        _healthBar.Set(Health);
+
+        if (_healthBar)
+            _healthBar.Set(Health);
     }
 
     private void Update()

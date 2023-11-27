@@ -71,9 +71,4 @@ public class GameEvents : MonoBehaviour, IEventBus
         _events.Values.ToList().ForEach(gameEvent => gameEvent.RemoveAllListeners());
         _events.Clear();
     }
-
-    internal void Subscribe(GameEventType fireAppeared, object onFireAppeared)
-    {
-        throw new NotImplementedException();
-    }
 }

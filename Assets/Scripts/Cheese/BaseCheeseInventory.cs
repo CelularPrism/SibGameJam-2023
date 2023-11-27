@@ -17,6 +17,7 @@ public class BaseCheeseInventory : MonoBehaviour, IItem
     {
         _ui = FindAnyObjectByType<CheeseCounter>();
         _allCheeseOnLevel = FindObjectsOfType<CheeseInstance>();
+        _inventory = FindObjectOfType<CheeseInventory>();
 
         foreach (CheeseInstance cheese in _allCheeseOnLevel)
         {
