@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6984274857117839098}
   - component: {fileID: 5290495779868093465}
   - component: {fileID: 9204165660358203888}
-  - component: {fileID: 120082890521795215}
+  - component: {fileID: 7462641248846294680}
   m_Layer: 0
   m_Name: Opt_Bar_table
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &120082890521795215
-BoxCollider:
+--- !u!64 &7462641248846294680
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,6 +94,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 15.490414, y: 7.058152, z: 6.3809}
-  m_Center: {x: 0.00000047683716, y: 3.5755658, z: -0.41779494}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3139684102554920181, guid: e77cff4d74c815d4198874ae532b1231, type: 3}

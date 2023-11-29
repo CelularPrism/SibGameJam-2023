@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 5010788405428773320}
   - component: {fileID: 7067679130955995230}
   - component: {fileID: 5519200661978689660}
-  - component: {fileID: 2037756470224697765}
+  - component: {fileID: 2673448291628124961}
   m_Layer: 0
   m_Name: Table.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5010788405428773320
 Transform:
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2037756470224697765
-BoxCollider:
+--- !u!64 &2673448291628124961
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,6 +94,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.7132807, y: 4.4596615, z: 3.7132807}
-  m_Center: {x: 0, y: 2.2100692, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2692889195491215165, guid: 04089d046461ec44d928b10a8523a2f4, type: 3}

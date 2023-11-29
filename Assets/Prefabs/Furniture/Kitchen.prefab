@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3031079145302848574}
   - component: {fileID: 2943649458037533212}
   - component: {fileID: 8543107544256253817}
+  - component: {fileID: 5521441536293861699}
+  - component: {fileID: 2531489759749848941}
   m_Layer: 0
   m_Name: Kitchen
   m_TagString: Untagged
@@ -95,5 +97,31 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 15.638744, y: 12.242941, z: 4.7400236}
-  m_Center: {x: 0, y: 6.023185, z: -2.1180434}
+  m_Size: {x: 15.638744, y: 4.51, z: 4.7400236}
+  m_Center: {x: 0, y: 2.3, z: -2.1180434}
+--- !u!65 &5521441536293861699
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7372043623898826797}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.638744, y: 3.91, z: 3.46}
+  m_Center: {x: 0, y: 10.18, z: -1.52}
+--- !u!65 &2531489759749848941
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7372043623898826797}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.638744, y: 3.99, z: 0.49}
+  m_Center: {x: 0, y: 6.35, z: -0.03}
