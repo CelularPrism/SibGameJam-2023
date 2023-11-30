@@ -12,6 +12,7 @@ namespace Assets.Scripts.Fire
         [SerializeField] private float _scale;
         [SerializeField] private bool _canSpread, _canRestore;
         [SerializeField] private float _restoreDelay;
+        [SerializeField] private float _deathSize = 0.6f;
         private CapsuleHurtBox _hurtBox;
         private FireSpark _spark;
         private ParticleSystem _particleSystem;
@@ -58,7 +59,7 @@ namespace Assets.Scripts.Fire
 
         private void OnParticleCollision(GameObject other)
         {
-            if (_health > 0.4f)
+            if (_health > _deathSize)
             {
                 _health -= _fightingSpeed * Time.deltaTime;
                 transform.localScale = (Vector3.one * _scale) * _health;
