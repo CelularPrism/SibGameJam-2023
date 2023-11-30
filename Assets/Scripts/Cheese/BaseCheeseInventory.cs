@@ -30,6 +30,11 @@ public class BaseCheeseInventory : MonoBehaviour, IItem
         _ui.Set(Current, Target);
     }
 
+    private void OnEnable()
+    {
+        GameEvents.Instance.Subscribe(GameEventType.Won, _eventor.Win);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         var localInventory = other.GetComponent<CheeseInventory>();
@@ -47,7 +52,6 @@ public class BaseCheeseInventory : MonoBehaviour, IItem
 
             if (Current >= Target)
             {
-                GameEvents.Instance.Subscribe(GameEventType.Won, _eventor.Win);
                 GameEvents.Instance.Dispatch(GameEventType.Won);
                 Debug.Log("Won");
             }
@@ -56,6 +60,6 @@ public class BaseCheeseInventory : MonoBehaviour, IItem
 
     private void OnDisable()
     {
-        GameEvents.Instance.UnSubscribe(GameEventType.Won);
+        GameEvents.Instance.UnSubscribe(GameEventType.Won, _eventor.Win);
     }
 }

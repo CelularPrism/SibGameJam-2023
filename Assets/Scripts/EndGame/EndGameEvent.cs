@@ -1,9 +1,6 @@
 using Assets.Scripts.Fire;
 using FMODUnity;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EndGameEvent : MonoBehaviour
 {
@@ -22,7 +19,7 @@ public class EndGameEvent : MonoBehaviour
     public void Lose()
     {
         MuteAll();
-        timer.StopTimer();
+        timer.enabled = false;
         character.Stop();
         losePanel.SetActive(true);
     }
@@ -30,7 +27,7 @@ public class EndGameEvent : MonoBehaviour
     public void Win()
     {
         MuteAll();
-        timer.StopTimer();
+        timer.enabled = false;
         character.Stop();
         winPanel.SetActive(true);
     }
