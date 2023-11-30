@@ -7,16 +7,42 @@ namespace Assets.Scripts
     {
         public UnityEvent OnEnter, OnStay, OnExit;
 
-        private void OnTriggerEnter(Collider other) => OnEnter?.Invoke();
+        [SerializeField] private LayerMask _layerMask;
 
-        private void OnCollisionEnter(Collision collision) => OnEnter?.Invoke();
+        private void OnTriggerEnter(Collider other)
+        {
+            if (_layerMask == (_layerMask | (1 << other.gameObject.layer)))
+                OnEnter?.Invoke();
+        }
 
-        private void OnTriggerStay(Collider other) => OnStay?.Invoke();
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (_layerMask == (_layerMask | (1 << collision.gameObject.layer)))
+                OnEnter?.Invoke();
+        }
 
-        private void OnCollisionStay(Collision collision) => OnStay?.Invoke();
+        private void OnTriggerStay(Collider other)
+        {
+            if (_layerMask == (_layerMask | (1 << other.gameObject.layer)))
+                OnStay?.Invoke();
+        }
 
-        private void OnTriggerExit(Collider other) => OnExit?.Invoke();
+        private void OnCollisionStay(Collision collision)
+        {
+            if (_layerMask == (_layerMask | (1 << collision.gameObject.layer)))
+                OnStay?.Invoke();
+        }
 
-        private void OnCollisionExit(Collision collision) => OnExit?.Invoke();
+        private void OnTriggerExit(Collider other)
+        {
+            if (_layerMask == (_layerMask | (1 << other.gameObject.layer)))
+                OnExit?.Invoke();
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (_layerMask == (_layerMask | (1 << collision.gameObject.layer)))
+                OnExit?.Invoke();
+        }
     }
 }
