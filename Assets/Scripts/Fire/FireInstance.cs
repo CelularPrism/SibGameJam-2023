@@ -21,6 +21,7 @@ namespace Assets.Scripts.Fire
         private float _restoreTime;
         private FireMediator _mediator;
         private readonly List<Burning> _burning = new();
+        private readonly List<HealthSystem> _damagables = new();
 
         private void Awake()
         {
@@ -50,6 +51,7 @@ namespace Assets.Scripts.Fire
         {
             if (other.TryGetComponent(out HealthSystem health))
             {
+                _damagables.Add(health);
                 health.AddDamage<FireInstance>(_damage);
             }
         }
@@ -113,6 +115,8 @@ namespace Assets.Scripts.Fire
 
             if (_canRestore)
                 Invoke(nameof(Restore), _restoreDelay);
+
+            _damagables.ForEach(damagable => damagable.RemoveDamage<FireInstance>());
         }
 
         private void Restore() => gameObject.SetActive(true);
