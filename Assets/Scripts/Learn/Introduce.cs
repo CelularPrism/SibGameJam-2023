@@ -33,9 +33,15 @@ namespace Assets.Scripts.Learn
 
         private void OnEnable()
         {
-            _cheese.text = _cheeseBox.Target.ToString();
-            _minutes.text = _timer.range.ToString();
             _closeButton.onClick.AddListener(OnCloseButtonClicked);
+        }
+
+        private void Update()
+        {
+            if (_cheese)
+                _cheese.text = _cheeseBox.Target.ToString();
+
+            _minutes.text = _timer.range.ToString();
         }
 
         private void OnCloseButtonClicked() => StartCoroutine(Desappear());
