@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour, IItem
@@ -17,7 +15,7 @@ public class Door : MonoBehaviour, IItem
     public void Use()
     {
         if (ceiling != null)
-            ceiling.GetComponent<WallDestroyer>().Destroy();
+            ceiling.GetComponent<WallDestroyer>().enabled = true;
         Destroy(transform.gameObject);
     }
 
