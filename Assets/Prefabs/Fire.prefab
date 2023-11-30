@@ -14463,7 +14463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sparkTimerSpeed: 0.05
   _hurtSpeed: 0.5
-  _fightingSpeed: 1.5
+  _fightingSpeed: 2
   _damage: 1
   _scale: 5
   _canSpread: 0
@@ -29039,10 +29039,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.8
+  m_Radius: 1
   m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 1.5, z: 0}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &2812894946481272353
 MonoBehaviour:
   m_ObjectHideFlags: 0
