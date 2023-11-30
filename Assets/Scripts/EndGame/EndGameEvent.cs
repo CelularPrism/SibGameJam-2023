@@ -1,15 +1,14 @@
 using Assets.Scripts.Fire;
+using Assets.Scripts.Tears;
 using FMODUnity;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EndGameEvent : MonoBehaviour
 {
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
     [SerializeField] private CharacterMotionController character;
+    [SerializeField] private TearsSource tears;
     [SerializeField] private GameObject BGMusic;
     [SerializeField] private Timer timer;
 
@@ -22,16 +21,18 @@ public class EndGameEvent : MonoBehaviour
     public void Lose()
     {
         MuteAll();
-        timer.StopTimer();
-        character.Stop();
+        timer.enabled = false;
+        character.enabled = false;
+        tears.enabled = false;
         losePanel.SetActive(true);
     }
 
     public void Win()
     {
         MuteAll();
-        timer.StopTimer();
-        character.Stop();
+        timer.enabled = false;
+        character.enabled = false;
+        tears.enabled = false;
         winPanel.SetActive(true);
     }
 
