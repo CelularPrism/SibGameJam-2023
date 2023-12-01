@@ -35,7 +35,7 @@ public class EndGameEvent : MonoBehaviour
         timer.enabled = false;
         character.enabled = false;
         tears.enabled = false;
-        totalTime.text = $"{timer.GetTime().Minutes}:{timer.GetTime().Seconds}";
+        totalTime.text = $"{timer.GetPlaytime().Minutes}:{timer.GetPlaytime().Seconds}";
         winPanel.SetActive(true);
     }
 
