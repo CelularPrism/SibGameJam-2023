@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -11,12 +10,18 @@ namespace Assets.Scripts.Fire
         private readonly List<FireInstance> _disabledInstances = new();
 
         [field: SerializeField] public int Limit { get; private set; } = 100;
+        [field: SerializeField] public int Count { get; private set; }
         public bool IsLimitReached => _instances.Count >= Limit;
 
         private void Start()
         {
             int fireCount = FindObjectsOfType<FireInstance>().Length;
             Limit = fireCount > Limit ? fireCount : Limit;
+        }
+
+        private void Update()
+        {
+            Count = _instances.Where(instance => instance.gameObject.activeInHierarchy).Count();
         }
 
         public void Add(FireInstance instance) => _instances.Add(instance);
