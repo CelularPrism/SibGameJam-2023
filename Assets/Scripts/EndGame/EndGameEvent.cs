@@ -1,6 +1,7 @@
 using Assets.Scripts.Fire;
 using Assets.Scripts.Tears;
 using FMODUnity;
+using TMPro;
 using UnityEngine;
 
 public class EndGameEvent : MonoBehaviour
@@ -11,6 +12,7 @@ public class EndGameEvent : MonoBehaviour
     [SerializeField] private TearsSource tears;
     [SerializeField] private GameObject BGMusic;
     [SerializeField] private Timer timer;
+    [SerializeField] private TMP_Text totalTime;
 
     private void Start()
     {
@@ -33,6 +35,7 @@ public class EndGameEvent : MonoBehaviour
         timer.enabled = false;
         character.enabled = false;
         tears.enabled = false;
+        totalTime.text = $"{timer.GetTime().Minutes}:{timer.GetTime().Seconds}";
         winPanel.SetActive(true);
     }
 
