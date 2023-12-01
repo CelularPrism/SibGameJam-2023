@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuEvents : MonoBehaviour
 {
-    [SerializeField] private int _gameplayScene;
     [SerializeField] private EventReference _clickEvent;
     [SerializeField] private Camera _camera;
 
@@ -20,13 +19,9 @@ public class MenuEvents : MonoBehaviour
 
     public void QuitGame() => Application.Quit();
 
-    public void StartGame() => SceneManager.LoadScene(_gameplayScene);
+    public void StartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     public void ClickBtn() => RuntimeManager.PlayOneShot(_clickEvent, _camera.GetComponent<Transform>().position);
 
-    public void RestartGame()
-    {
-        var scene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(scene);
-    }
+    public void RestartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 }
