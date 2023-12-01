@@ -918,7 +918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b28c417b0441f54b8e2664e85a04cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _limit: 0.6
+  _limit: 0.7
   _pulsationCurve:
     serializedVersion: 2
     m_Curve:
@@ -6518,6 +6518,14 @@ PrefabInstance:
     - target: {fileID: 5527646661958920356, guid: f291eef58ba54ef41812af2e91613529, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315412392903590911, guid: f291eef58ba54ef41812af2e91613529, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 191.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315412392903590911, guid: f291eef58ba54ef41812af2e91613529, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 160.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f291eef58ba54ef41812af2e91613529, type: 3}
@@ -22439,6 +22447,18 @@ PrefabInstance:
     - target: {fileID: 6649186444389677, guid: 9398b53b10dbf364780be128acc16993, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 88583550907752891, guid: 9398b53b10dbf364780be128acc16993, type: 3}
+      propertyPath: _health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 88583550907752891, guid: 9398b53b10dbf364780be128acc16993, type: 3}
+      propertyPath: _restoreSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 88583550907752891, guid: 9398b53b10dbf364780be128acc16993, type: 3}
+      propertyPath: <MaxHealth>k__BackingField
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 318906108137186526, guid: 9398b53b10dbf364780be128acc16993, type: 3}
       propertyPath: m_Layer
