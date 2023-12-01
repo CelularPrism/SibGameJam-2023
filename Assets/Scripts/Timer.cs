@@ -23,7 +23,6 @@ public class Timer : MonoBehaviour
 
     private void OnEnable()
     {
-        range += DateTime.Now.Subtract(_stopTime).Seconds / 60.0f;
         _ui.Set(GetTime());
         GameEvents.Instance.Subscribe(GameEventType.Lose, eventor.Lose);
     }
