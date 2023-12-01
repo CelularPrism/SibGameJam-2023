@@ -35,11 +35,13 @@ public class Timer : MonoBehaviour
         {
             GameEvents.Instance.Dispatch(GameEventType.Lose);
         }
-
-        _ui.Set(GetTime());
     }
 
+    private void Update() => _ui.Set(GetTime());
+
     public TimeSpan GetTime() => _start.Subtract(DateTime.Now.AddMinutes(-range));
+
+    public TimeSpan GetPlaytime() => _start.Subtract(DateTime.Now);
 
     private void OnDisable()
     {
