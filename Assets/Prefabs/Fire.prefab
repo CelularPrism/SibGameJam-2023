@@ -14464,8 +14464,8 @@ MonoBehaviour:
   _sparkTimerSpeed: 0.05
   _hurtSpeed: 0.5
   _fightingSpeed: 1.5
+  _firstDamage: 0.1
   _damage: 25
-  _enterDamage: 25
   _scale: 5
   _canSpread: 0
   _canRestore: 0

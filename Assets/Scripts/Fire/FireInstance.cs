@@ -8,6 +8,7 @@ namespace Assets.Scripts.Fire
         [SerializeField] private float _sparkTimerSpeed = 0.05f;
         [SerializeField] private float _hurtSpeed = 0.5f;
         [SerializeField] private float _fightingSpeed = 1;
+        [SerializeField] private float _firstDamage;
         [SerializeField] private float _damage;
         [SerializeField] private float _scale;
         [SerializeField] private bool _canSpread, _canRestore;
@@ -52,6 +53,7 @@ namespace Assets.Scripts.Fire
         {
             if (other.TryGetComponent(out HealthSystem health))
             {
+                health.Damage(_firstDamage);
                 _damagables.Add(health);
                 health.AddDamage<FireInstance>(_damage);
             }
