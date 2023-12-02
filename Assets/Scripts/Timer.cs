@@ -41,7 +41,7 @@ public class Timer : MonoBehaviour
 
     public TimeSpan GetTime() => _start.Subtract(DateTime.Now.AddMinutes(-range));
 
-    public TimeSpan GetPlaytime() => _start.Subtract(DateTime.Now);
+    public TimeSpan GetPlaytime() => new(DateTime.Now.Ticks - _start.Ticks);
 
     private void OnDisable()
     {

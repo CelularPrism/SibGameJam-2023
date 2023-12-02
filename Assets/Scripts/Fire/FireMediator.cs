@@ -21,7 +21,7 @@ namespace Assets.Scripts.Fire
 
         private void Update()
         {
-            Count = _instances.Where(instance => instance.gameObject.activeInHierarchy).Count();
+            Count = _instances.Where(instance => instance != null && instance.gameObject.activeInHierarchy).Count();
         }
 
         public void Add(FireInstance instance) => _instances.Add(instance);
