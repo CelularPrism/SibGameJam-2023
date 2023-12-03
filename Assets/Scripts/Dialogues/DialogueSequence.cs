@@ -8,56 +8,129 @@ namespace Assets.Scripts.Dialogues
 {
     public class DialogueSequence : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _field;
-        [SerializeField] private Image _leftPerson, _rightPerson;
-        [SerializeField] private Button _nextButton;
-        [SerializeField, Range(0, 1)] private float _fade;
+        [SerializeField] private TMP_Text _field, _skipMessage;
+        [SerializeField] private Transform _persons;
+        [SerializeField] private Color _fadeColor;
+        [SerializeField] private float _fadeSpeed, _textSpeed;
         [SerializeField] private DialogueMessage[] _messages;
-        private Color _fadedColor = Color.white;
-        private int _index;
+        private int _messageIndex, _characterIndex;
+        private float _fadeTime, _textTime;
+        private bool _isTelling;
+        private string _text;
+        private Image[] _personsImages;
+        private bool _isTextFinished;
 
         private void Awake()
         {
-            _fadedColor.a = _fade;
+            _personsImages = _persons.GetComponentsInChildren<Image>(includeInactive: true);
         }
 
         private void OnEnable()
         {
+            for (int i = 0; i < _personsImages.Length; i++)
+            {
+                _personsImages[i].color = _fadeColor;
+                _personsImages[i].rectTransform.localScale = Vector3.one * 0.7f;
+            }
             Tell();
-            _nextButton.onClick?.AddListener(Next);
+        }
+
+        private void Update()
+        {
+            if (_isTelling)
+            {
+                if (Input.GetMouseButtonDown(0))
+                    Next();
+
+                if (_isTextFinished == false)
+                {
+                    if (_characterIndex < _text.Length)
+                    {
+                        if (_textTime >= 1)
+                        {
+                            _field.text += _text[_characterIndex];
+                            _textTime = 0;
+                            _characterIndex++;
+                        }
+
+                        _textTime += _textSpeed * Time.deltaTime;
+                    }
+                    else
+                    {
+                        _skipMessage.gameObject.SetActive(true);
+                        _isTextFinished = true;
+                    }
+                }
+
+                if (_messageIndex == 0)
+                    _fadeTime = 1;
+
+                _fadeTime = Mathf.Clamp01(_fadeTime);
+
+                if (_messageIndex > 0)
+                    if (_messages[_messageIndex - 1].Person != _messages[_messageIndex].Person)
+                    {
+                        _messages[_messageIndex - 1].Person.color = Color
+                            .Lerp(_messages[_messageIndex - 1].Person.color, _fadeColor, _fadeTime);
+
+                        _messages[_messageIndex - 1].Person.rectTransform.localScale = Vector3
+                            .Lerp(_messages[_messageIndex - 1].Person.rectTransform.localScale, Vector3.one * 0.7f, _fadeTime);
+                    }
+
+                _messages[_messageIndex].Person.color = Color
+                    .Lerp(_messages[_messageIndex].Person.color, Color.white, _fadeTime);
+
+                _messages[_messageIndex].Person.rectTransform.localScale = Vector3
+                    .Lerp(_messages[_messageIndex].Person.rectTransform.localScale, Vector3.one, _fadeTime);
+
+                _fadeTime += _fadeSpeed * Time.deltaTime;
+            }
         }
 
         private void Tell()
         {
-            _leftPerson.color = _messages[_index].IsLeft ? Color.white: _fadedColor;
-            _rightPerson.color = _messages[_index].IsLeft ? _fadedColor : Color.white;
-            _field.text = _messages[_index].Text;
+            _fadeTime = 0;
+            _textTime = 0;
+            _characterIndex = 0;
+            _field.text = "";
+            _text = _messages[_messageIndex].Text;
+            _isTextFinished = false;
+            _isTelling = true;
+
+            if (_messages[_messageIndex].Emotion != null)
+                _messages[_messageIndex].Person.sprite = _messages[_messageIndex].Emotion;
         }
 
         private void Next()
         {
-            _index++;
-
-            if (_index >= _messages.Length)
+            if (_messageIndex >= _messages.Length - 1)
             {
-                _nextButton.interactable = false;
+                _isTelling = false;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 return;
             }
 
-            Tell();
-        }
+            if (_isTextFinished == false)
+            {
+                _skipMessage.gameObject.SetActive(true);
+                _isTextFinished = true;
+                _field.text = _text;
+                return;
+            }
 
-        private void OnDisable()
-        {
-            _nextButton.onClick?.RemoveListener(Next);
+            _skipMessage.gameObject.SetActive(false);
+            _isTelling = false;
+            _messageIndex++;
+
+            Tell();
         }
     }
 
     [Serializable]
     public struct DialogueMessage
     {
-        public bool IsLeft;
-        [TextArea(1, 100)] public string Text;
+        [field: SerializeField] public Image Person { get; private set; }
+        [field: SerializeField] public Sprite Emotion { get; private set; }
+        [field: SerializeField, TextArea(1, 100)] public string Text { get; private set; }
     }
 }
