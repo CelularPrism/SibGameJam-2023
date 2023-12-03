@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17525879, g: 0.21926859, b: 0.3015791, a: 1}
+  m_IndirectSpecularColor: {r: 0.17525914, g: 0.21926919, b: 0.30158004, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11979,46 +11979,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 693981847, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 693981847, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 693981847, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1372775206, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1372775206, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 822244348680023520, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 822244348680023520, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 822244348680023520, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 142
-      objectReference: {fileID: 0}
-    - target: {fileID: 822244348680023520, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 2381388901324155249, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 1727554130508841295, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 1966240608}
     - target: {fileID: 3570066947918890824, guid: a5b19d07fdd94bf45b3bcf38e376ba28, type: 3}
       propertyPath: tears
       value: 
