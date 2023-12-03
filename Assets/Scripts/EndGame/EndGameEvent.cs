@@ -53,7 +53,7 @@ public class EndGameEvent : MonoBehaviour
                     ev.Stop();
                 }
 
-                Destroy(fire.gameObject);
+                fire.gameObject.SetActive(false);
             }
         }
     }

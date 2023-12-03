@@ -18,7 +18,7 @@ public class LearnTrigger : MonoBehaviour
             {
                 obj.SetActive(true);
             }
-            Destroy(transform.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
