@@ -24,7 +24,6 @@ public class CheeseTrigger : MonoBehaviour, IItem
         if (_inventory.TryPut(_instance.Mesh, _instance.Size, _instance.Weight))
         {
             gameObject.SetActive(false);
-            Destroy(gameObject);
         }
     }
 }

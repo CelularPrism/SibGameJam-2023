@@ -19,7 +19,7 @@ public class Seed : MonoBehaviour, IItem
         {
             healthSystem.Heal(1);
             Debug.Log("Heal");
-            Destroy(transform.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

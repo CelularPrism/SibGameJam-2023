@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Fire
@@ -13,10 +14,14 @@ namespace Assets.Scripts.Fire
         [SerializeField] private float _scale;
         [SerializeField] private bool _canSpread, _canRestore;
         [SerializeField] private float _restoreDelay;
-        [SerializeField] private float _deathSize = 0.6f;
+        [SerializeField] private float _deathThreshold = 0.6f;
+        [SerializeField] private ParticleSystem _steam;
+        [SerializeField] private float _timeBeforeDisappear;
+        [SerializeField] private float[] _defaultLifetimes;
+        private CapsuleCollider _hitBox;
         private CapsuleHurtBox _hurtBox;
         private FireSpark _spark;
-        private ParticleSystem _particleSystem;
+        private ParticleSystem[] _particleSystems;
         private float _sparkTime;
         private float _randomMoment;
         private float _health = 1;
@@ -27,10 +32,18 @@ namespace Assets.Scripts.Fire
 
         private void Awake()
         {
-            _hurtBox = GetComponentInChildren<CapsuleHurtBox>();
+            _steam.gameObject.SetActive(false);
+            _hitBox = GetComponent<CapsuleCollider>();
+            _hurtBox = GetComponentInChildren<CapsuleHurtBox>(includeInactive: true);
             _spark = GetComponentInChildren<FireSpark>(includeInactive: true);
-            _particleSystem = GetComponent<ParticleSystem>();
             _mediator = FindObjectOfType<FireMediator>();
+            _particleSystems = GetComponentsInChildren<ParticleSystem>();
+            _particleSystems = _particleSystems
+                .Where(particleSystem => particleSystem.gameObject != gameObject).ToArray();
+
+            //_defaultLifetimes = _particleSystems
+            //    .Select(particleSystem => particleSystem.main.startLifetimeMultiplier)
+            //    .ToArray();
 
             if (_mediator == null)
                 _mediator = new GameObject("[FIRE MEDIATOR]").AddComponent<FireMediator>();
@@ -45,8 +58,19 @@ namespace Assets.Scripts.Fire
             _health = 1;
             _sparkTime = 0;
             _randomMoment = Random.value;
-            transform.localScale = Vector3.one * _scale;
-            _particleSystem.Clear();
+            //transform.localScale = Vector3.one * _scale;
+            _hitBox.enabled = true;
+            _steam.gameObject.SetActive(false);
+            _hurtBox.gameObject.SetActive(true);
+
+            for (int i = 0; i < _particleSystems.Length; i++)
+            {
+                _particleSystems[i].Play();
+                ParticleSystem.MainModule particleSystem = _particleSystems[i].main;
+                particleSystem.startLifetimeMultiplier = _defaultLifetimes[i];
+            }
+
+            _particleSystems[0].Clear();
         }
 
         private void OnEnter(Collider other)
@@ -61,20 +85,48 @@ namespace Assets.Scripts.Fire
 
         private void OnParticleCollision(GameObject other)
         {
-            if (_health > _deathSize)
+            if (_health > _deathThreshold)
             {
                 _health -= _fightingSpeed * Time.deltaTime;
-                transform.localScale = (Vector3.one * _scale) * _health;
+                //transform.localScale = (Vector3.one * _scale) * _health;
+
+                for (int i = 0; i < _particleSystems.Length; i++)
+                {
+                    ParticleSystem.MainModule particleSystem = _particleSystems[i].main;
+                    particleSystem.startLifetimeMultiplier = _defaultLifetimes[i] * _health;
+                }
             }
             else
             {
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
+                _hitBox.enabled = false;
+
+                for (int i = 0; i < _particleSystems.Length; i++)
+                {
+                    _particleSystems[i].Stop();
+                }
+
+                _hurtBox.gameObject.SetActive(false);
+                _steam.gameObject.SetActive(true);
+                _damagables.ForEach(damagable => damagable.RemoveDamage<FireInstance>());
+                Invoke(nameof(Disappear), _timeBeforeDisappear);
             }
+        }
+
+        private void Disappear()
+        {
+            _steam.Stop();
+            Invoke(nameof(OnSteamStoped), 5);
+        }
+
+        private void OnSteamStoped()
+        {
+            gameObject.SetActive(false);
         }
 
         private void Update()
         {
-            if (_canSpread)
+            if (_canSpread && _steam.gameObject.activeInHierarchy == false)
             {
                 if (_mediator.IsLimitReached)
                     return;

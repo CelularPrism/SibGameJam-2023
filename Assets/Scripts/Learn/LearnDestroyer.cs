@@ -26,8 +26,8 @@ public class LearnDestroyer : MonoBehaviour
         foreach (var learn in learns)
         {
             Debug.Log(learn);
-            if (learn.gameObject.activeInHierarchy && learn.gameObject != transform.gameObject) 
-                Destroy(learn.gameObject);
+            if (learn.gameObject.activeInHierarchy && learn.gameObject != transform.gameObject)
+                learn.gameObject.SetActive(false);
         }
     }
 
@@ -41,7 +41,7 @@ public class LearnDestroyer : MonoBehaviour
             var alpha = _image.color.a;
             _image.color = new Color(red, green, blue, alpha - speedSmooth / 255);
             if (_image.color.a < 0.1)
-                Destroy(_image.gameObject);
+                _image.gameObject.SetActive(false);
         }
     }
 
