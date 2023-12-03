@@ -19,11 +19,23 @@ public class MenuEvents : MonoBehaviour
 
     public void QuitGame() => Application.Quit();
 
-    public void MainMenu() => SceneManager.LoadScene(0);
+    public void MainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
 
-    public void StartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    public void StartGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
     public void ClickBtn() => RuntimeManager.PlayOneShot(_clickEvent, _camera.GetComponent<Transform>().position);
 
-    public void RestartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    public void RestartGame() 
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
