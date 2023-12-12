@@ -9,38 +9,58 @@ public class CheeseInventory : MonoBehaviour
     [SerializeField] private Material _cheeseMaterial;
     [SerializeField] private float _viewSize = 15;
     private CharacterMotionController _motionController;
+    private HealthSystem _health;
     private float _defaultSpeed;
     private CheeseBar _bar;
     private readonly List<CheeseInstance> _views = new();
+    private readonly List<CheeseInstance> _cheese = new();
 
-    public float Count { get; private set; } = 0;
-    public bool IsFull => Count >= 1;
+    public float Fill { get; private set; } = 0;
+    public bool IsFull => Fill >= 1;
 
     private void Awake()
     {
         _motionController = GetComponent<CharacterMotionController>();
+        _health = GetComponent<HealthSystem>();
         _defaultSpeed = _motionController.MoveSpeed;
         _bar = FindObjectOfType<CheeseBar>();
     }
 
-    public bool TryPut(Mesh mesh, float size, float weight)
+    private void OnEnable()
     {
-        if (Count + size <= 1)
+        _health.OnDamage += OnDamage;
+    }
+
+    private void OnDamage(float damage)
+    {
+        if (_health.Health == 0)
         {
-            Count = Mathf.Clamp01(Count += size);
-            _motionController.MoveSpeed -= _motionController.MoveSpeed * weight;
+            RemoveAll();
+            return;
+        }
+
+        Remove();
+    }
+
+    public bool TryPut(CheeseInstance cheese)
+    {
+        if (Fill + cheese.Size <= 1)
+        {
+            _cheese.Add(cheese);
+            Fill = Mathf.Clamp01(Fill += cheese.Size);
+            _motionController.MoveSpeed -= _motionController.MoveSpeed * cheese.Weight;
 
             if (_bar)
-                _bar.Set(Count);
+                _bar.Set(Fill);
 
-            CheeseInstance view = _views.FirstOrDefault(view => view.Size == size && view.gameObject.activeInHierarchy == false);
+            CheeseInstance view = _views.FirstOrDefault(view => view.Size == cheese.Size && view.gameObject.activeInHierarchy == false);
 
             if (view == null)
             {
-                view = new GameObject($"Cheese [{size}]").AddComponent<CheeseInstance>();
-                view.Construct(mesh, size, weight);
+                view = new GameObject($"Cheese [{cheese.Size}]").AddComponent<CheeseInstance>();
+                view.Construct(cheese.Mesh, cheese.Size, cheese.Weight);
                 view.transform.SetParent(_view);
-                view.gameObject.AddComponent<MeshFilter>().mesh = mesh;
+                view.gameObject.AddComponent<MeshFilter>().mesh = cheese.Mesh;
                 view.gameObject.AddComponent<MeshRenderer>().material = _cheeseMaterial;
                 view.transform.localPosition = Vector3.zero;
                 view.transform.localScale = Vector3.one * _viewSize;
@@ -49,7 +69,7 @@ public class CheeseInventory : MonoBehaviour
             else
                 view.gameObject.SetActive(true);
 
-            view.transform.localRotation = Quaternion.Euler(Vector3.forward * (45 * (Count * 8)));
+            view.transform.localRotation = Quaternion.Euler(Vector3.forward * (45 * (Fill * 8)));
             return true;
         }
 
@@ -58,14 +78,35 @@ public class CheeseInventory : MonoBehaviour
 
     public float RemoveAll()
     {
-        float count = Count;
-        Count = 0;
+        float count = Fill;
+        Fill = 0;
         _motionController.MoveSpeed = _defaultSpeed;
 
         for (int i = 0; i < _view.childCount; i++)
         {
             _view.GetChild(i).gameObject.SetActive(false);
         }
+
+        _cheese.Clear();
         return count;
+    }
+
+    public void Remove()
+    {
+        if (Fill > 0)
+        {
+            Fill = Mathf.Clamp01(Fill -= _cheese[^1].Size);
+            _motionController.MoveSpeed += _motionController.MoveSpeed * _cheese[^1].Weight;
+            IEnumerable<CheeseInstance> activeViews = _views.Where(view => view.gameObject.activeInHierarchy);
+            activeViews.ElementAt(activeViews.Count() - 1).gameObject.SetActive(false);
+            _cheese[^1].transform.position = transform.position;
+            _cheese[^1].gameObject.SetActive(true);
+            _cheese.RemoveAt(_cheese.Count - 1);
+        }
+    }
+
+    private void OnDisable()
+    {
+        _health.OnDamage -= OnDamage;
     }
 }

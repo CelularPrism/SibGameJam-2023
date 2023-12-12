@@ -21,7 +21,7 @@ public class CheeseTrigger : MonoBehaviour, IItem
 
     public void Use()
     {
-        if (_inventory.TryPut(_instance.Mesh, _instance.Size, _instance.Weight))
+        if (_inventory.TryPut(_instance))
         {
             gameObject.SetActive(false);
         }

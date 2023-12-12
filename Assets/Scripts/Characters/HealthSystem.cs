@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
+    public event Action<float> OnDamage;
     public event Action<float> OnChange;
 
     [field: SerializeField] public float MaxHealth { get; private set; }
@@ -106,6 +107,8 @@ public class HealthSystem : MonoBehaviour
 
     public void Damage(float value = 1)
     {
+        OnDamage?.Invoke(value);
+
         if (_character.IsDead)
             return;
 
