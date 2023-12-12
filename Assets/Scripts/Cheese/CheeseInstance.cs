@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Assets.Scripts.Movement_Player;
+using System;
 using UnityEngine;
 
-public class CheeseInstance : MonoBehaviour
+public class CheeseInstance : MonoBehaviour, IMovable
 {
     [field: SerializeField, Range(0, 1)] public float Size { get; private set; }
     [field: SerializeField, Range(0, 1)] public float Weight { get; private set; }
@@ -13,4 +14,6 @@ public class CheeseInstance : MonoBehaviour
         Weight = weight;
         Mesh = mesh;
     }
+
+    public void Move(Vector3 direction) => transform.position += direction;
 }

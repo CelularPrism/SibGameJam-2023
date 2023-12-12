@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7819166324506878908}
   - component: {fileID: 7819166324506878911}
-  - component: {fileID: 7819166324506878910}
   - component: {fileID: 7819166324506878905}
   - component: {fileID: 7819166324506878904}
   - component: {fileID: 2530340108540890758}
+  - component: {fileID: 3816459901533380185}
   m_Layer: 3
   m_Name: CheeseOrange_3
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7819166324506878907}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49,22 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c577d51bfd8dbc7418c8a4864b665e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7819166324506878910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7819166324506878907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ae07822441860e409de19d170541d09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 65
-  initialHight: 4
-  swingSpeed: 1
-  swingAmplitude: 1.5
 --- !u!114 &7819166324506878905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +109,22 @@ MonoBehaviour:
   <Size>k__BackingField: 0.5
   <Weight>k__BackingField: 0.5
   <Mesh>k__BackingField: {fileID: 0}
+--- !u!54 &3816459901533380185
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819166324506878907}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &5318118146872843450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,6 +186,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f63a8ee68b2d2b43b524b2129f8b980, type: 3}
+--- !u!1 &7819166324663454087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2688229097723204925, guid: 5f63a8ee68b2d2b43b524b2129f8b980, type: 3}
+  m_PrefabInstance: {fileID: 5318118146872843450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8294700510897689427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819166324663454087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae07822441860e409de19d170541d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 65
+  initialHight: 4
+  swingSpeed: 1
+  swingAmplitude: 1.5
 --- !u!4 &7819166324663454090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2688229097723204912, guid: 5f63a8ee68b2d2b43b524b2129f8b980, type: 3}

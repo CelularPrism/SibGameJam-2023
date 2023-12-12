@@ -1,8 +1,9 @@
+using Assets.Scripts.Movement_Player;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterMotionController : MonoBehaviour
+public class CharacterMotionController : MonoBehaviour, IMovable
 {
     public float MoveSpeed;
     [SerializeField] private InputAction _moveInputAction;
@@ -105,4 +106,6 @@ public class CharacterMotionController : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(_look, 0.5f);
     }
+
+    public void Move(Vector3 direction) => _characterController.Move(direction);
 }
