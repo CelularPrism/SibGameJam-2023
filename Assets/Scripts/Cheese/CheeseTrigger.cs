@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent (typeof(CheeseInstance))]
-public class CheeseTrigger : MonoBehaviour, IItem
+public class CheeseTrigger : MonoBehaviour, IUsable
 {
     private CheeseInventory _inventory;
     private CheeseInstance _instance;

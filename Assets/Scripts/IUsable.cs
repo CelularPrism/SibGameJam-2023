@@ -1,4 +1,4 @@
-public interface IItem
+public interface IUsable
 {
     public void Use();
 }

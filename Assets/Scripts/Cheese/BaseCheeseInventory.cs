@@ -2,7 +2,7 @@ using Assets.Scripts.Gameplay_UI;
 using FMODUnity;
 using UnityEngine;
 
-public class BaseCheeseInventory : MonoBehaviour, IItem
+public class BaseCheeseInventory : MonoBehaviour, IUsable
 {
     [SerializeField] private CheeseInventory _inventory;
     [SerializeField] private EndGameEvent _eventor;

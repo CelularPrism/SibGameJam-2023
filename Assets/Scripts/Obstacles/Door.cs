@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Door : MonoBehaviour, IItem
+public class Door : MonoBehaviour, IUsable
 {
     [SerializeField] private GameObject ceiling;
 

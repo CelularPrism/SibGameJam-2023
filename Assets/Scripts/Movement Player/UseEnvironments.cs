@@ -1,4 +1,3 @@
-using FMODUnity;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -29,9 +28,9 @@ public class UseEnvironments : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Physics.OverlapSphereNonAlloc(transform.position, _raduis, _usables, LayerMask.GetMask("Usable Item")) > 0)
+        if (Physics.OverlapSphereNonAlloc(transform.position, _raduis, _usables, LayerMask.GetMask("Usable")) > 0)
         {
-            if (_usables[0].GetComponent<IItem>() != null)
+            if (_usables[0].GetComponent<IUsable>() != null)
             {
                 var learns = FindObjectsOfType<LearnDestroyer>();
                 foreach (var learn in learns)
@@ -51,8 +50,7 @@ public class UseEnvironments : MonoBehaviour
     {
         if (_canUse)
         {
-            Debug.Log(_usables[0].GetComponent<IItem>());
-            _usables[0].GetComponent<IItem>()?.Use();
+            _usables[0].GetComponent<IUsable>()?.Use();
         }
     }
 

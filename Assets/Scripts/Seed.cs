@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Seed : MonoBehaviour, IItem
+public class Seed : MonoBehaviour, IUsable
 {
     [SerializeField] private HealthSystem healthSystem;
 
