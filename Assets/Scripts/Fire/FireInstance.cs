@@ -65,6 +65,7 @@ namespace Assets.Scripts.Fire
 
             for (int i = 0; i < _particleSystems.Length; i++)
             {
+                _particleSystems[i].Clear();
                 _particleSystems[i].Play();
                 ParticleSystem.MainModule particleSystem = _particleSystems[i].main;
                 particleSystem.startLifetimeMultiplier = _defaultLifetimes[i];
