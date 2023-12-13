@@ -6,14 +6,17 @@ namespace Assets.Scripts.Tears
 {
     public class TearsSource : MonoBehaviour
     {
+        [SerializeField, Range(0, 1)] private float _speedModifire;
         [SerializeField] private ParticleSystem _leftEyeParticleSystem, _rightEyeParticleSystem;
         [SerializeField] private EventReference _event;
         [SerializeField] private Transform _camera;
 
         private EventInstance instance;
+        private CharacterMotionController _motionController;
 
-        private void Start()
+        private void Awake()
         {
+            _motionController = GetComponent<CharacterMotionController>();
         }
 
         private void Update()
@@ -32,6 +35,7 @@ namespace Assets.Scripts.Tears
             instance.start();
             instance.release();
 
+            _motionController.MoveSpeed *= _speedModifire;
             _leftEyeParticleSystem.Play();
             _rightEyeParticleSystem.Play();
         }
@@ -40,6 +44,7 @@ namespace Assets.Scripts.Tears
         {
             instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
+            _motionController.MoveSpeed /= _speedModifire;
             _leftEyeParticleSystem.Stop();
             _rightEyeParticleSystem.Stop();
         }
