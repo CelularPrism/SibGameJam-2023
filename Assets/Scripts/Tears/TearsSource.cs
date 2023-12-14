@@ -6,7 +6,7 @@ namespace Assets.Scripts.Tears
 {
     public class TearsSource : MonoBehaviour
     {
-        [SerializeField, Range(0, 1)] private float _speedModifire;
+        [SerializeField, Range(0.1f, 1)] private float _speedModifire = 0.25f;
         [SerializeField] private ParticleSystem _leftEyeParticleSystem, _rightEyeParticleSystem;
         [SerializeField] private EventReference _event;
         [SerializeField] private Transform _camera;

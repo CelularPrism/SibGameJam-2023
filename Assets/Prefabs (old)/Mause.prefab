@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da557c6df8ad2c14eaa32e4e761fc671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedModifire: 0
+  _speedModifire: 0.25
   _leftEyeParticleSystem: {fileID: 6423950041232101173}
   _rightEyeParticleSystem: {fileID: 3627432138499126992}
   _event:
