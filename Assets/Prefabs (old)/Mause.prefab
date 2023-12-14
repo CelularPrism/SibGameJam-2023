@@ -402,6 +402,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: b88daf71b1345434884f4cf510bc616e, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 92aa25d2796b6504c81c527bea7432ec, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 92aa25d2796b6504c81c527bea7432ec, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92aa25d2796b6504c81c527bea7432ec, type: 3}
 --- !u!4 &2629727566057914680 stripped
@@ -476,6 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da557c6df8ad2c14eaa32e4e761fc671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speedModifire: 0
   _leftEyeParticleSystem: {fileID: 6423950041232101173}
   _rightEyeParticleSystem: {fileID: 3627432138499126992}
   _event:

@@ -41,8 +41,17 @@ public class CharacterMotionController : MonoBehaviour, IMovable
 
     private void Update()
     {
+        //if (_orbitalTransposer)
+        //    _orbitalTransposer.m_XAxis.m_MaxSpeed = Input.GetMouseButton(1) ? _cameraRotationSpeed : 0;
+
         if (_orbitalTransposer)
-            _orbitalTransposer.m_XAxis.m_MaxSpeed = Input.GetMouseButton(1) ? _cameraRotationSpeed : 0;
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+                _orbitalTransposer.m_XAxis.Value += 90;
+
+            if (Input.GetKeyDown(KeyCode.E))
+                _orbitalTransposer.m_XAxis.Value -= 90;
+        }
 
         Vector2 input = _moveInputAction.ReadValue<Vector2>();
         Vector3 direction = new Vector3(input.x, 0, input.y).normalized;
@@ -66,7 +75,7 @@ public class CharacterMotionController : MonoBehaviour, IMovable
 
     private void OnAnimatorIK(int layerIndex)
     {
-        if (_animator)
+        if (_animator && layerIndex == 1)
         {
             if (_canLookToCursor)
             {
