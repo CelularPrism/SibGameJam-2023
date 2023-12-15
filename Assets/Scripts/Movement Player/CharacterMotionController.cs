@@ -46,10 +46,10 @@ public class CharacterMotionController : MonoBehaviour, IMovable
 
         if (_orbitalTransposer)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.E))
                 _orbitalTransposer.m_XAxis.Value += 90;
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Q))
                 _orbitalTransposer.m_XAxis.Value -= 90;
         }
 
