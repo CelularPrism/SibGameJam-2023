@@ -457,10 +457,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056f981dcecbc864ebee4ba4b29aa109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 4
-  _health: 4
+  <MaxHealth>k__BackingField: 100
+  _health: 100
   _restoreDelay: 2
-  _restoreSpeed: 1
+  _restoreSpeed: 25
   _damageIndicationMaterial: {fileID: 2100000, guid: a97a574cfa2259b45aa7946e1e931998, type: 2}
   _damageIndicationColor: {r: 0.8867924, g: 0, b: 0, a: 1}
   _hurtIndicationSmooth: 4
@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da557c6df8ad2c14eaa32e4e761fc671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedModifire: 0.25
+  _speedModifire: 0.7
   _leftEyeParticleSystem: {fileID: 6423950041232101173}
   _rightEyeParticleSystem: {fileID: 3627432138499126992}
   _event:
