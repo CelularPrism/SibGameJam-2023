@@ -35,7 +35,7 @@ namespace Assets.Scripts.Tears
             instance.start();
             instance.release();
 
-            _motionController.MoveSpeed *= _speedModifire;
+            _motionController.SpeedFactor *= _speedModifire;
             _leftEyeParticleSystem.Play();
             _rightEyeParticleSystem.Play();
         }
@@ -44,7 +44,7 @@ namespace Assets.Scripts.Tears
         {
             instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
-            _motionController.MoveSpeed /= _speedModifire;
+            _motionController.SpeedFactor /= _speedModifire;
             _leftEyeParticleSystem.Stop();
             _rightEyeParticleSystem.Stop();
         }

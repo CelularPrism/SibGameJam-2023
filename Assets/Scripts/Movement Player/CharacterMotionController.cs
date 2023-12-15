@@ -25,6 +25,8 @@ public class CharacterMotionController : MonoBehaviour, IMovable
     private readonly int _cryAnimationHash = Animator.StringToHash("IsCry");
     private readonly int _animationSpeedMultiplierHash = Animator.StringToHash("SpeedMultiplier");
 
+    public float SpeedFactor { get; set; } = 1;
+
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -65,10 +67,10 @@ public class CharacterMotionController : MonoBehaviour, IMovable
         if (input == Vector2.zero)
             direction = Vector3.zero;
 
-        _characterController.Move(MoveSpeed * Time.deltaTime * direction.normalized);
+        _characterController.Move(MoveSpeed * SpeedFactor * Time.deltaTime * direction.normalized);
         _animator.SetBool(_runAnimationHash, direction != Vector3.zero);
         _animator.SetBool(_cryAnimationHash, Input.GetMouseButton(0) && direction == Vector3.zero);
-        _animator.SetFloat(_animationSpeedMultiplierHash, MoveSpeed / _defaultSpeed);
+        _animator.SetFloat(_animationSpeedMultiplierHash, MoveSpeed * SpeedFactor / _defaultSpeed);
 
         _characterController.Move(Physics.gravity * Time.deltaTime);
     }
