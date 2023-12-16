@@ -440,7 +440,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.4
   m_Radius: 0.43
-  m_SlopeLimit: 0
+  m_SlopeLimit: 45
   m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -585,13 +585,30 @@ MonoBehaviour:
       m_Action: Move Input
       m_Flags: 8
     m_Flags: 0
+  _jumpInputAction:
+    m_Name: Jump Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 124c120e-4700-4dce-915e-95a25703f6ea
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 4ee00034-f101-4e82-ab3a-74f4414f3090
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump Input
+      m_Flags: 0
+    m_Flags: 0
   _rotationSmooth: 0.1
-  _virtualCamera: {fileID: 0}
-  _cameraRotationSpeed: 450
+  _jumpTime: 0.3
+  _jumpHeight: 0.1
   _canLookToCursor: 1
+  _cameraRotationSpeed: 450
   _lookIKWeight: 0.9
-  _lookdeadZone: 5
-  _defaultTargetDistance: 1
+  _virtualCamera: {fileID: 0}
 --- !u!114 &6068399150574858802
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,25 +2,29 @@ using Assets.Scripts.Movement_Player;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 
 public class CharacterMotionController : MonoBehaviour, IMovable
 {
     public float MoveSpeed;
-    [SerializeField] private InputAction _moveInputAction;
+    [SerializeField] private InputAction _moveInputAction, _jumpInputAction;
     [SerializeField] float _rotationSmooth;
-    [SerializeField] private CinemachineVirtualCamera _virtualCamera;
-    [SerializeField] private int _cameraRotationSpeed = 300;
+    [SerializeField] private float _jumpTime;
+    [SerializeField] private float _jumpHeight;
     [SerializeField] private bool _canLookToCursor = true;
+    [SerializeField] private int _cameraRotationSpeed = 300;
     [SerializeField] private float _lookIKWeight = 1;
-    [SerializeField] private float _lookdeadZone;
-    [SerializeField] private float _defaultTargetDistance;
+    [SerializeField] private CinemachineVirtualCamera _virtualCamera;
     private CharacterController _characterController;
     private CinemachineOrbitalTransposer _orbitalTransposer;
+    private Vector3 _motion;
     private float _rotationVelocity = 0.1f;
-    private Animator _animator;
     private float _defaultSpeed;
-    private Camera _camera;
     private Vector3 _look;
+    private float _gravity;
+    private float _jumpVelocity;
+    private Camera _camera;
+    private Animator _animator;
     private readonly int _runAnimationHash = Animator.StringToHash("IsRun");
     private readonly int _cryAnimationHash = Animator.StringToHash("IsCry");
     private readonly int _animationSpeedMultiplierHash = Animator.StringToHash("SpeedMultiplier");
@@ -36,9 +40,19 @@ public class CharacterMotionController : MonoBehaviour, IMovable
         _camera = Camera.main;
     }
 
+    private void Start() => CalculateJump();
+
+    private void CalculateJump()
+    {
+        float timeToApex = _jumpTime / 2;
+        _gravity = -_jumpHeight * 2 / Mathf.Pow(timeToApex, 2);
+        _jumpVelocity = 2 * _jumpHeight / timeToApex;
+    }
+
     private void OnEnable()
     {
-        _moveInputAction.Enable();
+        _moveInputAction?.Enable();
+        _jumpInputAction?.Enable();
     }
 
     private void Update()
@@ -56,10 +70,11 @@ public class CharacterMotionController : MonoBehaviour, IMovable
         //}
 
         Vector2 input = _moveInputAction.ReadValue<Vector2>();
-        Vector3 direction = new Vector3(input.x, 0, input.y).normalized;
-        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _virtualCamera.transform.eulerAngles.y;
+        Vector2 direction = input.normalized;
+        float targetAngle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg + _virtualCamera.transform.eulerAngles.y;
         float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _rotationVelocity, _rotationSmooth);
-        direction = Quaternion.Euler(Vector3.up * targetAngle) * Vector3.forward;
+        Vector3 targetDirection = Quaternion.Euler(Vector3.up * targetAngle) * Vector3.forward;
+        direction = new(targetDirection.x, targetDirection.z);
         float cameraDistance = (transform.position - _camera.transform.position).magnitude;
         _look = Camera.main.ScreenToWorldPoint(new(Input.mousePosition.x, Input.mousePosition.y, cameraDistance));
 
@@ -67,14 +82,25 @@ public class CharacterMotionController : MonoBehaviour, IMovable
             transform.rotation = Quaternion.Euler(Vector3.up * smoothAngle);
 
         if (input == Vector2.zero)
-            direction = Vector3.zero;
+            direction = Vector2.zero;
 
-        _characterController.Move(MoveSpeed * SpeedFactor * Time.deltaTime * direction.normalized);
-        _animator.SetBool(_runAnimationHash, direction != Vector3.zero);
-        _animator.SetBool(_cryAnimationHash, Input.GetMouseButton(0) && direction == Vector3.zero);
+        direction *= MoveSpeed * SpeedFactor * Time.deltaTime;
+        _motion.x = direction.x;
+        _motion.z = direction.y;
+
+        if (_characterController.isGrounded == false)
+            _motion.y += _gravity * Time.deltaTime;
+
+        if (_jumpInputAction.WasPressedThisFrame())
+        {
+            if (_characterController.isGrounded)
+                _motion.y = _jumpVelocity;
+        }
+
+        _characterController.Move(_motion);
+        _animator.SetBool(_runAnimationHash, direction != Vector2.zero);
+        _animator.SetBool(_cryAnimationHash, Input.GetMouseButton(0) && direction == Vector2.zero);
         _animator.SetFloat(_animationSpeedMultiplierHash, MoveSpeed * SpeedFactor / _defaultSpeed);
-
-        _characterController.Move(Physics.gravity * Time.deltaTime);
     }
 
     private void OnAnimatorIK(int layerIndex)
@@ -111,7 +137,8 @@ public class CharacterMotionController : MonoBehaviour, IMovable
 
     private void OnDisable()
     {
-        _moveInputAction.Disable();
+        _moveInputAction?.Disable();
+        _jumpInputAction?.Disable();
     }
 
     private void OnDrawGizmos()
