@@ -60,6 +60,8 @@ public class CharacterMotionController : MonoBehaviour, IMovable
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _virtualCamera.transform.eulerAngles.y;
         float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _rotationVelocity, _rotationSmooth);
         direction = Quaternion.Euler(Vector3.up * targetAngle) * Vector3.forward;
+        float cameraDistance = (transform.position - _camera.transform.position).magnitude;
+        _look = Camera.main.ScreenToWorldPoint(new(Input.mousePosition.x, Input.mousePosition.y, cameraDistance));
 
         if (input != Vector2.zero || Input.GetMouseButton(0))
             transform.rotation = Quaternion.Euler(Vector3.up * smoothAngle);
@@ -93,18 +95,18 @@ public class CharacterMotionController : MonoBehaviour, IMovable
 
     private void FixedUpdate()
     {
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+        //Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit lookRayHitInfo, maxDistance: 200, LayerMask.GetMask("Ground")))
-        {
-            _look = Vector3.Distance(lookRayHitInfo.point, transform.position) < _lookdeadZone 
-                ? transform.position + transform.forward * _defaultTargetDistance
-                : lookRayHitInfo.point;
-        }
-        else
-        {
-            _look = transform.position + transform.forward * _defaultTargetDistance;
-        }
+        //if (Physics.Raycast(ray, out RaycastHit lookRayHitInfo, maxDistance: 200, LayerMask.GetMask("Ground")))
+        //{
+        //    _look = Vector3.Distance(lookRayHitInfo.point, transform.position) < _lookdeadZone 
+        //        ? transform.position + transform.forward * _defaultTargetDistance
+        //        : lookRayHitInfo.point;
+        //}
+        //else
+        //{
+        //    _look = transform.position + transform.forward * _defaultTargetDistance;
+        //}
     }
 
     private void OnDisable()
