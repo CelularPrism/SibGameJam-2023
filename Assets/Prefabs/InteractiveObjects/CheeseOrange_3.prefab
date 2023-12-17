@@ -177,12 +177,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2688229097723204913, guid: 5f63a8ee68b2d2b43b524b2129f8b980, type: 3}
+      propertyPath: m_Size.x
+      value: 3.5795565
+      objectReference: {fileID: 0}
+    - target: {fileID: 2688229097723204913, guid: 5f63a8ee68b2d2b43b524b2129f8b980, type: 3}
+      propertyPath: m_Size.z
+      value: 7.148723
+      objectReference: {fileID: 0}
+    - target: {fileID: 2688229097723204913, guid: 5f63a8ee68b2d2b43b524b2129f8b980, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2688229097723204913, guid: 5f63a8ee68b2d2b43b524b2129f8b980, type: 3}
+      propertyPath: m_Center.x
+      value: 1.789778
       objectReference: {fileID: 0}
     - target: {fileID: 2688229097723204925, guid: 5f63a8ee68b2d2b43b524b2129f8b980, type: 3}
       propertyPath: m_Name
       value: Src_CheeseOrange_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2688229097723204925, guid: 5f63a8ee68b2d2b43b524b2129f8b980, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f63a8ee68b2d2b43b524b2129f8b980, type: 3}

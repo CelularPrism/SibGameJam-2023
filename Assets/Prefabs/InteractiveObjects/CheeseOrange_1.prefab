@@ -136,9 +136,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Src_CheeseOrange_1
       objectReference: {fileID: 0}
+    - target: {fileID: 882242470986338696, guid: d9a33b86e4ee50e47bc130c63845b737, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 882242470986338708, guid: d9a33b86e4ee50e47bc130c63845b737, type: 3}
+      propertyPath: m_Size.x
+      value: 3.5714984
+      objectReference: {fileID: 0}
+    - target: {fileID: 882242470986338708, guid: d9a33b86e4ee50e47bc130c63845b737, type: 3}
+      propertyPath: m_Size.z
+      value: 2.5160053
+      objectReference: {fileID: 0}
     - target: {fileID: 882242470986338708, guid: d9a33b86e4ee50e47bc130c63845b737, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 882242470986338708, guid: d9a33b86e4ee50e47bc130c63845b737, type: 3}
+      propertyPath: m_Center.z
+      value: -1.2579993
       objectReference: {fileID: 0}
     - target: {fileID: 882242470986338709, guid: d9a33b86e4ee50e47bc130c63845b737, type: 3}
       propertyPath: m_RootOrder

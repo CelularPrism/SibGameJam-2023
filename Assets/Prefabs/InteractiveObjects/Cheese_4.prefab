@@ -134,7 +134,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8841035373448206894, guid: 98f91f88295233941a09b1116993c443, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8841035373448206929, guid: 98f91f88295233941a09b1116993c443, type: 3}
       propertyPath: m_RootOrder
@@ -183,6 +183,10 @@ PrefabInstance:
     - target: {fileID: 8841035373448206930, guid: 98f91f88295233941a09b1116993c443, type: 3}
       propertyPath: m_Name
       value: Src_Cheese_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841035373448206930, guid: 98f91f88295233941a09b1116993c443, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98f91f88295233941a09b1116993c443, type: 3}

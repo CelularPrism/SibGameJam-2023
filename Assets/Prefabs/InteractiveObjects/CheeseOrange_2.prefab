@@ -177,12 +177,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8809104055431276627, guid: f28fc10f818147e4ba93e9ccfceea37f, type: 3}
+      propertyPath: m_Size.x
+      value: 3.5741699
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809104055431276627, guid: f28fc10f818147e4ba93e9ccfceea37f, type: 3}
+      propertyPath: m_Size.z
+      value: 3.574173
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809104055431276627, guid: f28fc10f818147e4ba93e9ccfceea37f, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809104055431276627, guid: f28fc10f818147e4ba93e9ccfceea37f, type: 3}
+      propertyPath: m_Center.x
+      value: 1.7870847
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809104055431276627, guid: f28fc10f818147e4ba93e9ccfceea37f, type: 3}
+      propertyPath: m_Center.z
+      value: -1.7870831
       objectReference: {fileID: 0}
     - target: {fileID: 8809104055431276631, guid: f28fc10f818147e4ba93e9ccfceea37f, type: 3}
       propertyPath: m_Name
       value: Src_CheeseOrange_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809104055431276631, guid: f28fc10f818147e4ba93e9ccfceea37f, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f28fc10f818147e4ba93e9ccfceea37f, type: 3}
