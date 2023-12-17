@@ -10,7 +10,7 @@ namespace Assets.Scripts.Tears
         [SerializeField] private ParticleSystem _leftEyeParticleSystem, _rightEyeParticleSystem;
         [SerializeField] private EventReference _event;
         [SerializeField] private Transform _camera;
-
+        private bool _isTearing;
         private EventInstance instance;
         private CharacterMotionController _motionController;
 
@@ -30,6 +30,10 @@ namespace Assets.Scripts.Tears
 
         private void StartTearing()
         {
+            if (_isTearing)
+                return;
+
+            _isTearing = true;
             instance = RuntimeManager.CreateInstance(_event);
             instance.set3DAttributes(RuntimeUtils.To3DAttributes(_camera.position));
             instance.start();
@@ -42,8 +46,11 @@ namespace Assets.Scripts.Tears
 
         private void StopTearing()
         {
+            if (_isTearing == false)
+                return;
+            
+            _isTearing = false;
             instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-
             _motionController.SpeedFactor /= _speedModifire;
             _leftEyeParticleSystem.Stop();
             _rightEyeParticleSystem.Stop();
