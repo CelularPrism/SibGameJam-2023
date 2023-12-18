@@ -12,7 +12,6 @@ namespace Assets.Scripts.Cheese
         [SerializeField] private float _detectRadius;
         [SerializeField] private float _updateInterval = 0.1f;
         [SerializeField] private float _height;
-        [SerializeField] private float _swingSpeed;
         [SerializeField] private bool _enableGizmos;
         [SerializeField] private Transform _agent;
         private LineRenderer _lineRenderer;
@@ -42,24 +41,14 @@ namespace Assets.Scripts.Cheese
                     if (NavMesh.CalculatePath(GetAgentPosition(), GetTargetPosition(), NavMesh.AllAreas, _path))
                     {
                         Vector3[] path = _path.corners.Select(corner => new Vector3(corner.x, _height, corner.z)).ToArray();
-                        Vector3[] smoothPath = _pathSmoother.SmoothPath(path, subdivisions: 100);
-                        _lineRenderer.positionCount = smoothPath.Length;
-                        _lineRenderer.SetPositions(smoothPath);
+                        //Vector3[] smoothPath = _pathSmoother.SmoothPath(path, subdivisions: 100);
+                        _lineRenderer.positionCount = path.Length;
+                        _lineRenderer.SetPositions(path);
                     }
                 }
             }
 
             _pathUpdateTime += Time.deltaTime;
-            Gradient updatedGradient = _lineRenderer.colorGradient;
-            GradientAlphaKey[] alphaKeys = new GradientAlphaKey[]
-            {
-                _lineRenderer.colorGradient.alphaKeys[0],
-                new(1, Mathf.Clamp(Mathf.Abs(Mathf.Sin(Time.time * _swingSpeed)), 0.1f, 0.9f)),
-                _lineRenderer.colorGradient.alphaKeys[2]
-            };
-
-            updatedGradient.SetKeys(_lineRenderer.colorGradient.colorKeys, alphaKeys);
-            _lineRenderer.colorGradient = updatedGradient;
         }
 
         private void FixedUpdate()
