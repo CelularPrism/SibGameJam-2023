@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Helpers;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,11 +12,13 @@ namespace Assets.Scripts.Cheese
         [SerializeField] private float _detectRadius;
         [SerializeField] private float _updateInterval = 0.1f;
         [SerializeField] private float _height;
+        [SerializeField] private float _swingSpeed;
         [SerializeField] private bool _enableGizmos;
         [SerializeField] private Transform _agent;
         private LineRenderer _lineRenderer;
+        private readonly PathSmoother _pathSmoother = new();
         private readonly List<Vector3> _pathPoints = new();
-        private float _time;
+        private float _pathUpdateTime;
         private Transform _target;
         private NavMeshPath _path;
         private Collider[] _detectable = new Collider[10];
@@ -28,9 +31,9 @@ namespace Assets.Scripts.Cheese
 
         private void Update()
         {
-            if (_time >= _updateInterval)
+            if (_pathUpdateTime >= _updateInterval)
             {
-                _time = 0;
+                _pathUpdateTime = 0;
 
                 if (_target == null)
                     _lineRenderer.positionCount = 0;
@@ -38,14 +41,25 @@ namespace Assets.Scripts.Cheese
                 {
                     if (NavMesh.CalculatePath(GetAgentPosition(), GetTargetPosition(), NavMesh.AllAreas, _path))
                     {
-                        _lineRenderer.positionCount = _path.corners.Length;
-                        _lineRenderer.SetPositions
-                            (_path.corners.Select(corner => new Vector3(corner.x, _height, corner.z)).ToArray());
+                        Vector3[] path = _path.corners.Select(corner => new Vector3(corner.x, _height, corner.z)).ToArray();
+                        Vector3[] smoothPath = _pathSmoother.SmoothPath(path, subdivisions: 100);
+                        _lineRenderer.positionCount = smoothPath.Length;
+                        _lineRenderer.SetPositions(smoothPath);
                     }
                 }
             }
 
-            _time += Time.deltaTime;
+            _pathUpdateTime += Time.deltaTime;
+            Gradient updatedGradient = _lineRenderer.colorGradient;
+            GradientAlphaKey[] alphaKeys = new GradientAlphaKey[]
+            {
+                _lineRenderer.colorGradient.alphaKeys[0],
+                new(1, Mathf.Clamp(Mathf.Abs(Mathf.Sin(Time.time * _swingSpeed)), 0.1f, 0.9f)),
+                _lineRenderer.colorGradient.alphaKeys[2]
+            };
+
+            updatedGradient.SetKeys(_lineRenderer.colorGradient.colorKeys, alphaKeys);
+            _lineRenderer.colorGradient = updatedGradient;
         }
 
         private void FixedUpdate()
