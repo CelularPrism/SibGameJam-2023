@@ -16,7 +16,6 @@ namespace Assets.Scripts.Cheese
         [SerializeField] private Transform _agent;
         private LineRenderer _lineRenderer;
         private readonly PathSmoother _pathSmoother = new();
-        private readonly List<Vector3> _pathPoints = new();
         private float _pathUpdateTime;
         private Transform _target;
         private NavMeshPath _path;
