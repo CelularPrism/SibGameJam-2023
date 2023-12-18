@@ -41,7 +41,7 @@ namespace Assets.Scripts.Cheese
                     if (NavMesh.CalculatePath(GetAgentPosition(), GetTargetPosition(), NavMesh.AllAreas, _path))
                     {
                         Vector3[] path = _path.corners.Select(corner => new Vector3(corner.x, _height, corner.z)).ToArray();
-                        //Vector3[] smoothPath = _pathSmoother.SmoothPath(path, subdivisions: 100);
+                        //Vector3[] smoothPath = _pathSmoother.SmoothPath(path);
                         _lineRenderer.positionCount = path.Length;
                         _lineRenderer.SetPositions(path);
                     }
