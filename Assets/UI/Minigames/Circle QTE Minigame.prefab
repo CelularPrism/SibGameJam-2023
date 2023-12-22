@@ -51,8 +51,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a308e30a50ff06488b441b3c21ea015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dynamicsCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -2
+      outSlope: -2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 0
+      inSlope: -2
+      outSlope: 2
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _range: {x: 100, y: 250}
-  _speed: 5
+  _speed: 1
   _accuracy: 0.05
   _static: {fileID: 3396001274629938907}
   _dynamic: {fileID: 2265073638116744600}
