@@ -28,7 +28,7 @@ namespace Assets.Scripts.Obstacles
             {
                 _motionController.enabled = false;
                 _tears.enabled = false;
-                _minigame.Lounch(OnCompleted, OnLost, OnEscaped);
+                _minigame.Launch(OnCompleted, OnLost, OnEscaped);
             }
         }
 

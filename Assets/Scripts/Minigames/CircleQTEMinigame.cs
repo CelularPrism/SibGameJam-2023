@@ -6,12 +6,14 @@ namespace Assets.Scripts.Minigames
 {
     public class CircleQTEMinigame : Minigame
     {
+        [SerializeField] private AnimationCurve _dynamicsCurve;
         [SerializeField] private Vector2 _range = new(100, 250);
         [SerializeField] private float _speed;
         [SerializeField, Range(0, 1)] private float _accuracy = 0.5f;
         [SerializeField] private Image _static, _dynamic;
         private float _value;
         private Action _completeCallback, _loseCallback, _escapeCallback;
+        private float _time;
 
         private void OnValidate()
         {
@@ -22,7 +24,7 @@ namespace Assets.Scripts.Minigames
             }
         }
 
-        public override void Lounch(Action onCompleted, Action onLost, Action onEscaped)
+        public override void Launch(Action onCompleted, Action onLost, Action onEscaped)
         {
             _completeCallback = onCompleted;
             _loseCallback = onLost;
@@ -34,7 +36,12 @@ namespace Assets.Scripts.Minigames
 
         private void Update()
         {
-            _value = Mathf.Abs(Mathf.Sin(Time.time * _speed));
+            _time += Time.deltaTime * _speed;
+
+            if (_time > 1.0f)
+                _time = 0;
+
+            _value = _dynamicsCurve.Evaluate(_time);
             Vector2 valueSize = _range.y * _value * Vector2.one;
             _dynamic.rectTransform.sizeDelta = valueSize;
             float staticMagnitude = _static.rectTransform.sizeDelta.magnitude;
