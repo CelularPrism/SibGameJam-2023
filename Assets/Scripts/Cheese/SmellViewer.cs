@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Helpers;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,7 +16,8 @@ namespace Assets.Scripts.Cheese
         private LineRenderer _lineRenderer;
         private readonly PathSmoother _pathSmoother = new();
         private float _pathUpdateTime;
-        private Transform _target;
+        private Transform _target, _prevTarget;
+        private float _fade = 1;
         private NavMeshPath _path;
         private Collider[] _detectable = new Collider[10];
 
@@ -35,15 +35,52 @@ namespace Assets.Scripts.Cheese
 
                 if (_target == null)
                     _lineRenderer.positionCount = 0;
-                else
+
+                float minDistance = float.MaxValue;
+
+                for (int i = 0; i < _detectable.Length; i++)
                 {
-                    if (NavMesh.CalculatePath(GetAgentPosition(), GetTargetPosition(), NavMesh.AllAreas, _path))
+                    if (_detectable[i] && _detectable[i].gameObject.activeInHierarchy)
                     {
-                        Vector3[] path = _path.corners.Select(corner => new Vector3(corner.x, _height, corner.z)).ToArray();
-                        //Vector3[] smoothPath = _pathSmoother.SmoothPath(path);
-                        _lineRenderer.positionCount = path.Length;
-                        _lineRenderer.SetPositions(path);
+                        if (NavMesh.CalculatePath(GetAgentPosition(), GetTargetPosition(_detectable[i].transform.position), NavMesh.AllAreas, _path))
+                        {
+                            float distance = 0;
+
+                            for (int c = 1; c < _path.corners.Length; c++)
+                            {
+                                distance += Vector3.Distance(_path.corners[c - 1], _path.corners[c]);
+                            }
+
+                            if (distance < minDistance)
+                            {
+                                minDistance = distance;
+                                _target = _detectable[i].transform;
+                            }
+                        }
                     }
+                }
+
+                _fade -= Time.deltaTime;
+
+                if (_prevTarget != _target)
+                {
+                    _prevTarget = _target;
+                    _fade = 1f;
+                }
+
+                if (_fade <= 0)
+                {
+                    _fade = 0;
+                }
+
+                _lineRenderer.material.SetFloat("_AlphaClipThreshold", _fade);
+
+                if (NavMesh.CalculatePath(GetAgentPosition(), GetTargetPosition(), NavMesh.AllAreas, _path))
+                {
+                    Vector3[] path = _path.corners.Select(corner => new Vector3(corner.x, _height, corner.z)).ToArray();
+                    //Vector3[] smoothPath = _pathSmoother.SmoothPath(path);
+                    _lineRenderer.positionCount = path.Length;
+                    _lineRenderer.SetPositions(path);
                 }
             }
 
@@ -58,24 +95,24 @@ namespace Assets.Scripts.Cheese
                 return;
             }
 
-            float minDistance = float.MaxValue;
+            //float minDistance = float.MaxValue;
 
-            for (int i = 0; i < _detectable.Length; i++)
-            {
-                if (_detectable[i])
-                {
-                    if (_detectable[i].gameObject.activeInHierarchy)
-                    {
-                        float targetDistance = Vector3.Distance(_agent.position, _detectable[i].transform.position);
+            //for (int i = 0; i < _detectable.Length; i++)
+            //{
+            //    if (_detectable[i])
+            //    {
+            //        if (_detectable[i].gameObject.activeInHierarchy)
+            //        {
+            //            float targetDistance = Vector3.Distance(_agent.position, _detectable[i].transform.position);
 
-                        if (targetDistance < minDistance)
-                        {
-                            minDistance = targetDistance;
-                            _target = _detectable[i].transform;
-                        }
-                    }
-                }
-            }
+            //            if (targetDistance < minDistance)
+            //            {
+            //                minDistance = targetDistance;
+            //                _target = _detectable[i].transform;
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         private Vector3 GetAgentPosition()
@@ -94,6 +131,15 @@ namespace Assets.Scripts.Cheese
                 return navMeshInfo.position;
 
             return _target.position;
+        }
+
+        private Vector3 GetTargetPosition(Vector3 targetPosition)
+        {
+            if (NavMesh.SamplePosition
+                (targetPosition, out NavMeshHit navMeshInfo, 100, NavMesh.AllAreas))
+                return navMeshInfo.position;
+
+            return targetPosition;
         }
 
         private void OnDrawGizmos()
