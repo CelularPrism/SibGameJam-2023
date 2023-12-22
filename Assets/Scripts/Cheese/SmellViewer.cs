@@ -16,7 +16,8 @@ namespace Assets.Scripts.Cheese
         private LineRenderer _lineRenderer;
         private readonly PathSmoother _pathSmoother = new();
         private float _pathUpdateTime;
-        private Transform _target;
+        private Transform _target, _prevTarget;
+        private float _fade = 1;
         private NavMeshPath _path;
         private Collider[] _detectable = new Collider[10];
 
@@ -59,6 +60,20 @@ namespace Assets.Scripts.Cheese
                     }
                 }
 
+                _fade -= Time.deltaTime;
+
+                if (_prevTarget != _target)
+                {
+                    _prevTarget = _target;
+                    _fade = 1f;
+                }
+
+                if (_fade <= 0)
+                {
+                    _fade = 0;
+                }
+
+                _lineRenderer.material.SetFloat("_AlphaClipThreshold", _fade);
 
                 if (NavMesh.CalculatePath(GetAgentPosition(), GetTargetPosition(), NavMesh.AllAreas, _path))
                 {

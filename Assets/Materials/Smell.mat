@@ -44,7 +44,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 1
-    - _AlphaClipThreshold: 0.05
+    - _AlphaClipThreshold: 0
     - _Blend: 0
     - _CastShadows: 0
     - _Cull: 0
@@ -59,7 +59,8 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
-    m_Colors: []
+    m_Colors:
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7631782290365392703
 MonoBehaviour:
