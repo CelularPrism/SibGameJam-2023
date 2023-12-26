@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82d64ce70642c245ab14e56476a0e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 30
+  MoveSpeed: 32
   _moveInputAction:
     m_Name: Move Input
     m_Type: 0
@@ -603,8 +603,8 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   _rotationSmooth: 0.1
-  _jumpTime: 0.3
-  _jumpHeight: 0.1
+  _jumpTime: 0.4
+  _jumpHeight: 0.07
   _canLookToCursor: 1
   _cameraRotationSpeed: 450
   _lookIKWeight: 0.9
