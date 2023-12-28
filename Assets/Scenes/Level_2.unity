@@ -3897,10 +3897,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 768075138}
     m_Modifications:
-    - target: {fileID: 8639620919825787981, guid: eebfc1dbbb7422342931b20d5b71df2d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 9.999996
-      objectReference: {fileID: 0}
     - target: {fileID: 8639620919954462596, guid: eebfc1dbbb7422342931b20d5b71df2d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3948,10 +3944,6 @@ PrefabInstance:
     - target: {fileID: 8639620919954462598, guid: eebfc1dbbb7422342931b20d5b71df2d, type: 3}
       propertyPath: m_Name
       value: ConveyorShort (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8639620920764409846, guid: eebfc1dbbb7422342931b20d5b71df2d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6.9999967
       objectReference: {fileID: 0}
     - target: {fileID: 9146854904740182653, guid: eebfc1dbbb7422342931b20d5b71df2d, type: 3}
       propertyPath: m_IsActive
