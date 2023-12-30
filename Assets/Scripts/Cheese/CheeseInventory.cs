@@ -8,7 +8,7 @@ public class CheeseInventory : MonoBehaviour
     [SerializeField] private Transform _view;
     [SerializeField] private Material _cheeseMaterial;
     [SerializeField] private float _viewSize = 15;
-    private CharacterMotionController _motionController;
+    private RBMotionController _motionController;
     private HealthSystem _health;
     private float _defaultSpeed;
     private CheeseBar _bar;
@@ -20,9 +20,8 @@ public class CheeseInventory : MonoBehaviour
 
     private void Awake()
     {
-        _motionController = GetComponent<CharacterMotionController>();
+        _motionController = GetComponent<RBMotionController>();
         _health = GetComponent<HealthSystem>();
-        _defaultSpeed = _motionController.MoveSpeed;
         _bar = FindObjectOfType<CheeseBar>();
     }
 
@@ -48,7 +47,7 @@ public class CheeseInventory : MonoBehaviour
         {
             _cheese.Add(cheese);
             Fill = Mathf.Clamp01(Fill += cheese.Size);
-            _motionController.MoveSpeed -= _motionController.MoveSpeed * cheese.Weight;
+            _motionController.Rigidbody.mass += cheese.Weight;
 
             if (_bar)
                 _bar.Set(Fill);
@@ -80,7 +79,7 @@ public class CheeseInventory : MonoBehaviour
     {
         float count = Fill;
         Fill = 0;
-        _motionController.MoveSpeed = _defaultSpeed;
+        _motionController.Rigidbody.mass = _motionController.DefaultMass;
 
         for (int i = 0; i < _view.childCount; i++)
         {
@@ -96,7 +95,7 @@ public class CheeseInventory : MonoBehaviour
         if (Fill > 0)
         {
             Fill = Mathf.Clamp01(Fill -= _cheese[^1].Size);
-            _motionController.MoveSpeed += _motionController.MoveSpeed * _cheese[^1].Weight;
+            _motionController.Rigidbody.mass -= _cheese[^1].Weight;
             IEnumerable<CheeseInstance> activeViews = _views.Where(view => view.gameObject.activeInHierarchy);
             activeViews.ElementAt(activeViews.Count() - 1).gameObject.SetActive(false);
             _cheese[^1].transform.position = transform.position;

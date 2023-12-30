@@ -18,7 +18,7 @@ namespace Assets.Scripts.Learn
         private CanvasGroup _canvasGroup;
         private Timer _timer;
         private BaseCheeseInventory _cheeseBox;
-        private CharacterMotionController _characterController;
+        private RBMotionController _characterController;
         private TearsSource _tearsSource;
 
         private void Awake()
@@ -27,7 +27,7 @@ namespace Assets.Scripts.Learn
             _canvasGroup = GetComponent<CanvasGroup>();
             _timer = FindAnyObjectByType<Timer>(FindObjectsInactive.Include);
             _cheeseBox = FindAnyObjectByType<BaseCheeseInventory>();
-            _characterController = FindObjectOfType<CharacterMotionController>();
+            _characterController = FindObjectOfType<RBMotionController>();
             _tearsSource = FindObjectOfType<TearsSource>();
         }
 

@@ -27,7 +27,8 @@ public class BaseCheeseInventory : MonoBehaviour, IUsable
 
     private void Start()
     {
-        _ui.Set(Current, Target);
+        if (_ui)
+            _ui.Set(Current, Target);
     }
 
     private void OnEnable()

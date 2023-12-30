@@ -7,7 +7,7 @@ using UnityEngine;
 public class EndGameEvent : MonoBehaviour
 {
     [SerializeField] private GameObject winPanel, losePanel, pausePannel;
-    [SerializeField] private CharacterMotionController character;
+    [SerializeField] private RBMotionController character;
     [SerializeField] private TearsSource tears;
     [SerializeField] private GameObject BGMusic;
     [SerializeField] private Timer timer;

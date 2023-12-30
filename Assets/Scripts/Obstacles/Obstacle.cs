@@ -13,12 +13,12 @@ namespace Assets.Scripts.Obstacles
         public UnityEvent OnEscape;
 
         [SerializeField] private Minigame _minigame;
-        private CharacterMotionController _motionController;
+        private RBMotionController _motionController;
         private TearsSource _tears;
 
         private void Awake()
         {
-            _motionController = FindObjectOfType<CharacterMotionController>();
+            _motionController = FindObjectOfType<RBMotionController>();
             _tears = FindObjectOfType<TearsSource>();
         }
 

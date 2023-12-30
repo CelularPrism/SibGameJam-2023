@@ -2,7 +2,6 @@ using Assets.Scripts.Movement_Player;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
 
 public class CharacterMotionController : MonoBehaviour, IMovable
 {
