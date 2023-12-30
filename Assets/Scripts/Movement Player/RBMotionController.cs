@@ -8,10 +8,10 @@ public class RBMotionController : MonoBehaviour, IMovable
 {
     [field: SerializeField] public float DefaultWalkForce { get; private set; }
     [field: SerializeField] public float DefaultMass { get; private set; }
-    [SerializeField] private float _groundDrag;
+    [SerializeField] private float _forceInterval;
     [SerializeField] private InputAction _moveInputAction, _jumpInputAction;
     [SerializeField] private float _rotationSmooth;
-    [SerializeField] private float _jumpForce;
+    [SerializeField] private float _jumpForce, _landForce;
     [SerializeField] private bool _canLookToCursor = true;
     [SerializeField] private int _cameraRotationSpeed = 300;
     [SerializeField] private float _lookIKWeight = 1;
@@ -21,6 +21,7 @@ public class RBMotionController : MonoBehaviour, IMovable
     private CapsuleCollider _collider;
     private CinemachineOrbitalTransposer _orbitalTransposer;
     private float _rotationVelocity = 0.1f;
+    private float _forceIntervalTime;
     private Vector3 _look;
     private Camera _camera;
     private IGroundChecker _groundChecker;
@@ -62,8 +63,6 @@ public class RBMotionController : MonoBehaviour, IMovable
         _animator.SetBool(_runAnimationHash, _isWalk);
         _animator.SetBool(_cryAnimationHash, Input.GetMouseButton(0) && _isWalk == false);
         _animator.SetFloat(_animationSpeedMultiplierHash, new Vector2(Rigidbody.velocity.x, Rigidbody.velocity.z).magnitude);
-        //Rigidbody.drag = _groundChecker.IsGrounded ? _groundDrag : 0;
-        //Rigidbody.useGravity = _groundChecker.IsGrounded ? false : true;
     }
 
     private void OnAnimatorIK(int layerIndex)
@@ -94,19 +93,24 @@ public class RBMotionController : MonoBehaviour, IMovable
             transform.rotation = Quaternion.Euler(Vector3.up * smoothAngle);
 
         targetDirection *= DefaultWalkForce * Time.fixedDeltaTime;
-        float velocityMagnitude = Mathf.Abs(Rigidbody.velocity.magnitude);
+        //float velocityMagnitude = Mathf.Abs(Rigidbody.velocity.magnitude);
 
-        if (input != Vector2.zero && _groundChecker.IsGrounded)
-            Rigidbody.AddForce(targetDirection / Mathf.Clamp(velocityMagnitude, 1, velocityMagnitude), ForceMode.Force);
+        if (input != Vector2.zero && _groundChecker.IsGrounded && _forceIntervalTime >= _forceInterval)
+        {
+            _forceIntervalTime = 0;
+            Rigidbody.AddForce(targetDirection/* / Mathf.Clamp(velocityMagnitude, 1, velocityMagnitude)*/, ForceMode.Force);
+        }
 
         if (_groundChecker.IsGrounded == false)
-            Rigidbody.AddForce(Physics.gravity * Time.fixedDeltaTime);
+            Rigidbody.AddForce(Physics.gravity * _landForce);
+
+        _forceIntervalTime += Time.fixedDeltaTime;
     }
 
     private void Jump(InputAction.CallbackContext context)
     {
         if (_groundChecker.IsGrounded)
-            Rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            Rigidbody.AddForce((transform.up + transform.forward / 2) * _jumpForce, ForceMode.Impulse);
     }
 
     private void OnDisable()

@@ -1207,9 +1207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda3cb2e03f43c146b91ee4700acbff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DefaultWalkForce>k__BackingField: 250000
+  <DefaultWalkForce>k__BackingField: 300500
   <DefaultMass>k__BackingField: 45
-  _groundDrag: 5
+  _forceInterval: 0.05
   _moveInputAction:
     m_Name: Move Input
     m_Type: 0

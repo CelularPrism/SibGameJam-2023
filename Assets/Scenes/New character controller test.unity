@@ -304,6 +304,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7479400007237629113, guid: 9441a8972388a1d48a7d61ac416c272d, type: 3}
+      propertyPath: _force
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479400007237629113, guid: 9441a8972388a1d48a7d61ac416c272d, type: 3}
+      propertyPath: _forceInetarval
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479400007237629113, guid: 9441a8972388a1d48a7d61ac416c272d, type: 3}
+      propertyPath: _rigidbodiesSpeedModifire
+      value: 125000
+      objectReference: {fileID: 0}
     - target: {fileID: 7479400007258249733, guid: 9441a8972388a1d48a7d61ac416c272d, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -365,6 +377,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 666157858, guid: 5f653ffb0225a634ea5f26752fbefaec, type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2080107094676314560, guid: 5f653ffb0225a634ea5f26752fbefaec, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -485,6 +501,10 @@ PrefabInstance:
     - target: {fileID: 6945951697020486354, guid: b69f27fe62d25cb41bbadb440020fccd, type: 3}
       propertyPath: m_Name
       value: Cheese_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002379317313841240, guid: b69f27fe62d25cb41bbadb440020fccd, type: 3}
+      propertyPath: m_Mass
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b69f27fe62d25cb41bbadb440020fccd, type: 3}
@@ -627,6 +647,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7479400007237629113, guid: 9441a8972388a1d48a7d61ac416c272d, type: 3}
+      propertyPath: _force
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479400007237629113, guid: 9441a8972388a1d48a7d61ac416c272d, type: 3}
+      propertyPath: _forceInetarval
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479400007237629113, guid: 9441a8972388a1d48a7d61ac416c272d, type: 3}
+      propertyPath: _rigidbodiesSpeedModifire
+      value: 125000
+      objectReference: {fileID: 0}
     - target: {fileID: 7479400007258249733, guid: 9441a8972388a1d48a7d61ac416c272d, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -1003,6 +1035,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6764306417836459805, guid: 5b45d2479b431ab429322c38945e8777, type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1574503777237972129, guid: 5b45d2479b431ab429322c38945e8777, type: 3}
       propertyPath: m_Name
       value: Cheese_3
@@ -1346,7 +1382,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813808495}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1385,10 +1421,6 @@ PrefabInstance:
       propertyPath: _virtualCamera
       value: 
       objectReference: {fileID: 401941581}
-    - target: {fileID: 5559035443965934736, guid: 7827dc8da9f389a4b8cb675bcc782ab4, type: 3}
-      propertyPath: <DefaultWalkForce>k__BackingField
-      value: 1250000
-      objectReference: {fileID: 0}
     - target: {fileID: 6121753134780574515, guid: 7827dc8da9f389a4b8cb675bcc782ab4, type: 3}
       propertyPath: m_Name
       value: mouse_character

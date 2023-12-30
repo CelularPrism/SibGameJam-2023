@@ -10,4 +10,10 @@ public class Conveyor : MonoBehaviour
         if (_wide != null)
             _wide.FixedPush(_speed);
     }
+
+    private void LateUpdate()
+    {
+        if (_wide != null)
+            _wide.LatePush(_speed);
+    }
 }
