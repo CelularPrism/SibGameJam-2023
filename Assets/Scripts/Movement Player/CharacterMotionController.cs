@@ -3,7 +3,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterMotionController : MonoBehaviour, IMovable
+public class CharacterMotionController : MonoBehaviour, ICharacterMotionController, IMovable
 {
     public float MoveSpeed;
     [SerializeField] private InputAction _moveInputAction, _jumpInputAction;
@@ -24,11 +24,17 @@ public class CharacterMotionController : MonoBehaviour, IMovable
     private float _jumpVelocity;
     private Camera _camera;
     private Animator _animator;
+    private float _forceTime;
+    private Vector3 _force;
     private readonly int _runAnimationHash = Animator.StringToHash("IsRun");
     private readonly int _cryAnimationHash = Animator.StringToHash("IsCry");
     private readonly int _animationSpeedMultiplierHash = Animator.StringToHash("SpeedMultiplier");
 
     public float SpeedFactor { get; set; } = 1;
+
+    public Rigidbody Rigidbody => throw new System.NotImplementedException();
+
+    public float DefaultMass => throw new System.NotImplementedException();
 
     private void Awake()
     {
@@ -100,6 +106,14 @@ public class CharacterMotionController : MonoBehaviour, IMovable
         _animator.SetBool(_runAnimationHash, direction != Vector2.zero);
         _animator.SetBool(_cryAnimationHash, Input.GetMouseButton(0) && direction == Vector2.zero);
         _animator.SetFloat(_animationSpeedMultiplierHash, MoveSpeed * SpeedFactor / _defaultSpeed);
+
+        if (_forceTime < 1)
+        {
+            if (_characterController.isGrounded == false)
+                _characterController.Move(Vector3.Lerp(_force, Vector3.zero, _forceTime));
+
+            _forceTime += Time.deltaTime;
+        }
     }
 
     private void OnAnimatorIK(int layerIndex)
@@ -147,4 +161,15 @@ public class CharacterMotionController : MonoBehaviour, IMovable
     }
 
     public void Move(Vector3 direction) => _characterController.Move(direction);
+
+    public void AddForce(Vector3 direction)
+    {
+        _force = direction;
+        _forceTime = 0;
+    }
+
+    public void RemoveForce()
+    {
+        _forceTime = 1;
+    }
 }

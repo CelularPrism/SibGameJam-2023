@@ -1,4 +1,5 @@
-﻿using FMOD.Studio;
+﻿using Assets.Scripts.Movement_Player;
+using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 
@@ -14,11 +15,11 @@ namespace Assets.Scripts.Tears
         [SerializeField] private Transform _camera;
         private bool _isTearing;
         private EventInstance instance;
-        private RBMotionController _motionController;
+        private ICharacterMotionController _motionController;
 
         private void Awake()
         {
-            _motionController = GetComponent<RBMotionController>();
+            _motionController = GetComponent<ICharacterMotionController>();
         }
 
         private void Update()
@@ -32,8 +33,8 @@ namespace Assets.Scripts.Tears
 
         private void FixedUpdate()
         {
-            if (Input.GetMouseButton(0))
-                _motionController.Rigidbody.AddForce(-_reactiveForce * Time.fixedDeltaTime * _look.forward, ForceMode.Force);
+            //if (Input.GetMouseButton(0))
+            //    _motionController.Rigidbody.AddForce(-_reactiveForce * Time.fixedDeltaTime * _look.forward, ForceMode.Force);
         }
 
         private void StartTearing()

@@ -2,13 +2,14 @@ using Assets.Scripts.Cheese;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Assets.Scripts.Movement_Player;
 
 public class CheeseInventory : MonoBehaviour
 {
     [SerializeField] private Transform _view;
     [SerializeField] private Material _cheeseMaterial;
     [SerializeField] private float _viewSize = 15;
-    private RBMotionController _motionController;
+    private ICharacterMotionController _motionController;
     private HealthSystem _health;
     private float _defaultSpeed;
     private CheeseBar _bar;
@@ -20,7 +21,7 @@ public class CheeseInventory : MonoBehaviour
 
     private void Awake()
     {
-        _motionController = GetComponent<RBMotionController>();
+        _motionController = GetComponent<ICharacterMotionController>();
         _health = GetComponent<HealthSystem>();
         _bar = FindObjectOfType<CheeseBar>();
     }
@@ -47,7 +48,7 @@ public class CheeseInventory : MonoBehaviour
         {
             _cheese.Add(cheese);
             Fill = Mathf.Clamp01(Fill += cheese.Size);
-            _motionController.Rigidbody.mass += cheese.Weight;
+            //_motionController.Rigidbody.mass += cheese.Weight;
 
             if (_bar)
                 _bar.Set(Fill);
@@ -79,7 +80,7 @@ public class CheeseInventory : MonoBehaviour
     {
         float count = Fill;
         Fill = 0;
-        _motionController.Rigidbody.mass = _motionController.DefaultMass;
+        //_motionController.Rigidbody.mass = _motionController.DefaultMass;
 
         for (int i = 0; i < _view.childCount; i++)
         {

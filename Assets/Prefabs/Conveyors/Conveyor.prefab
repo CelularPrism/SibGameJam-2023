@@ -676,6 +676,19 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &2919102211865662295
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987727454285740028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.088359, y: 2.5880508, z: 17.785736}
+  m_Center: {x: 0, y: 1.3770199, z: 0}
 --- !u!65 &7479400007237629089
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -701,8 +714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d091cae3c3374d4fa68c35b12bce302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbodiesSpeedModifire: 55
-  _movablesSpeedModifire: 20
+  _force: 2500
+  _charcterControllersForce: 55
 --- !u!1001 &7479400007964215405
 PrefabInstance:
   m_ObjectHideFlags: 0
