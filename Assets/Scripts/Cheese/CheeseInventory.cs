@@ -48,6 +48,8 @@ public class CheeseInventory : MonoBehaviour
         {
             _cheese.Add(cheese);
             Fill = Mathf.Clamp01(Fill += cheese.Size);
+            _motionController.SpeedFactor -=  cheese.Size;
+            _motionController.Inertia += cheese.Size;
             //_motionController.Rigidbody.mass += cheese.Weight;
 
             if (_bar)
@@ -81,6 +83,7 @@ public class CheeseInventory : MonoBehaviour
         float count = Fill;
         Fill = 0;
         //_motionController.Rigidbody.mass = _motionController.DefaultMass;
+        _motionController.SpeedFactor = 1.0f;
 
         for (int i = 0; i < _view.childCount; i++)
         {

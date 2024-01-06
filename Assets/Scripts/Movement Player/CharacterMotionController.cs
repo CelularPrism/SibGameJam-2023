@@ -7,7 +7,7 @@ public class CharacterMotionController : MonoBehaviour, ICharacterMotionControll
 {
     public float MoveSpeed;
     [SerializeField] private InputAction _moveInputAction, _jumpInputAction;
-    [SerializeField] float _rotationSmooth;
+    [SerializeField] private float _rotationSmooth;
     [SerializeField] private float _jumpTime;
     [SerializeField] private float _jumpHeight;
     [SerializeField] private bool _canLookToCursor = true;
@@ -26,6 +26,7 @@ public class CharacterMotionController : MonoBehaviour, ICharacterMotionControll
     private Animator _animator;
     private float _forceTime;
     private Vector3 _force;
+    private float _motionVelocityX, _motionVelocityZ;
     private readonly int _runAnimationHash = Animator.StringToHash("IsRun");
     private readonly int _cryAnimationHash = Animator.StringToHash("IsCry");
     private readonly int _animationSpeedMultiplierHash = Animator.StringToHash("SpeedMultiplier");
@@ -35,6 +36,8 @@ public class CharacterMotionController : MonoBehaviour, ICharacterMotionControll
     public Rigidbody Rigidbody => throw new System.NotImplementedException();
 
     public float DefaultMass => throw new System.NotImplementedException();
+
+    public float Inertia { get; set; }
 
     private void Awake()
     {
@@ -90,8 +93,9 @@ public class CharacterMotionController : MonoBehaviour, ICharacterMotionControll
             direction = Vector2.zero;
 
         direction *= MoveSpeed * SpeedFactor * Time.deltaTime;
-        _motion.x = direction.x;
-        _motion.z = direction.y;
+        _motion.x = Mathf.SmoothDamp(_motion.x, direction.x, ref _motionVelocityX, Inertia);
+        _motion.z = Mathf.SmoothDamp(_motion.z, direction.y, ref _motionVelocityZ, Inertia);
+        //_inertiaTime = Mathf.Clamp01(_inertiaTime + Time.deltaTime);
 
         if (_characterController.isGrounded == false)
             _motion.y += _gravity * Time.deltaTime;
@@ -105,14 +109,14 @@ public class CharacterMotionController : MonoBehaviour, ICharacterMotionControll
         _characterController.Move(_motion);
         _animator.SetBool(_runAnimationHash, direction != Vector2.zero);
         _animator.SetBool(_cryAnimationHash, Input.GetMouseButton(0) && direction == Vector2.zero);
-        _animator.SetFloat(_animationSpeedMultiplierHash, MoveSpeed * SpeedFactor / _defaultSpeed);
+        _animator.SetFloat(_animationSpeedMultiplierHash, new Vector2(_characterController.velocity.x, _characterController.velocity.z).magnitude);
 
         if (_forceTime < 1)
         {
             if (_characterController.isGrounded == false)
                 _characterController.Move(Vector3.Lerp(_force, Vector3.zero, _forceTime));
 
-            _forceTime += Time.deltaTime;
+            _forceTime = Mathf.Clamp01(_forceTime + Time.deltaTime);
         }
     }
 

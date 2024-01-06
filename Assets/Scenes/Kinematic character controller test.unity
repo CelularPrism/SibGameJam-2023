@@ -1229,6 +1229,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 487551695005042821, guid: 0bcd472619c5d6749b1dd4ce7de08528, type: 3}
+      propertyPath: _inertia
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487551695005042821, guid: 0bcd472619c5d6749b1dd4ce7de08528, type: 3}
+      propertyPath: _inertiaForce
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 487551695005042821, guid: 0bcd472619c5d6749b1dd4ce7de08528, type: 3}
       propertyPath: _virtualCamera
       value: 
       objectReference: {fileID: 401941581}
