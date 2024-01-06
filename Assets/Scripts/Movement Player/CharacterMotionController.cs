@@ -8,7 +8,7 @@ public class CharacterMotionController : MonoBehaviour, ICharacterMotionControll
     public float MoveSpeed;
     [SerializeField] private InputAction _moveInputAction, _jumpInputAction;
     [SerializeField] private float _rotationSmooth;
-    [SerializeField] private float _inertiaForce;
+    [SerializeField] private float _inertiaFactor;
     [SerializeField] private float _jumpTime;
     [SerializeField] private float _jumpHeight;
     [SerializeField] private bool _canLookToCursor = true;
@@ -94,8 +94,8 @@ public class CharacterMotionController : MonoBehaviour, ICharacterMotionControll
             direction = Vector2.zero;
 
         direction *= MoveSpeed * SpeedFactor * Time.deltaTime;
-        _motion.x = Mathf.SmoothDamp(_motion.x, direction.x, ref _motionVelocityX, Inertia * _inertiaForce);
-        _motion.z = Mathf.SmoothDamp(_motion.z, direction.y, ref _motionVelocityZ, Inertia * _inertiaForce);
+        _motion.x = Mathf.SmoothDamp(_motion.x, direction.x, ref _motionVelocityX, Inertia * _inertiaFactor);
+        _motion.z = Mathf.SmoothDamp(_motion.z, direction.y, ref _motionVelocityZ, Inertia * _inertiaFactor);
 
         if (_characterController.isGrounded == false)
             _motion.y += _gravity * Time.deltaTime;
