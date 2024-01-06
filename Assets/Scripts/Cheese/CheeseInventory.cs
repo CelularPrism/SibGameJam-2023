@@ -84,6 +84,7 @@ public class CheeseInventory : MonoBehaviour
         Fill = 0;
         //_motionController.Rigidbody.mass = _motionController.DefaultMass;
         _motionController.SpeedFactor = 1.0f;
+        _motionController.Inertia = 0;
 
         for (int i = 0; i < _view.childCount; i++)
         {

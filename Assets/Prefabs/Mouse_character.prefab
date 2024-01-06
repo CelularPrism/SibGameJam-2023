@@ -1274,13 +1274,13 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   _rotationSmooth: 0.1
+  _inertiaFactor: 1
   _jumpTime: 0.5
   _jumpHeight: 0.1
   _canLookToCursor: 1
   _cameraRotationSpeed: 500
   _lookIKWeight: 0.9
   _virtualCamera: {fileID: 0}
-  <Inertia>k__BackingField: 1
 --- !u!114 &4601393153890572440
 MonoBehaviour:
   m_ObjectHideFlags: 0
